@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//�缭 TMP Ʈ���� UI 
 public class NPC_Name_DeActivate : MonoBehaviour
 {
     public GameObject MeetingRoom;
@@ -10,7 +9,7 @@ public class NPC_Name_DeActivate : MonoBehaviour
 
     public GameObject Activate;
     public GameObject DeActivate;
-    //NPC 이름 활성화 비활성화 트리거
+    //NPC 이름 비활성화 트리거
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")

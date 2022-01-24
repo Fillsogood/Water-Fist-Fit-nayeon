@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-//Ŀ���͸����� UI
 public class CustomizeUI : MonoBehaviour
 {
     public GameObject CPanel;

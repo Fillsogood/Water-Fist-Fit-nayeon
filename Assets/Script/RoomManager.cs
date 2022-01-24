@@ -7,7 +7,6 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Threading;
-
 //룸 기능수행(insert, update, delete)
 public class RoomManager : MonoBehaviourPunCallbacks
 {
@@ -25,7 +24,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         roomItemPrefab = Resources.Load<GameObject>("RoomItem");
     }   
-    //룸 리스트 업데이트
+
+    //룸 리스트 업데이트 콜백 메서드
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         GameObject tempRoom = null;

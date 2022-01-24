@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//ä�� ĵ���� �޴� ��Ʈ�ѷ� ���
 public class MenuManager : MonoBehaviour
 {
 public static MenuManager Instance;

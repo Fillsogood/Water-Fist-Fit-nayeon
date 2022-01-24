@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-//Ã¤ÆÃ Äµ¹ö½º ¸Ş´º ÄÁÆ®·Ñ·¯ UI
 public class Menu : MonoBehaviour
 {
     public string menuName;
     public bool open;
-
+    //íƒ€ê²Ÿì´ ëœ ê²Œì„ ì˜¤ë¸Œì íŠ¸ í™œì„±í™” ê¸°ëŠ¥
     public void Open()
     {
         open = true;
