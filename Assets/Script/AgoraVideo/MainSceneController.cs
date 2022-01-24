@@ -47,17 +47,7 @@ public class MainSceneController : MonoBehaviour
         mRtcEngine = IRtcEngine.GetEngine(AppID);   //아고라 엔진 불러오기
         AgoraAtivation();                           //아고라 엔진 활성화
     }
-    //AppId체크 함수
-    private void CheckAppId()
-    {
-        //조건이 false면 메시지를 호출한다.
-        Debug.Assert(AppID.Length > 10, "Please fill in your AppId first on Game Controller object.");
-        if (AppID.Length > 10)
-        {
-
-            _initialized = true; //초기화 ok
-        }
-    }
+    
     #region 아고라 엔진 및 채널 입장
     //아고라 엔진 활성화
     private void AgoraAtivation()
@@ -92,22 +82,22 @@ public class MainSceneController : MonoBehaviour
          mRtcEngine.EnableVideo();
          mRtcEngine.EnableVideoObserver();
           
-        }
+    }
 
         //채널 조인
-        public void Join(string channel)
-        {
-            Debug.Log("calling join (channel = " + channel + ")");
+    public void Join(string channel)
+    {
+        Debug.Log("calling join (channel = " + channel + ")");
 
-            if (mRtcEngine == null)
-                return;
+        if (mRtcEngine == null)
+            return;
 
-            mChannel = channel;
+        mChannel = channel;
 
-            // set callbacks (optional)
-            mRtcEngine.OnJoinChannelSuccess = OnJoinChannelSuccess;
-            mRtcEngine.OnUserJoined = OnUserJoined;
-            mRtcEngine.OnUserOffline = OnUserOffline;
+        // set callbacks (optional)
+        mRtcEngine.OnJoinChannelSuccess = OnJoinChannelSuccess;
+        mRtcEngine.OnUserJoined = OnUserJoined;
+        mRtcEngine.OnUserOffline = OnUserOffline;
         
 
             // join channel
@@ -115,7 +105,18 @@ public class MainSceneController : MonoBehaviour
 
             Debug.Log("initializeEngine done");
         }
-        #endregion
+        //AppId체크 함수
+    private void CheckAppId()
+    {
+        //조건이 false면 메시지를 호출한다.
+        Debug.Assert(AppID.Length > 10, "Please fill in your AppId first on Game Controller object.");
+        if (AppID.Length > 10)
+        {
+
+            _initialized = true; //초기화 ok
+        }
+    }
+    #endregion
    
     #region 아고라 엔진 및 채널 떠나기
     public void OnLeaveButtonClicked()  
