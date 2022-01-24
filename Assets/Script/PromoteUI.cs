@@ -43,6 +43,12 @@ public class PromoteUI : MonoBehaviour
         target.SetActive(true);
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        Genre.SetActive(false);
+        target.SetActive(false);
+    }
+
     public void BookBtn()
     {
         BookPanel.SetActive(true);
