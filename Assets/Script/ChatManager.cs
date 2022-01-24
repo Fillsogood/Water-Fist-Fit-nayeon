@@ -4,7 +4,6 @@ using UnityEngine.UI;
 using Photon.Chat;
 using Photon.Pun;
 using AuthenticationValues = Photon.Chat.AuthenticationValues;  //UserName을 UserID로 전환
-
 public class ChatManager : MonoBehaviour, IChatClientListener 
 {
     //채팅 클라이언트

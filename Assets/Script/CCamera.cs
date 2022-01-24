@@ -5,6 +5,7 @@ using UnityEngine;
 //캐릭터 카메라
 public class CCamera : MonoBehaviour
 {
+    
     public Transform target;
     public float targetY;
 

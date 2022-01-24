@@ -20,7 +20,7 @@ public class NPCCtrl : MonoBehaviour
             }
         }
     }
-
+    //마우스 클릭하여 객체 얻기
     private GameObject GetClickedObject()
     {
         RaycastHit hit;
