@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 
 namespace agora_utilities
 {
+    //드래그 앤 드랍
     public class UIElementDragger : EventTrigger
     {
 

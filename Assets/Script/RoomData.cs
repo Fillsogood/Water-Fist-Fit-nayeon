@@ -32,7 +32,7 @@ public class RoomData : MonoBehaviour
     {
         roomInfoText = GetComponentInChildren<TMP_Text>();
     }
-
+    //룸 들어가는 콜백 메서드
     void OnEnterRoom(string roomName)
     {
         //룸의 속성 정의
