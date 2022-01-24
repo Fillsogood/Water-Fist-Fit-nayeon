@@ -12843,8 +12843,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02ca7ca3b0b593b46885d94128b40a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 929995552}
-  canvas2: {fileID: 1414111910}
+  canvas_on: {fileID: 929995552}
+  canvas_off: {fileID: 1414111910}
   inputField: {fileID: 218043127}
   outputText: {fileID: 1780861709}
   btnOn: {fileID: 353886394}

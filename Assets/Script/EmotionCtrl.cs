@@ -19,13 +19,13 @@ public class EmotionCtrl : MonoBehaviour
     {
         anim = Player.GetComponent<Animator>();
     }
-
+    //이모션 버튼 활성화 메서드
     public void Emoji()
     {
         EmojiPanel.SetActive(true);
         EmojiBtn.SetActive(false);
     }
-
+    #region 이모션 동작 메서드
     public void Cry()
     {
         anim.SetBool("Idle", false);
@@ -71,4 +71,5 @@ public class EmotionCtrl : MonoBehaviour
         anim.SetBool("isLaugh", false);
         anim.SetBool("isDizzy", false);
     }
+    #endregion
 }

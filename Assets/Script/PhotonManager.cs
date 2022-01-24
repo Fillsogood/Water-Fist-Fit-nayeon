@@ -57,7 +57,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         return roomNameIF.text;
     }
-
+    
+    #region 포톤 콜백 메서드
     //포톤 서버에 접속 후 호출되는 함수
     public override void OnConnectedToMaster()
     {
@@ -100,7 +101,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
          if(PhotonNetwork.CurrentRoom.Name == roomNameIF.text)
             PhotonNetwork.LoadLevel("MeetingRoom");
     }
-
+    //룸 리스트 업데이트
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         //삭제된 RoomItem 프리팹을 저장할 임시변수
@@ -141,8 +142,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
           Debug.Log($"Room={roomInfo.Name}({roomInfo.PlayerCount}/{roomInfo.MaxPlayers})");
        }
     }
+    #endregion
 
     #region UI_BUTTON_EVENT
+    //미팅 룸 생성
     public void OnMakeRoomClick()
     {
         RoomOptions ro = new RoomOptions();

@@ -25,7 +25,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         roomItemPrefab = Resources.Load<GameObject>("RoomItem");
     }   
-
+    //룸 리스트 업데이트
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
         GameObject tempRoom = null;

@@ -7,18 +7,21 @@ using AuthenticationValues = Photon.Chat.AuthenticationValues;  //UserName을 Us
 
 public class ChatManager : MonoBehaviour, IChatClientListener 
 {
+    //채팅 클라이언트
     private ChatClient chatClient;
+    //유저 이름
     public static string userName = WCF.Name;
-  
+    //채널 이름
     string channelName = PhotonNetwork.CurrentRoom.Name;
-
-    public Canvas canvas;
-    public Canvas canvas2;
-
+    public Canvas canvas_on;
+    public Canvas canvas_off;
+    //채팅 입력
     public InputField inputField;
+    //채팅 출력
     public Text outputText;
-
+    //채팅 펴기
     public Button btnOn;
+    //채팅 접기
     public Button btnOff;
 
     void Awake()
@@ -31,82 +34,27 @@ public class ChatManager : MonoBehaviour, IChatClientListener
         //chatClient.Connect(앱ID, 버전, 사용자인증)
         chatClient.Connect(PhotonNetwork.PhotonServerSettings.AppSettings.AppIdChat, "1.0", new AuthenticationValues(userName));    
         AddLine(string.Format("연결시도", userName));
-	    canvas.GetComponent<Canvas>().enabled = false;
-        canvas2.GetComponent<Canvas>().enabled = true;
+	    canvas_on.GetComponent<Canvas>().enabled = false;
+        canvas_off.GetComponent<Canvas>().enabled = true;
     }
-
-    public void DIsConnect()
-    {
-        UnSubscribe(PhotonNetwork.CurrentRoom.Name);
-        chatClient.Disconnect();
-    }
-
     void Update ()
     {
         chatClient.Service();
     }
-
-     public void ButtonOn()
-    {
-        canvas.GetComponent<Canvas>().enabled = false;
-        canvas2.GetComponent<Canvas>().enabled = true;
-    }
-
-    public void ButtonOff()
-    {
-        canvas.GetComponent<Canvas>().enabled = true;
-        canvas2.GetComponent<Canvas>().enabled = false;
-    }
-  
-    public void AddLine(string lineString)
-    {
-        outputText.text += lineString + "\r\n";
-    }
-
-    //챗 관련 오류 잡아내는 함수(IChatClientListener 인터페이스)
-    public void DebugReturn (ExitGames.Client.Photon.DebugLevel level, string message)
-    {
-        if (level == ExitGames.Client.Photon.DebugLevel.ERROR)
-        {
-            Debug.LogError(message);
-        }
-        else if (level == ExitGames.Client.Photon.DebugLevel.WARNING)
-        {
-            Debug.LogWarning(message);
-        }
-        else
-        {
-            Debug.Log(message);
-        }
-    }
-
-    //서버연결 콜백
+    #region 콜백
+    //서버 연결 콜백
     public void OnConnected ()
     {
         AddLine ("서버에 연결되었습니다.");
         Subscribe(PhotonNetwork.CurrentRoom.Name);
     }
 
-    //서버해제 콜백
+    //서버 해제 콜백
     public void OnDisconnected ()
     {
         AddLine ("서버에 연결이 끊어졌습니다.");
         Debug.Log("test");
     }
-
-    //구독하는 채널 이름(필수적) 
-    public void Subscribe(string chaName)
-    {
-        chatClient.Subscribe(new string[] { chaName }, 10);
-        
-    }
-    
-    public void UnSubscribe(string chaName)
-    {
-        this.chatClient.Unsubscribe(new string[] { chaName });
-    }
-
-
     //채팅 상태(IChatClientListener 인터페이스) 
     public void OnChatStateChange (ChatState state)
     {
@@ -133,30 +81,8 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 		    ReceiveMessages(senders[i], messages[i].ToString());
 		}
     }
-
-    //귓속말
-    public void OnPrivateMessage(string sender, object message, string channelName)
-    {
-        ReceiveMessages(sender + "의 귓속말", message.ToString());
-    }
-
-    void ReceiveMessages(string nickName, string msg)
-    {
-        outputText.text += (outputText.text != "" ? "\n" : "") + nickName + " : " + msg;
-    }
-
-    void ReceiveMessages(string msg)
-    {
-        outputText.text += (outputText.text != "" ? "\n" : "") + msg;
-    }
-
-    //현재 상태 수신
-    public void OnStatusUpdate(string user, int status, bool gotMessage, object message)
-    {
-        Debug.Log("status : " + string.Format("{0} is {1}, Msg : {2} ", user, status, message)); 
-    }
-  
-    public void OnEnterSend()
+    //메세지 전송 콜백
+     public void OnEnterSend()
     {
         //2개의 다른 엔터키에 대한 입력
         if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
@@ -168,6 +94,55 @@ public class ChatManager : MonoBehaviour, IChatClientListener
         }
 
 	}
+    //현재 상태 수신
+    public void OnStatusUpdate(string user, int status, bool gotMessage, object message)
+    {
+        Debug.Log("status : " + string.Format("{0} is {1}, Msg : {2} ", user, status, message)); 
+    }
+
+    //챗 관련 오류 잡아내는 함수(IChatClientListener 인터페이스)
+    public void DebugReturn (ExitGames.Client.Photon.DebugLevel level, string message)
+    {
+        if (level == ExitGames.Client.Photon.DebugLevel.ERROR)
+        {
+            Debug.LogError(message);
+        }
+        else if (level == ExitGames.Client.Photon.DebugLevel.WARNING)
+        {
+            Debug.LogWarning(message);
+        }
+        else
+        {
+            Debug.Log(message);
+        }
+    }
+    #endregion
+  
+    #region  귓속말
+    //귓속말 보내기 콜백
+    public void OnPrivateMessage(string sender, object message, string channelName)
+    {
+        ReceiveMessages(sender + "의 귓속말", message.ToString());
+    }
+    //귓속말 닉네임 및 메세지 받는 콜백
+    void ReceiveMessages(string nickName, string msg)
+    {
+        outputText.text += (outputText.text != "" ? "\n" : "") + nickName + " : " + msg;
+    }
+    #endregion
+    
+    #region 기능 메서드
+    //구독하는 채널 이름(필수적) 
+    public void Subscribe(string chaName)
+    {
+        chatClient.Subscribe(new string[] { chaName }, 10);
+        
+    }
+    //구독해제
+    public void UnSubscribe(string chaName)
+    {
+        this.chatClient.Unsubscribe(new string[] { chaName });
+    }
 
     //채팅창에 메시지를 입력해야만 보내지게하는 함수
     bool StringAvailable(string s)
@@ -189,7 +164,37 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 		else 
             chatClient.PublishMessage(channelName, s); 
 	}
+    //채팅 클라이언트 해제
+    public void DIsConnect()
+    {
+        UnSubscribe(PhotonNetwork.CurrentRoom.Name);
+        chatClient.Disconnect();
+    }
 
+    
+     public void ButtonOn()
+    {
+        canvas_on.GetComponent<Canvas>().enabled = false;
+        canvas_off.GetComponent<Canvas>().enabled = true;
+    }
+
+    public void ButtonOff()
+    {
+        canvas_on.GetComponent<Canvas>().enabled = true;
+        canvas_off.GetComponent<Canvas>().enabled = false;
+    }
+    //줄바꿈 기능
+    public void AddLine(string lineString)
+    {
+        outputText.text += lineString + "\r\n";
+    }
+    //메세지 받는 기능
+    void ReceiveMessages(string msg)
+    {
+        outputText.text += (outputText.text != "" ? "\n" : "") + msg;
+    }
+    #endregion
+   
     #region 인터페이스 메서드
     public void OnApplicationQuit() { }
     public void OnUserSubscribed(string channel, string user) { }

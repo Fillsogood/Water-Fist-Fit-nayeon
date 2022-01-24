@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//1,2Ãþ °è´Ü UI ·ÎÁ÷
+//1,2ï¿½ï¿½ ï¿½ï¿½ï¿½ UI ï¿½ï¿½ï¿½ï¿½
 public class FloorUI : MonoBehaviour
 {
     public GameObject FloorPanel;
-
+    //ê³„ë‹¨ íŠ¸ë¦¬ê±°
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")

@@ -3,22 +3,18 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.AI;
-
-//NPC ³×ºñ°ÔÀÌÆ® ÀÚµ¿ ¿òÁ÷ÀÓ ·ÎÁ÷
 public class NPCCtrl_Move : MonoBehaviour
 {
+    //Npc ì´ë™ ê²½ë¡
     [SerializeField]
     Transform[] PatrolPath = null;
-
+    //ë„¤ë¹„ë©”ì‰¬
     private NavMeshAgent NMA = null;
     private Animator anim = null;
     private Rigidbody rigid = null;
     private int m_Count = 0;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        anim.SetBool("isWalk", false);
-    }
+   
 
     void Start()
     {
@@ -37,13 +33,13 @@ public class NPCCtrl_Move : MonoBehaviour
     {
         FreezeVelocity();
     }
-
+    //ê³ ì •
     void FreezeVelocity()
     {
         rigid.velocity = Vector3.zero;
         rigid.angularVelocity = Vector3.zero;
     }
-
+    //ê²½ë¡œ ì§€ì •
     void MoveToNextWayPoint()
     {
         if (NMA.velocity == Vector3.zero)
@@ -54,5 +50,10 @@ public class NPCCtrl_Move : MonoBehaviour
             if (m_Count >= PatrolPath.Length -1)
                 m_Count = 0;
         }
+    }
+    //NPCëª¨ì…˜ íŠ¸ë¦¬ê±°
+     private void OnTriggerEnter(Collider other)
+    {
+        anim.SetBool("isWalk", false);
     }
 }

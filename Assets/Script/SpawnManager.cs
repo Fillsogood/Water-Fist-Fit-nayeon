@@ -69,12 +69,12 @@ public class SpawnManager : MonoBehaviourPunCallbacks
                 break;
         }
     }
-         
+    //씬 나기 콜백 메서드 
     public override void OnLeftRoom()
     {
         SceneManager.LoadScene("Customize");
     }
-
+    //나가기 기능
     public void LeaveRoom()
     {
         //방장권한 다음으로 들어온 사람에게 넘기기
