@@ -2716,7 +2716,7 @@ GameObject:
   - component: {fileID: 438588297}
   - component: {fileID: 438588296}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Female
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7307,7 +7307,7 @@ GameObject:
   - component: {fileID: 1495323252}
   - component: {fileID: 1495323251}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Male
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

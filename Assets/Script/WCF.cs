@@ -44,16 +44,17 @@ public class WCF : MonoBehaviourPunCallbacks
         female5,
         female6,
     };
-
+    //커스텀 정보 저장
     public static Custom  custom;
-
     //DB 서비스 url
     public static string url = "http://localhost:59755/StudentService.svc/";
-
-    public static int UserID = 11111111;
+    //유저 아이디
+    public static int UserID = 11111111;    //변경 필요
+    //유저 이름
     public static string Name;
+    //캐릭터
     public static int Character;
-
+    //선택 여부
     private static bool Check = false;
 
     void Awake()
@@ -67,12 +68,15 @@ public class WCF : MonoBehaviourPunCallbacks
             return;
         }
     }
-
+    
+    //게임 종료 콜백 메서드
     public override void OnDisable()
     {
         Gameunjoin();
     }
 
+    #region WCF
+    //커스텀 정보 얻어 오는 기능
     private void GetPlayerData()
     {
         string sendurl = url + "Stu_GameJoin";
@@ -205,7 +209,7 @@ public class WCF : MonoBehaviourPunCallbacks
             Application.Quit();
         }
     }
-
+    //게임 나가기 기능
     private void Gameunjoin()
     {
         string sendurl = url + "Ply_GameUnjoin";
@@ -240,7 +244,7 @@ public class WCF : MonoBehaviourPunCallbacks
             Debug.Log(result);
         }
     }
-
+    //커스텀 변경 하면 업데이트
     private void CustomUpdate(int SelCustom)
     {
         try
@@ -273,7 +277,9 @@ public class WCF : MonoBehaviourPunCallbacks
             Debug.Log(ex.Message);
         }
     }
+    #endregion
 
+    #region UI 버튼
     public void PrevBtn()
     {
         BtnSet_F.SetActive(false);
@@ -443,4 +449,5 @@ public class WCF : MonoBehaviourPunCallbacks
         BtnSet_F.SetActive(true);
         custom = Custom.female6;
     }
+    #endregion
 }

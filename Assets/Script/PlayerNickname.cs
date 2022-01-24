@@ -2,12 +2,11 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-//ÇÃ·¹ÀÌ¾î ´Ğ³×ÀÓ ¿¬°á
 public class PlayerNickname : MonoBehaviourPunCallbacks
 {
     public TextMesh Nickname;
     public PhotonView pv;
+    //ì‚¬ìš©ì ë‹‰ë„¤ì„ ë™ê¸°í™” ë° ìê¸° ë‹‰ë„¤ì„ ë¹„í™œì„±í™”
     private void Start()
     {
         if(pv.IsMine)

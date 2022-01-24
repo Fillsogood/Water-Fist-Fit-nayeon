@@ -4,22 +4,18 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
+//아고라 화면공유 정보 가져오기
 public static class AgoraNativeBridge
 {
+    //화면공유 컨트롤 최대 인원
     const int DisplayCountMax = 10;
+    //공유할 때 버퍼 사이즈
     const int CharBufferSize = 100000;
-
-    // #if UNITY_IPHONE
-    // On iOS plugins are statically linked into
-    // the executable, so we have to use __Internal as the
-    // library name.
-    //     [DllImport ("__Internal")]
-
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
-    // Save window titles and handles in these lists.
+    //윈도우 정보
     private static Dictionary<string, IntPtr> windowInfo;
+    //사용자 정보
     private static List<MonitorInfoWithHandle> displayInfo;
-
+    //윈도우 정보를 받아오는 메서드
     public static MonitorInfoWithHandle[] GetWinDisplayInfo()
     {
         displayInfo = new List<MonitorInfoWithHandle>();
@@ -27,7 +23,7 @@ public static class AgoraNativeBridge
         return displayInfo.ToArray();
     }
 
-    // Return a list of the desktop windows' handles and titles.
+    //윈도우 핸들이랑 리스트를 받아오는 메서드
     public static void GetDesktopWindowHandlesAndTitles(
         out Dictionary<string, IntPtr> info)
     {
@@ -43,29 +39,24 @@ public static class AgoraNativeBridge
             info = windowInfo;
         }
     }
-
-    // We use this function to filter windows.
-    // This version selects visible windows that have titles.
+    //윈도우 필터 할 때 쓰는 메서드
     private static bool FilterCallback(IntPtr hWnd, int lParam)
     {
-        // Get the window's title.
+        // 타이틀 세팅
         StringBuilder sb_title = new StringBuilder(1024);
         GetWindowText(hWnd, sb_title, sb_title.Capacity);
         string title = sb_title.ToString();
 
-        // If the window is visible and has a title, save it.
+        // 타이틀이 있을 경우 저장
         if (IsWindowVisible(hWnd) &&
             string.IsNullOrEmpty(title) == false)
         {
             if (windowInfo.ContainsKey(title)) title = string.Format("{0}{1}", title, hWnd);
             windowInfo.Add(title, hWnd);
         }
-
-        // Return true to indicate that we
-        // should continue enumerating windows.
         return true;
     }
-
+    //필터 콜백 메서드
     private static bool FilterDisplayCallback(IntPtr hMonitor, IntPtr hdcMonitor, ref RECT lprcMonitor, IntPtr dwData)
     {
         var mi = new MONITORINFO();
@@ -76,7 +67,7 @@ public static class AgoraNativeBridge
         displayInfo.Add(new MonitorInfoWithHandle(hMonitor, mi));
         return true;
     }
-
+    #region 유저Dll에다 정보를얻고 받아오는 세팅 
     [DllImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]
     private static extern bool IsWindowVisible(IntPtr hWnd);
@@ -99,13 +90,13 @@ public static class AgoraNativeBridge
     [DllImport("user32.dll", EntryPoint = "GetMonitorInfo",
         ExactSpelling = false, CharSet = CharSet.Auto, SetLastError = true)]
     private static extern bool GetMonitorInfo(IntPtr hmon, ref MONITORINFO mi);
-
-    // Define the callback delegate's type.
+    #endregion
+    //콜백 딜리게이트 타입
     private delegate bool EnumDelegate(IntPtr hWnd, int lParam);
 
     private delegate bool EnumMonitorsDelegate(IntPtr hMonitor, IntPtr hdcMonitor, ref RECT lprcMonitor, IntPtr dwData);
 
-    // Monitor information with handle interface.
+    #region  모니터 정보 핸들 인터페이스
     public interface IMonitorInfoWithHandle
     {
         IntPtr MonitorHandle { get; }
@@ -132,7 +123,8 @@ public static class AgoraNativeBridge
         public int right;
         public int bottom;
     }
-
+    
+    
     [StructLayout(LayoutKind.Sequential)]
     public struct MONITORINFO
     {
@@ -141,64 +133,5 @@ public static class AgoraNativeBridge
         public RECT work;
         public uint flags;
     }
-#endif
-
-#if UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
-    // Other platforms load plugins dynamically, so pass the name
-    // of the plugin's dynamic library.
-    [DllImport("ShareScreenLib")]
-    private static extern int PrintANumber();
-
-    [DllImport("ShareScreenLib")]
-    private static extern void GetDisplayIds([In, Out] uint[] displays, ref int size, int length);
-
-    [DllImport("ShareScreenLib")]
-    private static extern void GetWindows(StringBuilder stringBuilder, int capacity);
-
-    public static void TestMacBridge()
-    {
-        int k = PrintANumber();
-        Debug.LogWarning("ver number = " + k);
-
-        List<uint> ids = GetMacDisplayIds();
-
-        for (int i = 0; i < ids.Count; i++)
-        {
-            Debug.LogWarning("Id = " + ids[i]);
-        }
-
-        GetMacWindowList();
-    }
-
-    public static List<uint> GetMacDisplayIds()
-    {
-        uint[] ids = new uint[DisplayCountMax];
-        int size = 0;  // how much of array filled
-        List<uint> list = new List<uint>();
-
-        GetDisplayIds(ids, ref size, ids.Length);
-        for (int i = 0; i < size; i++)
-        {
-            list.Add(ids[i]);
-        }
-        return list;
-    }
-
-    public static WindowList GetMacWindowList()
-    {
-        StringBuilder sb = new StringBuilder(CharBufferSize);
-        GetWindows(sb, sb.Capacity);
-
-        WindowList macWindows = WindowList.ParseJson(sb.ToString());
-        if (macWindows != null)
-        {
-            Debug.LogWarning("JSON list count = " + macWindows.windows.Count);
-            foreach (MacWindowModel win in macWindows.windows)
-            {
-                Debug.LogWarning(win.kCGWindowOwnerName + " => " + win.kCGWindowNumber);
-            }
-        }
-        return macWindows;
-    }
-#endif
+    #endregion 
 }

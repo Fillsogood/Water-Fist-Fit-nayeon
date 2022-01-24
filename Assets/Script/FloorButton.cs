@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//1,2Ãş °è´Ü Æ®¸®°Å ÀÌµ¿ ·ÎÁ÷
+//1,2ï¿½ï¿½ ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
 public class FloorButton : MonoBehaviour
 {
     public GameObject YButton;
@@ -18,7 +18,7 @@ public class FloorButton : MonoBehaviour
     {
         Player = GameObject.FindWithTag("Player");
     }
-
+    #region ê³„ë‹¨ ì˜¬ë¼ê°€ê¸°,ë‚´ë ¤ê°€ê¸°,ì°½ë‹«ê¸° ë²„íŠ¼ ë©”ì„œë“œ
     public void Moveto1F()
     {
         Player.transform.position = FirstFloor.position;
@@ -36,4 +36,5 @@ public class FloorButton : MonoBehaviour
 
         FloorUI.SetActive(false);
     }
+    #endregion
 }
