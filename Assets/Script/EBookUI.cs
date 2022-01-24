@@ -4,25 +4,15 @@ using UnityEngine;
 
 public class EBookUI : MonoBehaviour
 {
+
     public GameObject EbookPanel;
 
     public GameObject InfoPanel;
-
+    //EBook 나가기 메서드
     public void ExitBtn()
     {
         EbookPanel.SetActive(false);
     }
-
-    public void RentBtn()
-    {
-
-    }
-
-    public void ReturBtn()
-    {
-
-    }
-
     public void InfoBtn()
     {
         InfoPanel.SetActive(true);

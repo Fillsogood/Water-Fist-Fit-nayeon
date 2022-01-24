@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
 
+//리사이즈 리사이즈 지정 이넘 타입
 public enum HandlerType
 {
     TopRight,
@@ -18,11 +19,15 @@ public enum HandlerType
 [RequireComponent(typeof(EventTrigger))]
 public class FlexibleResizeHandler : MonoBehaviour
 {
+    //이넘 타입 저장 변수
     public HandlerType Type;
+    //지정할 타켓
     public RectTransform Target;
+    //사이즈 변경 최솟값
     public Vector2 MinimumDimmensions = new Vector2(50, 50);
+    //사이즈 변경 최댓값
     public Vector2 MaximumDimmensions = new Vector2(800, 800);
-    
+    //이벤트 트리거
     private EventTrigger _eventTrigger;
     
 	void Start ()
@@ -30,7 +35,7 @@ public class FlexibleResizeHandler : MonoBehaviour
 	    _eventTrigger = GetComponent<EventTrigger>();
         _eventTrigger.AddEventTrigger(OnDrag, EventTriggerType.Drag);
 	}
-
+    //컴퍼넌트에서 컨트롤및 기능을 수행 할 수 있게하는 메서드
     void OnDrag(BaseEventData data)
     {
         PointerEventData ped = (PointerEventData) data;

@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//ƒ≥∏Ø≈Õ ƒ´∏ﬁ∂Û 
+//Ï∫êÎ¶≠ÌÑ∞ Ïπ¥Î©îÎùº
 public class CCamera : MonoBehaviour
 {
     public Transform target;
     public float targetY;
 
     public float xRotMax;
-    //∏∂øÏΩ∫ ∞®µµ 
+    //
     public float rotSpeed;
-    //¡‹ ∞®µµ
+    //
     private float scrollSpeed = 100;
 
     public float distance;
@@ -33,14 +33,14 @@ public class CCamera : MonoBehaviour
         lookPlayer();
     }
 
-    //ƒ´∏ﬁ∂Û ∏∂øÏΩ∫ ¿Ãµø(¿Ãµø/¡‹)
+    //
     void mouseControl()
     {
-        //∏∂øÏΩ∫ y√‡ 
+        //
         xRot += Input.GetAxis("Mouse Y") * rotSpeed * Time.deltaTime;
-        //∏∂øÏΩ∫ x√‡
+        //
         yRot += Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime;
-        //¡‹ ∞≈∏Æ
+        //
         distance += -Input.GetAxis("Mouse ScrollWheel") * scrollSpeed * Time.deltaTime;
 
         xRot = Mathf.Clamp(xRot, -xRotMax, xRotMax);
@@ -51,7 +51,7 @@ public class CCamera : MonoBehaviour
         dir = Quaternion.Euler(-xRot, yRot, 0f) * Vector3.forward;
     }
 
-    //ƒ´∏ﬁ∂Û∞° «√∑π¿ÃæÓ∏¶ πŸ∂Û∫∏∞‘ º≥¡§
+    //
     void lookPlayer()
     {
         Debug.DrawRay(transform.position, dir, Color.red);
