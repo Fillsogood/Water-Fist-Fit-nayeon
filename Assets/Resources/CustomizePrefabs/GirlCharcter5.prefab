@@ -300,8 +300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 2468371447435131611}
-  targetY: 1
-  xRotMax: 180
+  targetY: 1.5
   rotSpeed: 60
   distance: 3
   minDistance: 2
