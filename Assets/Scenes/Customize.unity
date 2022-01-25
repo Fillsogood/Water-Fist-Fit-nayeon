@@ -1139,7 +1139,7 @@ MonoBehaviour:
   Char9: {fileID: 37751449}
   Char10: {fileID: 622053226}
   Char11: {fileID: 888482214}
-  Char12: {fileID: 1356876194}
+  Char12: {fileID: 1811020149}
   FirstPanel: {fileID: 1234617799}
   SecondPanel: {fileID: 191639757}
   BtnSet_M: {fileID: 715439387}
@@ -2898,7 +2898,7 @@ MonoBehaviour:
   Char9: {fileID: 37751449}
   Char10: {fileID: 622053226}
   Char11: {fileID: 888482214}
-  Char12: {fileID: 1356876194}
+  Char12: {fileID: 1811020149}
   FirstPanel: {fileID: 1234617799}
   SecondPanel: {fileID: 0}
   BtnSet_M: {fileID: 715439387}
@@ -6405,6 +6405,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2348734953590425856, guid: a9db7bb15e2900743a59cb0d91a6ef1b, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564365493534988389, guid: a9db7bb15e2900743a59cb0d91a6ef1b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4822847030717135773, guid: a9db7bb15e2900743a59cb0d91a6ef1b, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -6453,6 +6461,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 4a9b12fea3f86234a97760139a61aa78, type: 2}
+    - target: {fileID: 5456828449898883912, guid: a9db7bb15e2900743a59cb0d91a6ef1b, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7088877409907316972, guid: a9db7bb15e2900743a59cb0d91a6ef1b, type: 3}
       propertyPath: m_Name
       value: GirlCharcter6
@@ -6473,12 +6485,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: a9db7bb15e2900743a59cb0d91a6ef1b, type: 3}
 --- !u!4 &1356876193 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 4822847030717135773, guid: a9db7bb15e2900743a59cb0d91a6ef1b, type: 3}
-  m_PrefabInstance: {fileID: 1356876192}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1356876194 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7088877409907316972, guid: a9db7bb15e2900743a59cb0d91a6ef1b, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2348734953590425856, guid: a9db7bb15e2900743a59cb0d91a6ef1b, type: 3}
   m_PrefabInstance: {fileID: 1356876192}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1399366578
@@ -8445,11 +8452,16 @@ MonoBehaviour:
   Char9: {fileID: 37751449}
   Char10: {fileID: 622053226}
   Char11: {fileID: 888482214}
-  Char12: {fileID: 1356876194}
+  Char12: {fileID: 1811020149}
   FirstPanel: {fileID: 1234617799}
   SecondPanel: {fileID: 1786452382}
   BtnSet_M: {fileID: 715439387}
   BtnSet_F: {fileID: 1938604529}
+--- !u!1 &1811020149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3564365493534988389, guid: a9db7bb15e2900743a59cb0d91a6ef1b, type: 3}
+  m_PrefabInstance: {fileID: 1356876192}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1873053999
 GameObject:
   m_ObjectHideFlags: 0
