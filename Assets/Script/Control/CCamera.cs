@@ -37,11 +37,8 @@ public class CCamera : MonoBehaviour
     //
     void mouseControl()
     {
-        //
-        xRot += Input.GetAxis("Mouse Y") * rotSpeed * Time.deltaTime;
-        //
-        yRot += Input.GetAxis("Mouse X") * rotSpeed * Time.deltaTime;
-        //
+        yRot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
+
         distance += -Input.GetAxis("Mouse ScrollWheel") * scrollSpeed * Time.deltaTime;
 
         xRot = Mathf.Clamp(xRot, -xRotMax, xRotMax);
@@ -49,7 +46,7 @@ public class CCamera : MonoBehaviour
 
         targetPos = target.position + Vector3.up * targetY;
 
-        dir = Quaternion.Euler(-xRot, yRot, 0f) * Vector3.forward;
+        dir = Quaternion.Euler(0f, yRot, 0f) * Vector3.forward;
     }
 
     //

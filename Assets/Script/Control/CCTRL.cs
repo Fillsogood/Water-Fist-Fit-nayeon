@@ -85,9 +85,9 @@ public class CCTRL : MonoBehaviour
     //캐릭터 이동
     void CharacterMove()
     {
-        float h = Input.GetAxis("Horizontal");
+        float h = Input.GetAxis("SideMove");
         float v = Input.GetAxis("Vertical");
-        float r = Input.GetAxis("Mouse X");
+        float r = Input.GetAxis("Horizontal");
 
         if (Mathf.Approximately(h, 0) && Mathf.Approximately(v, 0))
         {
