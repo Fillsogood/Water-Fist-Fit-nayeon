@@ -1252,6 +1252,7 @@ GameObject:
   - component: {fileID: 559972057127849039}
   - component: {fileID: 8924946921889514535}
   - component: {fileID: 5387935645112636815}
+  - component: {fileID: 2766328683876732052}
   m_Layer: 0
   m_Name: TTBoyD
   m_TagString: Player
@@ -1434,6 +1435,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &2766328683876732052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5241975243121635074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2756dc38020844cb5efb660fee05b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Panel: {fileID: 0}
 --- !u!1 &5284137185327031453
 GameObject:
   m_ObjectHideFlags: 0

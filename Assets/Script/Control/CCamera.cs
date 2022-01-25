@@ -49,16 +49,17 @@ public class CCamera : MonoBehaviour
         dir = Quaternion.Euler(0f, yRot, 0f) * Vector3.forward;
         gameObject.transform.rotation = new Quaternion(30f, 0f, 0f, 0f);
     }
-
+    Vector3 _delta = new Vector3(0.0f, 6.0f, -5.0f);
     //카메라 이동 
     void lookPlayer()
     {
         Debug.DrawRay(transform.position, dir, Color.red);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, dir, out hit, dir.magnitude, LayerMask.GetMask("Wall")))
+        if (Physics.Raycast(transform.position, dir, out hit, 1.5f, LayerMask.GetMask("Wall")))
         {
             float dist = (hit.point - transform.position).magnitude * 0.8f;
-            transform.position = transform.position + dir.normalized * dist;
+            transform.position = transform.position + dir.normalized * dist;    //근접한 위치로 수정
+            transform.rotation = new Quaternion(0f, 0f, 0f, 0f);                //방향값 수정
         }
         else
         {
