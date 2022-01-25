@@ -40,13 +40,11 @@ public class PromoteUI : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Genre.SetActive(true);
-        target.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
         Genre.SetActive(false);
-        target.SetActive(false);
     }
 
     public void BookBtn()
