@@ -44,6 +44,7 @@ public class WCF : MonoBehaviourPunCallbacks
         female5,
         female6,
     };
+
     //커스텀 정보 저장
     public static Custom  custom;
     //DB 서비스 url
