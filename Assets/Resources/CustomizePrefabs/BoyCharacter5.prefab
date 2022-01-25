@@ -884,7 +884,7 @@ GameObject:
   - component: {fileID: 3887830391310856363}
   - component: {fileID: 943522194771070216}
   m_Layer: 0
-  m_Name: TTBoyD(Clone)
+  m_Name: TTBoyD
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

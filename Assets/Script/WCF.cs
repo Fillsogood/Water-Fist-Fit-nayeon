@@ -23,7 +23,6 @@ public class WCF : MonoBehaviourPunCallbacks
     public GameObject Char11;
     public GameObject Char12;
 
-
     public GameObject FirstPanel;
     public GameObject SecondPanel;
     public GameObject BtnSet_M;
@@ -44,6 +43,7 @@ public class WCF : MonoBehaviourPunCallbacks
         female5,
         female6,
     };
+
     //커스텀 정보 저장
     public static Custom  custom;
     //DB 서비스 url
@@ -59,7 +59,7 @@ public class WCF : MonoBehaviourPunCallbacks
 
     void Awake()
     {
-        if(Check == false)
+        if (Check == false)
         {
             GetPlayerData();
         }
