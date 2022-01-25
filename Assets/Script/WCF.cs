@@ -48,7 +48,7 @@ public class WCF : MonoBehaviourPunCallbacks
     //커스텀 정보 저장
     public static Custom  custom;
     //DB 서비스 url
-    public static string url = "http://localhost:59755/StudentService.svc/";
+    public static string url = "http://192.168.35.241:8080/webservice/StudentService.svc/";
     //유저 아이디
     public static int UserID = 11111111;    //변경 필요
     //유저 이름
@@ -60,7 +60,7 @@ public class WCF : MonoBehaviourPunCallbacks
 
     void Awake()
     {
-        if(Check == false)
+        if (Check == false)
         {
             GetPlayerData();
         }
@@ -80,10 +80,10 @@ public class WCF : MonoBehaviourPunCallbacks
     //커스텀 정보 얻어 오는 기능
     private void GetPlayerData()
     {
-        string sendurl = url + "Stu_GameJoin";
+        string sendurl = url + "Ply_GameJoin";
 
         HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
-        httpWebRequest.Method = "PUT";
+        httpWebRequest.Method = "POST";
         httpWebRequest.ContentType = "application/json; charset=utf-8";
 
         string msg = "{\"id\":" + UserID + "}";
@@ -217,7 +217,7 @@ public class WCF : MonoBehaviourPunCallbacks
 
         //송신
         HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
-        httpWebRequest.Method = "PUT";
+        httpWebRequest.Method = "POST";
         httpWebRequest.ContentType = "application/json; charset=utf-8";
 
         //메시지 형식 : {"id":int"}
