@@ -7,17 +7,18 @@ public class CCamera : MonoBehaviour
 {
     
     public Transform target;
-    public float targetY;
+    public float targetY = 1.5f;
 
     //회전속도
-    public float rotSpeed;
+    public float rotSpeed = 80.0f;
     //줌 인/아웃 속도
-    private float scrollSpeed = 100;
+    public float scrollSpeed = 80.0f;
 
     //거리
-    public float distance;
-    public float minDistance;
-    public float maxDistance;
+    public float mouseDist = 3.0f;
+    public float mouseminDist= 0.0f;
+    public float mousemaxDist= 5.0f;
+    private Vector3 closeDist; 
 
     //Y축 회전
     private float yRot;
@@ -26,13 +27,14 @@ public class CCamera : MonoBehaviour
     //회전값
     private Vector3 dir;
 
+    private void Start()
+    {
+        closeDist = new Vector3(0, 0, 1.5f);
+
+    }
     void Update()
     {
         mouseControl();
-    }
-
-    void LateUpdate()
-    {
         lookPlayer();
     }
 
@@ -40,30 +42,30 @@ public class CCamera : MonoBehaviour
     void mouseControl()
     {
         yRot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
-        distance += -Input.GetAxis("Mouse ScrollWheel") * scrollSpeed * Time.deltaTime;
+        mouseDist += -Input.GetAxis("Mouse ScrollWheel") * scrollSpeed * Time.deltaTime;
 
-        distance = Mathf.Clamp(distance, minDistance, maxDistance);
+        mouseDist = Mathf.Clamp(mouseDist, mouseminDist, mousemaxDist);
 
         targetPos = target.position + Vector3.up * targetY;
 
-        dir = Quaternion.Euler(0f, yRot, 0f) * Vector3.forward;
-        gameObject.transform.rotation = new Quaternion(30f, 0f, 0f, 0f);
+        dir = Quaternion.Euler(0, yRot, 0) * Vector3.forward;
+        gameObject.transform.rotation = Quaternion.Euler(30, 0, 0);
+
+        transform.position = targetPos + dir * -mouseDist;
+        transform.LookAt(targetPos);
     }
 
     //카메라 이동 
     void lookPlayer()
     {
-        Debug.DrawRay(transform.position, dir, Color.red);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, dir, out hit, dir.magnitude, LayerMask.GetMask("Wall")))
+        Debug.DrawRay(transform.position, dir, Color.red);
+        Physics.Raycast(transform.position, dir, out hit, dir.magnitude * 3, LayerMask.GetMask("Wall"));
+
+        if(hit.point != Vector3.zero)
         {
-            float dist = (hit.point - transform.position).magnitude * 0.8f;
-            transform.position = transform.position + dir.normalized * dist;
-        }
-        else
-        {
-            transform.position = targetPos + dir * -distance;
-            transform.LookAt(targetPos);
+            transform.position += closeDist;
+            transform.rotation = Quaternion.Euler(0, yRot, 0);
         }
     }
 }

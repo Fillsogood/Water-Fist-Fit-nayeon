@@ -2448,7 +2448,7 @@ GameObject:
   - component: {fileID: 7733898032522637067}
   - component: {fileID: 6154693958547991988}
   - component: {fileID: 1547315638791519283}
-  - component: {fileID: 472103422270992807}
+  - component: {fileID: 2454134824540705319}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2521,7 +2521,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8948259529422472358}
   m_Enabled: 1
---- !u!114 &472103422270992807
+--- !u!114 &2454134824540705319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2536,9 +2536,11 @@ MonoBehaviour:
   target: {fileID: 3670523119407073696}
   targetY: 1.5
   rotSpeed: 60
-  distance: 3
-  minDistance: 2
-  maxDistance: 5
+  scrollSpeed: 80
+  dist: 3
+  minDist: 0
+  maxDist: 5
+  rayDist: 3
 --- !u!1 &9008138610346446019
 GameObject:
   m_ObjectHideFlags: 0
