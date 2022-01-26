@@ -5921,8 +5921,6 @@ MonoBehaviour:
   player: {fileID: 5241975243121635074}
   moveSpeed: 1
   turnSpeed: 60
-  Panel_EBook: {fileID: 0}
-  Panel_Lobby: {fileID: 0}
   literature: {fileID: 6124323479433012996}
   SF: {fileID: 7997269820400648440}
   history: {fileID: 3848210812653167132}
