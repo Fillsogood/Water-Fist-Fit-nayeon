@@ -5929,6 +5929,8 @@ MonoBehaviour:
   BookSF: {fileID: 8475880545508908087}
   BookHis: {fileID: 759410567252799196}
   BookNon: {fileID: 5538923489762516311}
+  Floor1Panel: {fileID: 6696008223377889921}
+  Floor2Panel: {fileID: 5679249459096982736}
 --- !u!54 &5387935645112636815
 Rigidbody:
   m_ObjectHideFlags: 0

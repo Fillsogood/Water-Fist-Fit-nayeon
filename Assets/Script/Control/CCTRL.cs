@@ -45,6 +45,8 @@ public class CCTRL : MonoBehaviour
     public GameObject BookSF;
     public GameObject BookHis;
     public GameObject BookNon;
+    public GameObject Floor1Panel;
+    public GameObject Floor2Panel;
 
 
     void Awake()
@@ -201,6 +203,14 @@ public class CCTRL : MonoBehaviour
             else if(other.tag=="Non-Fiction")
             {
                 non_Fiction.SetActive(true);
+            }
+            else if(other.tag=="1F")
+            {
+                Floor1Panel.SetActive(true);
+            }
+            else if(other.tag=="2F")
+            {
+                Floor2Panel.SetActive(true);
             }
         }
               

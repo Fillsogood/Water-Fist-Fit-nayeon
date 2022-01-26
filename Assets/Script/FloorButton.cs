@@ -9,23 +9,25 @@ public class FloorButton : MonoBehaviour
 
     private GameObject Player;
 
-    public Transform FirstFloor;
-    public Transform SecondFloor;
+    private Vector3 FirstFloor;
+    private Vector3 SecondFloor;
 
     void Start()
-    {
+    {   
         Player = GameObject.FindWithTag("Player");
+        FirstFloor = new Vector3(5.0f,0.1f,3.0f);
+        SecondFloor = new Vector3(5.0f,4.6f,-9.0f);
     }
     #region 계단 올라가기,내려가기,창닫기 버튼 메서드
     public void Moveto1F()
     {
-        Player.transform.position = FirstFloor.position;
+        Player.transform.position = FirstFloor;
         FloorUI.SetActive(false);
     }
 
     public void Moveto2F()
     {
-        Player.transform.position = SecondFloor.position;
+        Player.transform.position = SecondFloor;
         FloorUI.SetActive(false);
     }
 
