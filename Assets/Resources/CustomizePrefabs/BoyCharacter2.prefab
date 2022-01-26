@@ -4651,8 +4651,6 @@ MonoBehaviour:
   YButton: {fileID: 4713404025273077509}
   NButton: {fileID: 9053167995410669678}
   FloorUI: {fileID: 3965407109673437097}
-  FirstFloor: {fileID: 0}
-  SecondFloor: {fileID: 0}
 --- !u!1 &3999587156716765707
 GameObject:
   m_ObjectHideFlags: 0
@@ -6596,8 +6594,6 @@ MonoBehaviour:
   YButton: {fileID: 4894251926060363134}
   NButton: {fileID: 2702864982216299744}
   FloorUI: {fileID: 4916531244739139759}
-  FirstFloor: {fileID: 0}
-  SecondFloor: {fileID: 0}
 --- !u!1 &4928684809368203417
 GameObject:
   m_ObjectHideFlags: 0
@@ -11132,6 +11128,8 @@ MonoBehaviour:
   BookSF: {fileID: 7862928847554089930}
   BookHis: {fileID: 7361167364939502948}
   BookNon: {fileID: 8251633849363481094}
+  Floor1Panel: {fileID: 3965407109673437097}
+  Floor2Panel: {fileID: 4916531244739139759}
 --- !u!54 &8192436495171557727
 Rigidbody:
   m_ObjectHideFlags: 0
