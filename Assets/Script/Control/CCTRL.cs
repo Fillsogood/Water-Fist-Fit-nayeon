@@ -47,7 +47,6 @@ public class CCTRL : MonoBehaviour
     void Start()
     {
         chairs = GameObject.FindGameObjectsWithTag("Chair1");
-        //EBook, Lobby라는 이름을 가진 Canvas를 만들어주고 거기다 패널 옮겨주기
         Panel_EBook = GameObject.Find("EBook").transform.Find("EbookPanel");
         Panel_Lobby =  GameObject.Find("Lobby").transform.Find("LobbyPanel");
 

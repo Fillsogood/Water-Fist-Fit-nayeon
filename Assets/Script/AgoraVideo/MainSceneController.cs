@@ -68,7 +68,7 @@ public class MainSceneController : MonoBehaviour
             return;
         }
 
-        // join channel and jump to next scene
+        // 채널 가입
         Join(channelName);
 
         var winDispInfoList = AgoraNativeBridge.GetWinDisplayInfo();
