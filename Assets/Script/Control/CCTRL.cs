@@ -101,11 +101,11 @@ public class CCTRL : MonoBehaviour
     //캐릭터 이동
     void CharacterMove()
     {
-        float h = Input.GetAxis("SideMove");    //qe
-        float v = Input.GetAxis("Vertical");    //ws
-        float r = Input.GetAxis("Horizontal");  //ab
+        float h = Input.GetAxis("SideMove");
+        float v = Input.GetAxis("Vertical");
+        float r = Input.GetAxis("Horizontal");
 
-        if (Mathf.Approximately(h, 0) && Mathf.Approximately(v, 0))
+        if (Mathf.Approximately(h, 0) && Mathf.Approximately(v, 0) && Mathf.Approximately(r, 0))
         {
             anim.SetBool("isWalk", false);
         }
@@ -121,26 +121,6 @@ public class CCTRL : MonoBehaviour
 
         tr.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
         tr.Rotate(Vector3.up * turnSpeed * Time.deltaTime * r);
-        if(Mathf.Approximately(r, 0))
-        {
-             
-                   
-        }
-        else
-        {
-            
-            if(Mathf.Approximately(h, 1) && Mathf.Approximately(v, 1))
-            {
-                anim.SetBool("isWalk", true);
-                
-            }
-            
-                 
-                 
-            
-            
-            
-        }
     }
 
     //레이캐스팅을 사용해 의자 객체 가져오기
