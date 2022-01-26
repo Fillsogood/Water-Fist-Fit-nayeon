@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 public class NPCName : MonoBehaviour
 {
     public GameObject MeetingRoom;
@@ -9,10 +9,11 @@ public class NPCName : MonoBehaviour
 
     public GameObject Activate;
     public GameObject DeActivate;
+    public PhotonView pv;
     //NPC이름 활성화 트리거
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player"&&pv.IsMine)
         {
             MeetingRoom.SetActive(true);
             Library.SetActive(true);

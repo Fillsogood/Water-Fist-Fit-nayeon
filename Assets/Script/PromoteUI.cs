@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PromoteUI : MonoBehaviour
 {
     public GameObject Panel;
     public GameObject BookPanel;
+    public PhotonView pv;
 
 
     private void OnTriggerEnter(Collider other)
     {
-        Panel.SetActive(true);
-       
+        if(pv.IsMine)
+        {
+            Panel.SetActive(true);
+        }      
     }
 
     private void OnTriggerExit(Collider other)
