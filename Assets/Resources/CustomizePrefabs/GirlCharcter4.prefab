@@ -1178,6 +1178,8 @@ MonoBehaviour:
   player: {fileID: 3922106137092666420}
   moveSpeed: 1
   turnSpeed: 60
+  Panel_EBook: {fileID: 0}
+  Panel_Lobby: {fileID: 0}
 --- !u!114 &5903452262234798819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2006,7 +2008,7 @@ GameObject:
   - component: {fileID: 2450838558020719565}
   - component: {fileID: 2968666549307248751}
   - component: {fileID: 4843139334419104640}
-  - component: {fileID: 3916823177903451937}
+  - component: {fileID: 578149568767494166}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2079,7 +2081,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7437518799698425609}
   m_Enabled: 1
---- !u!114 &3916823177903451937
+--- !u!114 &578149568767494166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2094,9 +2096,11 @@ MonoBehaviour:
   target: {fileID: 5457513287172737379}
   targetY: 1.5
   rotSpeed: 60
-  distance: 3
-  minDistance: 2
-  maxDistance: 5
+  scrollSpeed: 80
+  dist: 3
+  minDist: 0
+  maxDist: 5
+  rayDist: 3
 --- !u!1 &7469398518675817556
 GameObject:
   m_ObjectHideFlags: 0

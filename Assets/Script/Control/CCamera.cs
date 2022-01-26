@@ -7,19 +7,19 @@ public class CCamera : MonoBehaviour
 {
     
     public Transform target;
-    public float targetY;
+    public float targetY = 1.5f;
 
     //회전속도
-    public float rotSpeed;
+    public float rotSpeed = 80.0f;
     //줌 인/아웃 속도
-    private float scrollSpeed = 100;
+    public float scrollSpeed = 80.0f;
 
     //거리
-    public float distance;
-    public float minDistance;
-    public float maxDistance;
+    public float dist = 3.0f;
+    public float minDist= 0.0f;
+    public float maxDist= 5.0f;
 
-    public float CameraMaxDistance = 5.0f;
+    private static bool check = true;
 
     //Y축 회전
     private float yRot;
@@ -31,46 +31,43 @@ public class CCamera : MonoBehaviour
     void Update()
     {
         mouseControl();
+
+        lookPlayer();
     }
 
     void LateUpdate()
     {
-        lookPlayer();
+        //
     }
 
     //카메라 컨트롤 
     void mouseControl()
     {
         yRot += Input.GetAxis("Horizontal") * rotSpeed * Time.deltaTime;
-        distance += -Input.GetAxis("Mouse ScrollWheel") * scrollSpeed * Time.deltaTime;
+        dist += -Input.GetAxis("Mouse ScrollWheel") * scrollSpeed * Time.deltaTime;
 
-        distance = Mathf.Clamp(distance, minDistance, maxDistance);
+        dist = Mathf.Clamp(dist, minDist, maxDist);
 
         targetPos = target.position + Vector3.up * targetY;
 
         dir = Quaternion.Euler(0, yRot, 0) * Vector3.forward;
         gameObject.transform.rotation = Quaternion.Euler(30, 0, 0);
+
+        transform.position = targetPos + dir * -dist;
+        transform.LookAt(targetPos);
     }
-    Vector3 _delta = new Vector3(0.0f, 6.0f, -5.0f);
+
     //카메라 이동 
     void lookPlayer()
     {
         RaycastHit hit;
         Debug.DrawRay(transform.position, dir, Color.red);
-        Physics.Raycast(transform.position, dir, out hit, 1.5f, LayerMask.GetMask("Wall"));
+        Physics.Raycast(transform.position, dir, out hit, dir.magnitude * 2, LayerMask.GetMask("Wall"));
 
         if(hit.point != Vector3.zero)
         {
-            float dist = (hit.point - transform.position).magnitude * 0.8f;
-            transform.position = transform.position + dir.normalized * dist;    //근접한 위치로 수정
-            transform.rotation = new Quaternion(0f, 0f, 0f, 0f);                //방향값 수정
-
-            //transform.Translate(dir * -1 * 3f);
-        }
-        else
-        {
-            transform.position = targetPos + dir * -distance;
-            transform.LookAt(targetPos);
+            transform.position = transform.position + Vector3.forward;
+            transform.rotation = Quaternion.Euler(0, yRot, 0);
         }
     }
 }
