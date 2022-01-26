@@ -7,14 +7,21 @@ public class PromoteUI : MonoBehaviour
 {
     public GameObject Panel;
     public GameObject BookPanel;
+    private int randomNumber;
+
+    private void Start()
+    {
+        randomNumber = SpawnManager.myCheck;
+       
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(WCF.Name==PhotonNetwork.NickName)
+        if(randomNumber == SpawnManager.myCheck)
         {
-         Panel.SetActive(true);
+            Panel.SetActive(true);
+            Debug.Log(randomNumber);
         }
-              
     }
 
     private void OnTriggerExit(Collider other)
