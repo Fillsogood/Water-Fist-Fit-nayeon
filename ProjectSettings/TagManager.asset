@@ -8,6 +8,8 @@ TagManager:
   - Boy
   - Girl
   - Chair1
+  - NPC_Lobby
+  - NPC_EBook
   layers:
   - Default
   - TransparentFX

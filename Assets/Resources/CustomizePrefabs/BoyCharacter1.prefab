@@ -1418,6 +1418,8 @@ MonoBehaviour:
   player: {fileID: 5241975243121635074}
   moveSpeed: 1
   turnSpeed: 60
+  Panel_EBook: {fileID: 0}
+  Panel_Lobby: {fileID: 0}
 --- !u!54 &5387935645112636815
 Rigidbody:
   m_ObjectHideFlags: 0
