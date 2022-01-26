@@ -105,7 +105,7 @@ public class CCTRL : MonoBehaviour
         float v = Input.GetAxis("Vertical");
         float r = Input.GetAxis("Horizontal");
 
-        if (Mathf.Approximately(h, 0) && Mathf.Approximately(v, 0))
+        if (Mathf.Approximately(h, 0) && Mathf.Approximately(v, 0) && Mathf.Approximately(r, 0))
         {
             anim.SetBool("isWalk", false);
         }
