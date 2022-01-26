@@ -10,6 +10,10 @@ TagManager:
   - Chair1
   - NPC_Lobby
   - NPC_EBook
+  - Literature
+  - Non-Fiction
+  - History
+  - SF
   layers:
   - Default
   - TransparentFX
