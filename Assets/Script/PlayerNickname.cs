@@ -6,6 +6,7 @@ public class PlayerNickname : MonoBehaviourPunCallbacks
 {
     public TextMesh Nickname;
     public PhotonView pv;
+
     //사용자 닉네임 동기화 및 자기 닉네임 비활성화
     private void Start()
     {
