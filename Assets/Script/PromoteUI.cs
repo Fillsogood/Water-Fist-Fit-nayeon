@@ -7,15 +7,14 @@ public class PromoteUI : MonoBehaviour
 {
     public GameObject Panel;
     public GameObject BookPanel;
-    public PhotonView pv;
-
 
     private void OnTriggerEnter(Collider other)
     {
-        if(pv.IsMine)
+        if(WCF.Name==PhotonNetwork.NickName)
         {
-            Panel.SetActive(true);
-        }      
+         Panel.SetActive(true);
+        }
+              
     }
 
     private void OnTriggerExit(Collider other)
