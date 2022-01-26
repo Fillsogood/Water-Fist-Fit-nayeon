@@ -6627,8 +6627,6 @@ MonoBehaviour:
   YButton: {fileID: 6051255849431660048}
   NButton: {fileID: 7886609171869409143}
   FloorUI: {fileID: 5679249459096982736}
-  FirstFloor: {fileID: 0}
-  SecondFloor: {fileID: 0}
 --- !u!1 &5710487018695088957
 GameObject:
   m_ObjectHideFlags: 0
@@ -8229,8 +8227,6 @@ MonoBehaviour:
   YButton: {fileID: 8244055029916545745}
   NButton: {fileID: 3428586100404349830}
   FloorUI: {fileID: 6696008223377889921}
-  FirstFloor: {fileID: 0}
-  SecondFloor: {fileID: 0}
 --- !u!1 &6764918026204616391
 GameObject:
   m_ObjectHideFlags: 0
