@@ -35,6 +35,9 @@ public class CCTRL : MonoBehaviour
     public float turnSpeed = 1.5f;
     private Animator anim;
 
+    public Transform Panel_EBook;
+    public Transform Panel_Lobby;
+
     void Awake()
     {
         pv = GetComponent<PhotonView>();
@@ -44,6 +47,8 @@ public class CCTRL : MonoBehaviour
     void Start()
     {
         chairs = GameObject.FindGameObjectsWithTag("Chair1");
+        Panel_EBook = GameObject.Find("EBook").transform.Find("EbookPanel");
+        Panel_Lobby =  GameObject.Find("Lobby").transform.Find("LobbyPanel");
 
         tr = GetComponent<Transform>();
         anim = GetComponent<Animator>();
@@ -76,6 +81,16 @@ public class CCTRL : MonoBehaviour
             {
                 standUp();
                 anim.SetBool("isSit", false);
+            }
+            //NPC콜라이더에 태그 달아주기
+            if (Input.GetMouseButtonDown(0) &&  (GetClickedObject().tag == "NPC_EBook"))
+            {
+                Panel_EBook.gameObject.SetActive(true);
+            }
+            else if (Input.GetMouseButtonDown(0) &&  (GetClickedObject().tag == "NPC_Lobby"))
+            {
+
+                Panel_Lobby.gameObject.SetActive(true);
             }
         }
 
