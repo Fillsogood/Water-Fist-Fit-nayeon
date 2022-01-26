@@ -4,7 +4,6 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 
-//가보자고
 //캐릭터 컨트롤
 public class CCTRL : MonoBehaviour
 {
