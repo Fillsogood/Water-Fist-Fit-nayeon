@@ -46,9 +46,11 @@ public class CCTRL : MonoBehaviour
     void Start()
     {
         chairs = GameObject.FindGameObjectsWithTag("Chair1");
-        Panel_EBook = GameObject.Find("EBook").transform.Find("EbookPanel");
-        Panel_Lobby =  GameObject.Find("Lobby").transform.Find("LobbyPanel");
-
+        if(PhotonNetwork.CurrentRoom.Name == "WooSoong Library")
+        {
+            Panel_EBook = GameObject.Find("EBook").transform.Find("EbookPanel");
+            Panel_Lobby =  GameObject.Find("Lobby").transform.Find("LobbyPanel");
+        }
         tr = GetComponent<Transform>();
         anim = GetComponent<Animator>();
         
