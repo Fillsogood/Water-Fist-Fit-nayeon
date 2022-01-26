@@ -101,9 +101,9 @@ public class CCTRL : MonoBehaviour
     //캐릭터 이동
     void CharacterMove()
     {
-        float h = Input.GetAxis("SideMove");
-        float v = Input.GetAxis("Vertical");
-        float r = Input.GetAxis("Horizontal");
+        float h = Input.GetAxis("SideMove");    //qe
+        float v = Input.GetAxis("Vertical");    //ws
+        float r = Input.GetAxis("Horizontal");  //ab
 
         if (Mathf.Approximately(h, 0) && Mathf.Approximately(v, 0))
         {
@@ -131,15 +131,14 @@ public class CCTRL : MonoBehaviour
             
             if(Mathf.Approximately(h, 1) && Mathf.Approximately(v, 1))
             {
-                
+                anim.SetBool("isWalk", true);
                 
             }
-            else
-             {
-                 
-                 anim.SetBool("isWalk", true);
             
-            }
+                 
+                 
+            
+            
             
         }
     }
