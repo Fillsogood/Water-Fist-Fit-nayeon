@@ -12,6 +12,9 @@ public class SpawnManager : MonoBehaviourPunCallbacks
     //DisConnect을 위한 변수
     private ChatManager chat;
 
+    //트리거 사용을 위한 랜덤 값
+    public static int myCheck;
+
     void Awake()
     {
         CreatePlayers();
@@ -33,6 +36,8 @@ public class SpawnManager : MonoBehaviourPunCallbacks
         {
             case WCF.Custom.male1:
                 PhotonNetwork.Instantiate("CustomizePrefabs/BoyCharacter1", points[idx].position, points[idx].rotation, 0);
+                myCheck = Random.Range(1, 10000);
+                Debug.Log($"number = {myCheck}");
                 break;
             case WCF.Custom.male2:
                 PhotonNetwork.Instantiate("CustomizePrefabs/BoyCharacter2", points[idx].position, points[idx].rotation, 0);

@@ -16,7 +16,7 @@ public class CCamera : MonoBehaviour
 
     //거리
     public float mouseDist = 3.0f;
-    public float mouseminDist= 0.0f;
+    public float mouseminDist= 0.1f;
     public float mousemaxDist= 5.0f;
     private Vector3 closeDist; 
 

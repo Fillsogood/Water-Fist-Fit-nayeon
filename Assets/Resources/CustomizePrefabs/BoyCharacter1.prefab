@@ -9368,7 +9368,7 @@ MonoBehaviour:
   rotSpeed: 60
   scrollSpeed: 80
   mouseDist: 3
-  mouseminDist: 0
+  mouseminDist: 0.1
   mousemaxDist: 5
 --- !u!1 &7440380060947357068
 GameObject:
