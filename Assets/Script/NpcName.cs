@@ -9,11 +9,11 @@ public class NPCName : MonoBehaviour
 
     public GameObject Activate;
     public GameObject DeActivate;
-    public PhotonView pv;
+
     //NPC이름 활성화 트리거
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player"&&pv.IsMine)
+        if (other.tag == "Player")
         {
             MeetingRoom.SetActive(true);
             Library.SetActive(true);

@@ -2537,10 +2537,9 @@ MonoBehaviour:
   targetY: 1.5
   rotSpeed: 60
   scrollSpeed: 80
-  dist: 3
-  minDist: 0
-  maxDist: 5
-  rayDist: 3
+  mouseDist: 3
+  mouseminDist: 0
+  mousemaxDist: 5
 --- !u!1 &9008138610346446019
 GameObject:
   m_ObjectHideFlags: 0
