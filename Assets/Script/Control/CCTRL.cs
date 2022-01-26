@@ -34,8 +34,18 @@ public class CCTRL : MonoBehaviour
     public float turnSpeed = 1.5f;
     private Animator anim;
 
-    public Transform Panel_EBook;
-    public Transform Panel_Lobby;
+    private Transform Panel_EBook;
+    private Transform Panel_Lobby;
+
+     public GameObject literature;
+    public GameObject SF;
+    public GameObject history;
+    public GameObject non_Fiction;
+    public GameObject BookLit;
+    public GameObject BookSF;
+    public GameObject BookHis;
+    public GameObject BookNon;
+
 
     void Awake()
     {
@@ -168,6 +178,76 @@ public class CCTRL : MonoBehaviour
                                                     priviousPosition.z);
 
             chair.SetActive(true);
+        }
+    }
+   
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(pv.IsMine)
+        {
+            if(other.tag=="Literature")
+            {
+                literature.SetActive(true);
+            }
+            else if(other.tag=="SF")
+            {
+                SF.SetActive(true);
+            }
+            else if(other.tag=="History")
+            {
+                history.SetActive(true);
+            }
+            else if(other.tag=="Non-Fiction")
+            {
+                non_Fiction.SetActive(true);
+            }
+        }
+              
+    }
+
+
+    public void BookBtnLit()
+    {
+        if(pv.IsMine)
+        {
+            BookLit.SetActive(true);
+        }
+    }
+    public void BookBtnSF()
+    {
+        if(pv.IsMine)
+        {   
+            BookSF.SetActive(true); 
+        }
+    }
+
+    public void BookBtnHis()
+    {
+        if(pv.IsMine)
+        {
+            BookHis.SetActive(true); 
+        }
+    }
+
+    public void BookBtnNon()
+    {
+        if(pv.IsMine)
+        {
+            BookNon.SetActive(true);
+        }
+    }
+
+
+
+    public void ExitBtn()
+    {
+        if(pv.IsMine)
+        {
+            literature.SetActive(false);
+            SF.SetActive(false);
+            history.SetActive(false);
+            non_Fiction.SetActive(false);
         }
     }
 }
