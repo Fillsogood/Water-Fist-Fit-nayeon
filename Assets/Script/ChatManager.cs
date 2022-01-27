@@ -182,6 +182,7 @@ public class ChatManager : MonoBehaviour, IChatClientListener
         {
             player.transform.position = new Vector3(-4.5f, -0.04112241f, 9.0f);
         }
+
         //일반채팅
         else 
             chatClient.PublishMessage(channelName, s); 
