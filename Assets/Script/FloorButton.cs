@@ -15,8 +15,8 @@ public class FloorButton : MonoBehaviour
     void Start()
     {   
         Player = GameObject.FindWithTag("Player");
-        FirstFloor = new Vector3(5.0f,0.1f,3.0f);
-        SecondFloor = new Vector3(5.0f,4.6f,-9.0f);
+        FirstFloor = new Vector3(5.0f, -0.04112241f,3.0f);
+        SecondFloor = new Vector3(5.0f, 4.448883f, -9.0f);
     }
     #region 계단 올라가기,내려가기,창닫기 버튼 메서드
     public void Moveto1F()
