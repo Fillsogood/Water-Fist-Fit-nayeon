@@ -27,7 +27,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
      void Awake()
      {
-         PhotonNetwork.NickName = ChatManager.userName;
+         PhotonNetwork.NickName = WCF.Name;
          //마스터 클라이언트 씬 자동 동기화 옵션
          PhotonNetwork.AutomaticallySyncScene = true;
          //게임의 버전 설정
