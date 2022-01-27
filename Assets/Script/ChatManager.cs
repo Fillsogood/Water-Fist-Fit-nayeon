@@ -159,6 +159,11 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 			string[] ss = s.Split(new string[] { ">>" }, StringSplitOptions.None);
 			chatClient.SendPrivateMessage(ss[0], ss[1]);
 		}
+        else if(s.Contains("/문학"))
+        {
+            gameObject.transform.position = new Vector3(0, 0, 0);
+            Debug.Log("test");
+        }
         //일반채팅
 		else 
             chatClient.PublishMessage(channelName, s); 

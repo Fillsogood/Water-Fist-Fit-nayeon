@@ -718,9 +718,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7334386621378487546}
-        m_TargetAssemblyTypeName: PromoteUI, Assembly-CSharp
-        m_MethodName: BookBtn
+      - m_Target: {fileID: 1130475675857383049}
+        m_TargetAssemblyTypeName: CCTRL, Assembly-CSharp
+        m_MethodName: BookBtnLit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -882,8 +882,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7334386621378487546}
-        m_TargetAssemblyTypeName: PromoteUI, Assembly-CSharp
+      - m_Target: {fileID: 1130475675857383049}
+        m_TargetAssemblyTypeName: CCTRL, Assembly-CSharp
         m_MethodName: ExitBtn
         m_Mode: 1
         m_Arguments:
@@ -1548,8 +1548,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6836198148659840105}
-        m_TargetAssemblyTypeName: PromoteUI, Assembly-CSharp
+      - m_Target: {fileID: 1130475675857383049}
+        m_TargetAssemblyTypeName: CCTRL, Assembly-CSharp
         m_MethodName: ExitBtn
         m_Mode: 1
         m_Arguments:
@@ -2439,7 +2439,6 @@ GameObject:
   - component: {fileID: 522739629442104902}
   - component: {fileID: 2747141635601057626}
   - component: {fileID: 4019430536894132791}
-  - component: {fileID: 6836198148659840105}
   m_Layer: 5
   m_Name: History
   m_TagString: Untagged
@@ -2508,20 +2507,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6836198148659840105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2097311100566270568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46bc39b92134162428d2d45c17ae6bf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Panel: {fileID: 2097311100566270568}
-  BookPanel: {fileID: 3248100607342230136}
 --- !u!1 &2099999585285278930
 GameObject:
   m_ObjectHideFlags: 0
@@ -2838,9 +2823,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6836198148659840105}
-        m_TargetAssemblyTypeName: PromoteUI, Assembly-CSharp
-        m_MethodName: BookBtn
+      - m_Target: {fileID: 1130475675857383049}
+        m_TargetAssemblyTypeName: CCTRL, Assembly-CSharp
+        m_MethodName: BookBtnHis
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3286,7 +3271,6 @@ GameObject:
   - component: {fileID: 2842899259542393377}
   - component: {fileID: 7327488026231653458}
   - component: {fileID: 291238008657725975}
-  - component: {fileID: 7334386621378487546}
   m_Layer: 5
   m_Name: Literature
   m_TagString: Untagged
@@ -3355,20 +3339,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7334386621378487546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3069134694778046067}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46bc39b92134162428d2d45c17ae6bf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Panel: {fileID: 3069134694778046067}
-  BookPanel: {fileID: 8108166130089620988}
 --- !u!1 &3110635664320012183
 GameObject:
   m_ObjectHideFlags: 0
@@ -3878,7 +3848,6 @@ GameObject:
   - component: {fileID: 6351333265818602033}
   - component: {fileID: 4560365965463341409}
   - component: {fileID: 8275650625581655245}
-  - component: {fileID: 4419796326404284893}
   m_Layer: 5
   m_Name: Non-Fiction
   m_TagString: Untagged
@@ -3947,20 +3916,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4419796326404284893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3303593225824156803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46bc39b92134162428d2d45c17ae6bf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Panel: {fileID: 3303593225824156803}
-  BookPanel: {fileID: 1210872213643830379}
 --- !u!1 &3321728394651008808
 GameObject:
   m_ObjectHideFlags: 0
@@ -4745,8 +4700,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 826997825520056416}
-        m_TargetAssemblyTypeName: PromoteUI, Assembly-CSharp
+      - m_Target: {fileID: 1130475675857383049}
+        m_TargetAssemblyTypeName: CCTRL, Assembly-CSharp
         m_MethodName: ExitBtn
         m_Mode: 1
         m_Arguments:
@@ -5255,9 +5210,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4419796326404284893}
-        m_TargetAssemblyTypeName: PromoteUI, Assembly-CSharp
-        m_MethodName: BookBtn
+      - m_Target: {fileID: 1130475675857383049}
+        m_TargetAssemblyTypeName: CCTRL, Assembly-CSharp
+        m_MethodName: BookBtnNon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5857,8 +5812,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4419796326404284893}
-        m_TargetAssemblyTypeName: PromoteUI, Assembly-CSharp
+      - m_Target: {fileID: 1130475675857383049}
+        m_TargetAssemblyTypeName: CCTRL, Assembly-CSharp
         m_MethodName: ExitBtn
         m_Mode: 1
         m_Arguments:
@@ -8225,9 +8180,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 826997825520056416}
-        m_TargetAssemblyTypeName: PromoteUI, Assembly-CSharp
-        m_MethodName: BookBtn
+      - m_Target: {fileID: 1130475675857383049}
+        m_TargetAssemblyTypeName: CCTRL, Assembly-CSharp
+        m_MethodName: BookBtnSF
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8327,7 +8282,6 @@ GameObject:
   - component: {fileID: 1064131169273242551}
   - component: {fileID: 4067931387152783061}
   - component: {fileID: 2261998907469302277}
-  - component: {fileID: 826997825520056416}
   m_Layer: 5
   m_Name: SF
   m_TagString: Untagged
@@ -8396,20 +8350,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &826997825520056416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7375100260621194541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46bc39b92134162428d2d45c17ae6bf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Panel: {fileID: 7375100260621194541}
-  BookPanel: {fileID: 9058866690403604970}
 --- !u!1 &7379062675011062979
 GameObject:
   m_ObjectHideFlags: 0

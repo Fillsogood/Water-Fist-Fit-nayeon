@@ -401,7 +401,7 @@ ModelImporter:
       name: TTB_laugh
       takeName: Take 001
       internalID: 0
-      firstFrame: 0
+      firstFrame: 1
       lastFrame: 40
       wrapMode: 0
       orientationOffsetY: 0
