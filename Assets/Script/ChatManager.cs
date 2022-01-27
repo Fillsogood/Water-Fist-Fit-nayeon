@@ -9,7 +9,7 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     //채팅 클라이언트
     private ChatClient chatClient;
     //유저 이름
-    public static string userName = PhotonNetwork.NickName;
+    private string userName = PhotonNetwork.NickName;
     //채널 이름
     string channelName = PhotonNetwork.CurrentRoom.Name;
     public Canvas canvas_on;
