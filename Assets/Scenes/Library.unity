@@ -14191,6 +14191,7 @@ MonoBehaviour:
   outputText: {fileID: 1780861709}
   btnOn: {fileID: 353886394}
   btnOff: {fileID: 470528042}
+  player: {fileID: 0}
 --- !u!4 &321053386
 Transform:
   m_ObjectHideFlags: 0
@@ -20216,7 +20217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &490563205
 RectTransform:
   m_ObjectHideFlags: 0
