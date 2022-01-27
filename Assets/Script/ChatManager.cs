@@ -162,12 +162,28 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 			string[] ss = s.Split(new string[] { ">>" }, StringSplitOptions.None);
 			chatClient.SendPrivateMessage(ss[0], ss[1]);
 		}
-        else if(s.Contains("/문학"))
+        else if(s.Contains("/문학") && PhotonNetwork.CurrentRoom.Name == "WooSoong Library")
         {
-            player.transform.position = new Vector3(0, 0, 0);
+            player.transform.position = new Vector3(-8.0f, -0.04112241f, 4.0f);
+        }
+        else if (s.Contains("/비문학") && PhotonNetwork.CurrentRoom.Name == "WooSoong Library")
+        {
+            player.transform.position = new Vector3(-4.6f, -0.04112241f, -7.2f);
+        }
+        else if (s.Contains("/SF") && PhotonNetwork.CurrentRoom.Name == "WooSoong Library")
+        {
+            player.transform.position = new Vector3(9.3f, 4.448883f, 1.6f);
+        }
+        else if (s.Contains("/역사") && PhotonNetwork.CurrentRoom.Name == "WooSoong Library")
+        {
+            player.transform.position = new Vector3(-3.0f, 4.448883f, -9.0f);
+        }
+        else if (s.Contains("/사서") && PhotonNetwork.CurrentRoom.Name == "WooSoong Library")
+        {
+            player.transform.position = new Vector3(-4.5f, -0.04112241f, 9.0f);
         }
         //일반채팅
-		else 
+        else 
             chatClient.PublishMessage(channelName, s); 
 	}
     //채팅 클라이언트 해제
