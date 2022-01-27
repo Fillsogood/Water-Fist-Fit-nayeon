@@ -23,6 +23,9 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     //채팅 접기
     public Button btnOff;
 
+    //포지션 이동 게임오브젝트
+    public GameObject player;
+
     void Awake()
 	{   
         Application.runInBackground = true; //어플리케이션이 실행되고 있을 때 플레이어가 실행해야 하는지 여부 
@@ -161,8 +164,7 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 		}
         else if(s.Contains("/문학"))
         {
-            gameObject.transform.position = new Vector3(0, 0, 0);
-            Debug.Log("test");
+            player.transform.position = new Vector3(0, 0, 0);
         }
         //일반채팅
 		else 
