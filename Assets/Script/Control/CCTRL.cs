@@ -60,8 +60,8 @@ public class CCTRL : MonoBehaviour
         chairs = GameObject.FindGameObjectsWithTag("Chair1");
         if(PhotonNetwork.CurrentRoom.Name == "WooSoong Library")
         {
-            Panel_EBook = GameObject.Find("EBook").transform.Find("EbookPanel");
-            Panel_Lobby =  GameObject.Find("Lobby").transform.Find("LobbyPanel");
+            Panel_EBook = GameObject.Find("EBookLobby").transform.Find("EbookPanel");
+            Panel_Lobby =  GameObject.Find("EBookLobby").transform.Find("LobbyPanel");
         }
         tr = GetComponent<Transform>();
         anim = GetComponent<Animator>();
