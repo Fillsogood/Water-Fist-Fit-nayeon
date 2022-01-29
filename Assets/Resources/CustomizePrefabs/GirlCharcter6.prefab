@@ -7671,6 +7671,7 @@ MonoBehaviour:
   canvas_off: {fileID: 8617395665865928517}
   Notice_Meet: {fileID: 6963586745620666867}
   Notice_Lib: {fileID: 716057474654690327}
+  wish_list: {fileID: 0}
   inputField: {fileID: 3014408214966417007}
   outputText: {fileID: 4765100296659548063}
   btnOn: {fileID: 7480965157278089591}
@@ -8626,8 +8627,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -106.7585, y: -24.401}
-  m_SizeDelta: {x: 200.452, y: 48.802}
+  m_AnchoredPosition: {x: -142.2502, y: -26.527}
+  m_SizeDelta: {x: 271.4355, y: 53.054}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3995907967002775765
 CanvasRenderer:
@@ -8684,8 +8685,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

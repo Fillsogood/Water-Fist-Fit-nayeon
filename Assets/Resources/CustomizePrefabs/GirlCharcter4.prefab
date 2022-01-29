@@ -2928,8 +2928,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -106.7585, y: -24.401}
-  m_SizeDelta: {x: 200.452, y: 48.802}
+  m_AnchoredPosition: {x: -136.4898, y: -26.527}
+  m_SizeDelta: {x: 259.9146, y: 53.054}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6267339674179404509
 CanvasRenderer:
@@ -2986,8 +2986,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5680,6 +5680,7 @@ MonoBehaviour:
   canvas_off: {fileID: 2974963224474025992}
   Notice_Meet: {fileID: 7160377832832591211}
   Notice_Lib: {fileID: 66256301123828498}
+  wish_list: {fileID: 0}
   inputField: {fileID: 59151159924348899}
   outputText: {fileID: 1012508221824849387}
   btnOn: {fileID: 1267492804435498125}

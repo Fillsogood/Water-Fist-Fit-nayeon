@@ -51,7 +51,7 @@ public class WCF : MonoBehaviourPunCallbacks
     //유저 아이디
     public static int UserID = 11111111;    //변경 필요
     //유저 이름
-    public static string Name;
+    public static string Name="유경록";
     //캐릭터
     public static int Character;
     //선택 여부
