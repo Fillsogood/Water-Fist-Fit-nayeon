@@ -14,6 +14,9 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     string channelName = PhotonNetwork.CurrentRoom.Name;
     public Canvas canvas_on;
     public Canvas canvas_off;
+
+    public GameObject Notice_Meet;
+    public GameObject Notice_Lib;
     //채팅 입력
     public InputField inputField;
     //채팅 출력
@@ -182,7 +185,14 @@ public class ChatManager : MonoBehaviour, IChatClientListener
         {
             player.transform.position = new Vector3(-4.5f, -0.04112241f, 9.0f);
         }
-
+        else if (s.Contains("/도서관 도움말"))
+        {
+            Notice_Lib.SetActive(true);
+        }
+        else if (s.Contains("/미팅룸 도움말"))
+        {
+            Notice_Meet.SetActive(true);
+        }
         //일반채팅
         else 
             chatClient.PublishMessage(channelName, s); 
@@ -206,6 +216,13 @@ public class ChatManager : MonoBehaviour, IChatClientListener
         canvas_on.GetComponent<Canvas>().enabled = true;
         canvas_off.GetComponent<Canvas>().enabled = false;
     }
+
+    public void NoticeOff()
+    {
+        Notice_Lib.SetActive(false);
+        Notice_Meet.SetActive(false);
+    }
+
     //줄바꿈 기능
     public void AddLine(string lineString)
     {
