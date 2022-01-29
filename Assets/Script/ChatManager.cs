@@ -17,6 +17,7 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 
     public GameObject Notice_Meet;
     public GameObject Notice_Lib;
+    public GameObject wish_list;
     //채팅 입력
     public InputField inputField;
     //채팅 출력
@@ -221,6 +222,14 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     {
         Notice_Lib.SetActive(false);
         Notice_Meet.SetActive(false);
+    }
+    public void WishOff()
+    {
+        wish_list.SetActive(false);
+    }
+    public void WishOn()
+    {
+        wish_list.SetActive(true);
     }
 
     //줄바꿈 기능
