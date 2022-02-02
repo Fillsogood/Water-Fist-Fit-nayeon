@@ -24,7 +24,6 @@ public class WCF : MonoBehaviourPunCallbacks
     public GameObject Char12;
 
     public GameObject FirstPanel;
-    public GameObject SecondPanel;
     public GameObject BtnSet_M;
     public GameObject BtnSet_F;
 
@@ -56,6 +55,8 @@ public class WCF : MonoBehaviourPunCallbacks
     public static int Character;
     //선택 여부
     private static bool Check = false;
+    //WCF에 커스텀 정보 보내는 변수
+    static int cusnum;
 
     void Awake()
     {
@@ -109,8 +110,9 @@ public class WCF : MonoBehaviourPunCallbacks
                 {
                     case 1:
                     FirstPanel.SetActive(false);
-                    Char1.SetActive(true);
                     BtnSet_M.SetActive(true);
+                    Char1.SetActive(true);
+        
                     custom = Custom.male1;
                     Check = true;
                     break;
@@ -157,8 +159,8 @@ public class WCF : MonoBehaviourPunCallbacks
 
                     case 7:
                     FirstPanel.SetActive(false);
-                    Char7.SetActive(true);
                     BtnSet_F.SetActive(true);
+                    Char7.SetActive(true);
                     custom = Custom.female1;
                     Check = true;
                     break;
@@ -280,30 +282,12 @@ public class WCF : MonoBehaviourPunCallbacks
     #endregion
 
     #region UI 버튼
-    public void PrevBtn()
-    {
-        BtnSet_F.SetActive(false);
-        BtnSet_M.SetActive(false);
-        SecondPanel.SetActive(true);
-        Char1.SetActive(false);
-        Char2.SetActive(false);
-        Char3.SetActive(false);
-        Char4.SetActive(false);
-        Char5.SetActive(false);
-        Char6.SetActive(false);
-        Char7.SetActive(false);
-        Char8.SetActive(false);
-        Char9.SetActive(false);
-        Char10.SetActive(false);
-        Char11.SetActive(false);
-        Char12.SetActive(false);
-    }
-
+  
     public void FinBtn()
     {   
+        CustomUpdate(cusnum);
         BtnSet_F.SetActive(false);
         BtnSet_M.SetActive(false);
-        SecondPanel.SetActive(false);
         Char1.SetActive(false);
         Char2.SetActive(false);
         Char3.SetActive(false);
@@ -320,13 +304,7 @@ public class WCF : MonoBehaviourPunCallbacks
 
     public void ToFirstPanel()
     {
-        SecondPanel.SetActive(false);
         FirstPanel.SetActive(true);
-    }
-
-    public void ExitBtn()
-    {
-        SecondPanel.SetActive(false);
         Char1.SetActive(false);
         Char2.SetActive(false);
         Char3.SetActive(false);
@@ -343,110 +321,147 @@ public class WCF : MonoBehaviourPunCallbacks
         BtnSet_M.SetActive(false);
     }
 
+
     public void MaleBtnClick1()
     {
-        CustomUpdate(1);
-        SecondPanel.SetActive(false);
+        cusnum=1;
         Char1.SetActive(true);
-        BtnSet_M.SetActive(true);
+        Char2.SetActive(false);
+        Char3.SetActive(false);
+        Char4.SetActive(false);
+        Char5.SetActive(false);
+        Char6.SetActive(false);
         custom = Custom.male1;
     }
 
     public void MaleBtnClick2()
     {
-        CustomUpdate(2);
-        SecondPanel.SetActive(false);
+        cusnum=2;
         Char2.SetActive(true);
-        BtnSet_M.SetActive(true);
+        Char1.SetActive(false);
+        Char3.SetActive(false);
+        Char4.SetActive(false);
+        Char5.SetActive(false);
+        Char6.SetActive(false);
         custom = Custom.male2;
     }
 
     public void MaleBtnClick3()
     {
-        CustomUpdate(3);
-        SecondPanel.SetActive(false);
+        cusnum=3;
         Char3.SetActive(true);
-        BtnSet_M.SetActive(true);
+        Char1.SetActive(false);
+        Char2.SetActive(false);
+        Char4.SetActive(false);
+        Char5.SetActive(false);
+        Char6.SetActive(false);
         custom = Custom.male3;
     }
 
     public void MaleBtnClick4()
     {
-        CustomUpdate(4);
-        SecondPanel.SetActive(false);
+        cusnum=4;
         Char4.SetActive(true);
-        BtnSet_M.SetActive(true);
+        Char1.SetActive(false);
+        Char2.SetActive(false);
+        Char3.SetActive(false);
+        Char5.SetActive(false);
+        Char6.SetActive(false);
         custom = Custom.male4;
     }
 
     public void MaleBtnClick5()
     {
-        CustomUpdate(5);
-        SecondPanel.SetActive(false);
+        cusnum=5;
         Char5.SetActive(true);
-        BtnSet_M.SetActive(true);
+        Char1.SetActive(false);
+        Char2.SetActive(false);
+        Char3.SetActive(false);
+        Char4.SetActive(false);
+        Char6.SetActive(false);
         custom = Custom.male5;
     }
 
     public void MaleBtnClick6()
     {
-        CustomUpdate(6);
-        SecondPanel.SetActive(false);
+        cusnum=6;
+        Char1.SetActive(false);
+        Char2.SetActive(false);
+        Char3.SetActive(false);
+        Char4.SetActive(false);
+        Char5.SetActive(false);
         Char6.SetActive(true);
-        BtnSet_M.SetActive(true);
         custom = Custom.male6;
     }
     public void FemaleBtnClick1()
     {
-        CustomUpdate(7);
-        SecondPanel.SetActive(false);
-        Char7.SetActive(true);
-        BtnSet_F.SetActive(true);
+        cusnum=7;
+        Char7.SetActive(true);         
+        Char8.SetActive(false);
+        Char9.SetActive(false);
+        Char10.SetActive(false);
+        Char11.SetActive(false);
+        Char12.SetActive(false);
         custom = Custom.female1;
     }
 
     public void FemaleBtnClick2()
     {
-        CustomUpdate(8);
-        SecondPanel.SetActive(false);
+        cusnum=8;
         Char8.SetActive(true);
-        BtnSet_F.SetActive(true);
+        Char7.SetActive(false);
+        Char9.SetActive(false);
+        Char10.SetActive(false);
+        Char11.SetActive(false);
+        Char12.SetActive(false);
         custom = Custom.female2;
     }
 
     public void FemaleBtnClick3()
     {
-        CustomUpdate(9);
-        SecondPanel.SetActive(false);
+        cusnum=9;
         Char9.SetActive(true);
-        BtnSet_F.SetActive(true);
+        Char7.SetActive(false);
+        Char8.SetActive(false);
+        Char10.SetActive(false);
+        Char11.SetActive(false);
+        Char12.SetActive(false);
         custom = Custom.female3;
     }
 
     public void FemaleBtnClick4()
     {
-        CustomUpdate(10);
-        SecondPanel.SetActive(false);
+        cusnum=10;
         Char10.SetActive(true);
-        BtnSet_F.SetActive(true);
+        Char7.SetActive(false);
+        Char8.SetActive(false);
+        Char9.SetActive(false);
+        Char11.SetActive(false);
+        Char12.SetActive(false);
         custom = Custom.female4;
     }
 
     public void FemaleBtnClick5()
     {
-        CustomUpdate(11);
-        SecondPanel.SetActive(false);
+        cusnum=11;
         Char11.SetActive(true);
-        BtnSet_F.SetActive(true);
+        Char7.SetActive(false);
+        Char8.SetActive(false);
+        Char9.SetActive(false);
+        Char10.SetActive(false);
+        Char12.SetActive(false);
         custom = Custom.female5;
     }
 
     public void FemaleBtnClick6()
     {
-        CustomUpdate(12);
-        SecondPanel.SetActive(false);
+        cusnum=12;
         Char12.SetActive(true);
-        BtnSet_F.SetActive(true);
+        Char7.SetActive(false);
+        Char8.SetActive(false);
+        Char9.SetActive(false);
+        Char10.SetActive(false);
+        Char11.SetActive(false);
         custom = Custom.female6;
     }
     #endregion
