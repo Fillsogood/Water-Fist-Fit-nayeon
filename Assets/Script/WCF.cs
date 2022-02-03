@@ -24,6 +24,8 @@ public class WCF : MonoBehaviourPunCallbacks
     public GameObject Char12;
 
     public GameObject FirstPanel;
+    public GameObject S_M_P;
+    public GameObject S_F_P;
     public GameObject BtnSet_M;
 
     public enum Custom
@@ -328,6 +330,12 @@ public class WCF : MonoBehaviourPunCallbacks
         Char4.SetActive(false);
         Char5.SetActive(false);
         Char6.SetActive(false);
+        Char7.SetActive(false);
+        Char8.SetActive(false);
+        Char9.SetActive(false);
+        Char10.SetActive(false);
+        Char11.SetActive(false);
+        Char12.SetActive(false);
         custom = Custom.male1;
     }
 
@@ -340,6 +348,12 @@ public class WCF : MonoBehaviourPunCallbacks
         Char4.SetActive(false);
         Char5.SetActive(false);
         Char6.SetActive(false);
+        Char7.SetActive(false);
+        Char8.SetActive(false);
+        Char9.SetActive(false);
+        Char10.SetActive(false);
+        Char11.SetActive(false);
+        Char12.SetActive(false);
         custom = Custom.male2;
     }
 
@@ -352,6 +366,12 @@ public class WCF : MonoBehaviourPunCallbacks
         Char4.SetActive(false);
         Char5.SetActive(false);
         Char6.SetActive(false);
+        Char7.SetActive(false);
+        Char8.SetActive(false);
+        Char9.SetActive(false);
+        Char10.SetActive(false);
+        Char11.SetActive(false);
+        Char12.SetActive(false);
         custom = Custom.male3;
     }
 
@@ -364,6 +384,12 @@ public class WCF : MonoBehaviourPunCallbacks
         Char3.SetActive(false);
         Char5.SetActive(false);
         Char6.SetActive(false);
+        Char7.SetActive(false);
+        Char8.SetActive(false);
+        Char9.SetActive(false);
+        Char10.SetActive(false);
+        Char11.SetActive(false);
+        Char12.SetActive(false);
         custom = Custom.male4;
     }
 
@@ -376,6 +402,12 @@ public class WCF : MonoBehaviourPunCallbacks
         Char3.SetActive(false);
         Char4.SetActive(false);
         Char6.SetActive(false);
+        Char7.SetActive(false);
+        Char8.SetActive(false);
+        Char9.SetActive(false);
+        Char10.SetActive(false);
+        Char11.SetActive(false);
+        Char12.SetActive(false);
         custom = Custom.male5;
     }
 
@@ -388,11 +420,23 @@ public class WCF : MonoBehaviourPunCallbacks
         Char4.SetActive(false);
         Char5.SetActive(false);
         Char6.SetActive(true);
+        Char7.SetActive(false);
+        Char8.SetActive(false);
+        Char9.SetActive(false);
+        Char10.SetActive(false);
+        Char11.SetActive(false);
+        Char12.SetActive(false);
         custom = Custom.male6;
     }
     public void FemaleBtnClick1()
     {
         cusnum=7;
+        Char1.SetActive(false);
+        Char2.SetActive(false);
+        Char3.SetActive(false);
+        Char4.SetActive(false);
+        Char5.SetActive(false);
+        Char6.SetActive(false);
         Char7.SetActive(true);         
         Char8.SetActive(false);
         Char9.SetActive(false);
@@ -405,6 +449,12 @@ public class WCF : MonoBehaviourPunCallbacks
     public void FemaleBtnClick2()
     {
         cusnum=8;
+        Char1.SetActive(false);
+        Char2.SetActive(false);
+        Char3.SetActive(false);
+        Char4.SetActive(false);
+        Char5.SetActive(false);
+        Char6.SetActive(false);
         Char8.SetActive(true);
         Char7.SetActive(false);
         Char9.SetActive(false);
@@ -417,6 +467,12 @@ public class WCF : MonoBehaviourPunCallbacks
     public void FemaleBtnClick3()
     {
         cusnum=9;
+        Char1.SetActive(false);
+        Char2.SetActive(false);
+        Char3.SetActive(false);
+        Char4.SetActive(false);
+        Char5.SetActive(false);
+        Char6.SetActive(false);
         Char9.SetActive(true);
         Char7.SetActive(false);
         Char8.SetActive(false);
@@ -429,6 +485,12 @@ public class WCF : MonoBehaviourPunCallbacks
     public void FemaleBtnClick4()
     {
         cusnum=10;
+        Char1.SetActive(false);
+        Char2.SetActive(false);
+        Char3.SetActive(false);
+        Char4.SetActive(false);
+        Char5.SetActive(false);
+        Char6.SetActive(false);
         Char10.SetActive(true);
         Char7.SetActive(false);
         Char8.SetActive(false);
@@ -441,6 +503,12 @@ public class WCF : MonoBehaviourPunCallbacks
     public void FemaleBtnClick5()
     {
         cusnum=11;
+        Char1.SetActive(false);
+        Char2.SetActive(false);
+        Char3.SetActive(false);
+        Char4.SetActive(false);
+        Char5.SetActive(false);
+        Char6.SetActive(false);
         Char11.SetActive(true);
         Char7.SetActive(false);
         Char8.SetActive(false);
@@ -453,6 +521,12 @@ public class WCF : MonoBehaviourPunCallbacks
     public void FemaleBtnClick6()
     {
         cusnum=12;
+        Char1.SetActive(false);
+        Char2.SetActive(false);
+        Char3.SetActive(false);
+        Char4.SetActive(false);
+        Char5.SetActive(false);
+        Char6.SetActive(false);
         Char12.SetActive(true);
         Char7.SetActive(false);
         Char8.SetActive(false);
@@ -460,6 +534,17 @@ public class WCF : MonoBehaviourPunCallbacks
         Char10.SetActive(false);
         Char11.SetActive(false);
         custom = Custom.female6;
+    }
+
+    public void S_M_Btn()
+    {
+        S_M_P.SetActive(false);
+        S_F_P.SetActive(true);
+    }
+    public void S_F_Btn()
+    {
+        S_M_P.SetActive(true);
+        S_F_P.SetActive(false);
     }
     #endregion
 }
