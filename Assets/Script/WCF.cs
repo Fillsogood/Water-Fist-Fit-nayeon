@@ -25,7 +25,6 @@ public class WCF : MonoBehaviourPunCallbacks
 
     public GameObject FirstPanel;
     public GameObject BtnSet_M;
-    public GameObject BtnSet_F;
 
     public enum Custom
     {
@@ -159,7 +158,7 @@ public class WCF : MonoBehaviourPunCallbacks
 
                     case 7:
                     FirstPanel.SetActive(false);
-                    BtnSet_F.SetActive(true);
+                    BtnSet_M.SetActive(true);
                     Char7.SetActive(true);
                     custom = Custom.female1;
                     Check = true;
@@ -168,7 +167,7 @@ public class WCF : MonoBehaviourPunCallbacks
                     case 8:
                     FirstPanel.SetActive(false);
                     Char8.SetActive(true);
-                    BtnSet_F.SetActive(true);
+                    BtnSet_M.SetActive(true);
                     custom = Custom.female2;
                     Check = true;
                     break;
@@ -176,7 +175,7 @@ public class WCF : MonoBehaviourPunCallbacks
                     case 9:
                     FirstPanel.SetActive(false);
                     Char9.SetActive(true);
-                    BtnSet_F.SetActive(true);
+                    BtnSet_M.SetActive(true);
                     custom = Custom.female3;
                     Check = true;
                     break;
@@ -184,7 +183,7 @@ public class WCF : MonoBehaviourPunCallbacks
                     case 10:
                     FirstPanel.SetActive(false);
                     Char10.SetActive(true);
-                    BtnSet_F.SetActive(true);
+                    BtnSet_M.SetActive(true);
                     custom = Custom.female4;
                     Check = true;
                     break;
@@ -192,7 +191,7 @@ public class WCF : MonoBehaviourPunCallbacks
                     case 11:
                     FirstPanel.SetActive(false);
                     Char11.SetActive(true);
-                    BtnSet_F.SetActive(true);
+                    BtnSet_M.SetActive(true);
                     custom = Custom.female5;
                     Check = true;
                     break;
@@ -200,7 +199,7 @@ public class WCF : MonoBehaviourPunCallbacks
                     case 12:
                     FirstPanel.SetActive(false);
                     Char12.SetActive(true);
-                    BtnSet_F.SetActive(true);
+                    BtnSet_M.SetActive(true);
                     custom = Custom.female6;
                     Check = true;
                     break;
@@ -286,7 +285,6 @@ public class WCF : MonoBehaviourPunCallbacks
     public void FinBtn()
     {   
         CustomUpdate(cusnum);
-        BtnSet_F.SetActive(false);
         BtnSet_M.SetActive(false);
         Char1.SetActive(false);
         Char2.SetActive(false);
@@ -317,7 +315,6 @@ public class WCF : MonoBehaviourPunCallbacks
         Char10.SetActive(false);
         Char11.SetActive(false);
         Char12.SetActive(false);
-        BtnSet_F.SetActive(false);
         BtnSet_M.SetActive(false);
     }
 
