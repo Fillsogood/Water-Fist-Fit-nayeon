@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
-  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientSkyColor: {r: 1.7697957, g: 1.6111819, b: 1.6111819, a: 1}
+  m_AmbientEquatorColor: {r: 1.219562, g: 1.2915984, b: 1.3396226, a: 1}
+  m_AmbientGroundColor: {r: 0.77358496, g: 0.6947198, b: 0.5291029, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: eb7fb86851905ea48bf8a3f0712a7a74, type: 2}
+  m_AmbientMode: 1
+  m_SubtractiveShadowColor: {r: 0.24968849, g: 0.2617916, b: 0.2924528, a: 1}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.38522753, g: 0.47261494, b: 0.61848855, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: b00d75c0fbbb74e428b6a3a6d8d0608f, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 915d4593816770f4cb6fd89c85cb57e6, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -2721,7 +2721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 359861946072127151, guid: 62bfb3e73ec3be348908a39f33926cc4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 359861946072127151, guid: 62bfb3e73ec3be348908a39f33926cc4, type: 3}
       propertyPath: m_TagString
@@ -29551,7 +29551,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &715439388
 RectTransform:
   m_ObjectHideFlags: 0
@@ -45100,7 +45100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2751749855869225530, guid: 58dc908c1aeab744db70934d7012c851, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2751749855869225530, guid: 58dc908c1aeab744db70934d7012c851, type: 3}
       propertyPath: m_TagString
@@ -46474,7 +46474,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 2.25
+  m_Intensity: 1.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -46531,13 +46531,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127293265}
-  m_LocalRotation: {x: 0.49640167, y: -0.68709373, z: 0.050503787, w: 0.5281448}
+  m_LocalRotation: {x: 0.50020415, y: -0.6845741, z: 0.057661608, w: 0.527095}
   m_LocalPosition: {x: 3.189, y: 2.96, z: -0.331}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 143.577, y: 57.103996, z: 128.606}
+  m_LocalEulerAnglesHint: {x: 142.681, y: 56.608, z: 128.305}
 --- !u!1001 &1128923700
 PrefabInstance:
   m_ObjectHideFlags: 0
