@@ -6,6 +6,7 @@ public class CustomizeUI : MonoBehaviour
     public GameObject CPanel;
     public GameObject MPanel;
     public GameObject FPanel;
+    public GameObject TPanel;
     //남자 선택
     public void MaleBtnClick()
     {
@@ -20,8 +21,12 @@ public class CustomizeUI : MonoBehaviour
     }
     //나가기 선택
     public void ExitBtnClick()
-    {
-        CPanel.SetActive(false);
+    {  
         Application.Quit();
+    }
+    //타이틀 숨기기
+    public void TitleBtnClick()
+    {
+        TPanel.SetActive(false); 
     }
 }
