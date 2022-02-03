@@ -39,7 +39,7 @@ public class MainSceneController : MonoBehaviour
         CheckAppId();                               //AppID 확인
         playerVideoList = new List<GameObject>();   //유저 캠 리스트 초기화
 
-        if (mRtcEngine != null)                      //엔진이 있으면 삭제
+        if (mRtcEngine != null)                     //엔진이 있으면 삭제
         {
             IRtcEngine.Destroy();
         } 
@@ -81,7 +81,6 @@ public class MainSceneController : MonoBehaviour
         }
          mRtcEngine.EnableVideo();
          mRtcEngine.EnableVideoObserver();
-          
     }
 
         //채널 조인
