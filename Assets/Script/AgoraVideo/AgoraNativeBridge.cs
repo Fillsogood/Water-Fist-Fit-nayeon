@@ -24,8 +24,7 @@ public static class AgoraNativeBridge
     }
 
     //윈도우 핸들이랑 리스트를 받아오는 메서드
-    public static void GetDesktopWindowHandlesAndTitles(
-        out Dictionary<string, IntPtr> info)
+    public static void GetDesktopWindowHandlesAndTitles(out Dictionary<string, IntPtr> info)
     {
         windowInfo = new Dictionary<string, IntPtr>();
 
