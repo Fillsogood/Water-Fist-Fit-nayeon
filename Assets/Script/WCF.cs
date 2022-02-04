@@ -47,17 +47,29 @@ public class WCF : MonoBehaviourPunCallbacks
     //커스텀 정보 저장
     public static Custom  custom;
     //DB 서비스 url
-    public static string url = "http://localhost:59755/StudentService.svc/";
+    public static string url = "http://localhost:59755/WSUforestService.svc/";
     //유저 아이디
     public static int UserID = 11111111;    //변경 필요
     //유저 이름
-    public static string Name="유경록";
+    public static string Name = "전경호";
     //캐릭터
     public static int Character;
     //선택 여부
     private static bool Check = false;
     //WCF에 커스텀 정보 보내는 변수
     static int cusnum;
+    //북type
+    private static string type ;
+    //북title 
+    private static string title ;
+    //북ID
+    private static int bookID = 3;
+    //북author
+    private static string author;
+    //북thumbnail
+    private static string thumbnail;
+
+
 
     void Awake()
     {
@@ -70,7 +82,12 @@ public class WCF : MonoBehaviourPunCallbacks
             return;
         }
     }
-    
+
+    private void Start()
+    {
+        GetBookList();
+    }
+
     //게임 종료 콜백 메서드
     public override void OnDisable()
     {
@@ -81,10 +98,10 @@ public class WCF : MonoBehaviourPunCallbacks
     //커스텀 정보 얻어 오는 기능
     private void GetPlayerData()
     {
-        string sendurl = url + "Stu_GameJoin";
+        string sendurl = url + "Ply_GameJoin";
 
         HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
-        httpWebRequest.Method = "PUT";
+        httpWebRequest.Method = "POST";
         httpWebRequest.ContentType = "application/json; charset=utf-8";
 
         string msg = "{\"id\":" + UserID + "}";
@@ -219,7 +236,7 @@ public class WCF : MonoBehaviourPunCallbacks
 
         //송신
         HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
-        httpWebRequest.Method = "PUT";
+        httpWebRequest.Method = "POST";
         httpWebRequest.ContentType = "application/json; charset=utf-8";
 
         //메시지 형식 : {"id":int"}
@@ -280,10 +297,65 @@ public class WCF : MonoBehaviourPunCallbacks
             Debug.Log(ex.Message);
         }
     }
+
+    //도서 디비 얻어오는 메서드(기본적인 정보)
+    private void GetBookList()
+    {
+        string sendurl = url + "Unity_BookSelect"; 
+
+        HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
+        httpWebRequest.Method = "POST";
+        httpWebRequest.ContentType = "application/json; charset=utf-8";
+
+        string msg = "{\"b_id\":" + bookID + "}";
+
+        byte[] bytes = Encoding.UTF8.GetBytes(msg);
+        httpWebRequest.ContentLength = (long)bytes.Length;
+        using (Stream requestStream = httpWebRequest.GetRequestStream())
+            requestStream.Write(bytes, 0, bytes.Length);    //여기까지가 서버로 날림!
+
+        string result = null;
+
+
+
+
+
+
+
+
+
+        
+        try
+        {
+            using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
+                result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
+
+            string[] result2 = result.Split('"');
+
+            //string[] player = result2[1].Split('@');
+            //이름 받아오기
+            int.TryParse(result2[0], out int bookID);
+            //type = player[2];
+            //title = player[3];
+            //author = player[4];
+            //thumbnail = player[5];
+
+            Debug.Log(result);
+            //Debug.Log(type);
+            //Debug.Log(title);
+            //Debug.Log(author);
+            //Debug.Log(thumbnail);
+
+        }
+        catch(Exception ex)
+        {
+            Debug.Log(ex.Message);
+        }
+    }
     #endregion
 
     #region UI 버튼
-  
+
     public void FinBtn()
     {   
         CustomUpdate(cusnum);
