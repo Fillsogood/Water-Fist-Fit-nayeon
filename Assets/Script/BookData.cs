@@ -64,7 +64,7 @@ public class BookData : MonoBehaviour
             }
         }   
     }
-     public void Unity_BookCheckwishlist(string W_id)
+     public void Unity_BookCheckwishlist()
    {
         string sendurl = url + "Unity_BookCheckwishlist"; 
 
@@ -72,7 +72,7 @@ public class BookData : MonoBehaviour
         httpWebRequest.Method = "POST";
         httpWebRequest.ContentType = "application/json; charset=utf-8";
 
-        string msg = "{\"W_id\":\"" + W_id + "\"}";
+        string msg = "{\"W_id\":\"" + WCF.UserID.ToString() + "\"}";
         Debug.Log(msg);
 
         byte[] bytes = Encoding.UTF8.GetBytes(msg);
