@@ -128,6 +128,8 @@ public class BookSelect : MonoBehaviour
         Book.transform.SetParent(spawnPoint, false);
         content.sizeDelta = new Vector2(0, BookList.Count * spaceBetween + 140);
 
+        BookList.Add(Book);
+
         UpdatePostions();
    }
 
