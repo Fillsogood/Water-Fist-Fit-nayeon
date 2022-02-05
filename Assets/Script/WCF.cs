@@ -61,9 +61,9 @@ public class WCF : MonoBehaviourPunCallbacks
     //북type
     private static string type ;
     //북title 
-    private static string title ;
+    private static string title12 = "Java의정석";
     //북ID
-    private static int bookID = 3;
+    private static int bookID;
     //북author
     private static string author;
     //북thumbnail
@@ -304,26 +304,17 @@ public class WCF : MonoBehaviourPunCallbacks
         string sendurl = url + "Unity_BookSelect"; 
 
         HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
-        httpWebRequest.Method = "POST";
+        httpWebRequest.Method = "PUT";
         httpWebRequest.ContentType = "application/json; charset=utf-8";
 
-        string msg = "{\"b_id\":" + bookID + "}";
+        string msg = "{\"title\":" + title12 + "}";
 
         byte[] bytes = Encoding.UTF8.GetBytes(msg);
         httpWebRequest.ContentLength = (long)bytes.Length;
         using (Stream requestStream = httpWebRequest.GetRequestStream())
-            requestStream.Write(bytes, 0, bytes.Length);    //여기까지가 서버로 날림!
+            requestStream.Write(bytes, 0, bytes.Length);   
 
         string result = null;
-
-
-
-
-
-
-
-
-
         
         try
         {
