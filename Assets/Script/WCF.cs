@@ -103,7 +103,7 @@ public class WCF : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        GetBookList();
+        //GetBookList();
     }
 
     private void GetBookList()

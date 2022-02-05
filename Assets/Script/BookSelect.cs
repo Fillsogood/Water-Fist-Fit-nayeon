@@ -81,17 +81,17 @@ public class BookSelect : MonoBehaviour
             string[] result2 = result.Split('"');
             string[] bookInfo = result2[1].Split('@');
 
-            bookID = int.Parse(bookInfo[1]);
-            type = bookInfo[2];
-            title1.text = bookInfo[3];
-            contents1.text = bookInfo[4];
-            isbn = bookInfo[5];
-            author1.text = bookInfo[6];
-            publisher1.text = bookInfo[7];
-            translators1.text = bookInfo[8];
-            thumnail = bookInfo[9];
-            status = bookInfo[10];
-            bestSeller = int.Parse(bookInfo[11]);
+            //bookID = int.Parse(bookInfo[0]);
+            //type = bookInfo[1];
+            title1.text = bookInfo[2];
+            contents1.text = bookInfo[3];
+            //isbn = bookInfo[5];
+            author1.text = bookInfo[5];
+            publisher1.text = bookInfo[6];
+            translators1.text = bookInfo[7];
+            //thumnail = bookInfo[9];
+            //status = bookInfo[10];
+            //bestSeller = int.Parse(bookInfo[11]);
 
         }
         catch(WebException e)
