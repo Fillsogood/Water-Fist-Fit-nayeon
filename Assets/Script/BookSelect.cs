@@ -42,9 +42,7 @@ public class BookSelect : MonoBehaviour
     public Text translators1;
     public Text author1;
     public Text publisher1;
-
-    public GameObject Java_p1;
-    public GameObject Java_p2;
+    
     public GameObject BookPrefab;
     //캠 스폰 포인트
     public Transform spawnPoint;
