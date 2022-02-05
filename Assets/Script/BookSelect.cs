@@ -72,6 +72,11 @@ public class BookSelect : MonoBehaviour
         boooo();
     }
 
+    public void Btn_S()
+    {
+        
+    }
+
 
    public void Unity_BookSelect(string title)
    {
@@ -102,6 +107,7 @@ public class BookSelect : MonoBehaviour
             //bookID = int.Parse(bookInfo[0]);
             //type = bookInfo[1];
             title1.text = bookInfo[2];
+            title = bookInfo[2];
             contents1.text = bookInfo[3];
             //isbn = bookInfo[5];
             author1.text = bookInfo[5];
