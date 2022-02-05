@@ -42,12 +42,12 @@ public class BookSelect : MonoBehaviour
     public Text translators1;
     public Text author1;
     public Text publisher1;
-    
-    public GameObject BookPrefab;
+
+    //public GameObject BookPrefab;
     //캠 스폰 포인트
-    public Transform spawnPoint;
+    //public Transform spawnPoint;
     //스크롤 뷰 content
-    public RectTransform content;
+    //public RectTransform content;
     //비디오 캠 포지션 간격
     private float spaceBetween = 300f;
     public static string url = "http://localhost:59755/WSUforestService.svc/";
@@ -63,65 +63,23 @@ public class BookSelect : MonoBehaviour
         
     }
 
-    public void Btn_Book()
+    public void Btn_Book1()
     {
-        Unity_BookSelect();
-        boooo();
+        Unity_BookSelect("Java의정석");
     }
+    public void Btn_Book2()
+    {
+        Unity_BookSelect("혼자공부하는자바");
+    }
+    
     public void Btn_BB()
     {
         Bookinfo_P.SetActive(true);
     }
 
 
-   public void Unity_BookSelect()
+   public void Unity_BookSelect(string title)
    {
-        title = bookNameIF.text;
-        string sendurl = url + "Unity_BookSelect"; 
-
-        HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
-        httpWebRequest.Method = "POST";
-        httpWebRequest.ContentType = "application/json; charset=utf-8";
-
-        string msg = "{\"title\":\"" + title + "\",\"type\":\"" + "e" + "\"}";
-        Debug.Log(msg);
-
-        byte[] bytes = Encoding.UTF8.GetBytes(msg);
-        httpWebRequest.ContentLength = (long)bytes.Length;
-        using (Stream requestStream = httpWebRequest.GetRequestStream())
-            requestStream.Write(bytes, 0, bytes.Length);
-
-        string result = null;
-        
-        try{
-            using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
-                result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
-            Debug.Log(result);
-
-            string[] result2 = result.Split('"');
-            string[] bookInfo = result2[1].Split('@');
-
-            //bookID = int.Parse(bookInfo[0]);
-            //type = bookInfo[1];
-            title1.text = bookInfo[2];
-            contents1.text = bookInfo[3];
-            //isbn = bookInfo[5];
-            author1.text = bookInfo[5];
-            publisher1.text = bookInfo[6];
-            translators1.text = bookInfo[7];
-            //thumnail = bookInfo[9];
-            //status = bookInfo[10];
-            //bestSeller = int.Parse(bookInfo[11]);
-
-        }
-        catch(WebException e)
-        {
-            Debug.Log(e.Message);
-        } 
-   } 
-   public void Unity_BookSelect1()
-   {
-       
         string sendurl = url + "Unity_BookSelect"; 
 
         HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
@@ -165,18 +123,39 @@ public class BookSelect : MonoBehaviour
         } 
    } 
 
-   private void boooo()
-   {
+//    private void boooo()
+//    {
 
-        float spawnY = BookList.Count * spaceBetween;
-        Vector3 spawnPosition = new Vector3(0, -spawnY, 0);
-        GameObject Book = Instantiate(BookPrefab, spawnPosition, spawnPoint.rotation);
+//         float spawnY = BookList.Count * spaceBetween;
+//         Vector3 spawnPosition = new Vector3(0, -spawnY, 0);
+//         GameObject Book = Instantiate(BookPrefab, spawnPosition, spawnPoint.rotation);
 
-        Book.transform.SetParent(spawnPoint, false);
-        content.sizeDelta = new Vector2(0, BookList.Count * spaceBetween + 140);
+//         Book.transform.SetParent(spawnPoint, false);
+//         content.sizeDelta = new Vector2(0, BookList.Count * spaceBetween + 140);
 
-        UpdatePostions();
-   }
+//         UpdatePostions();
+//    }
+
+//    private void Removebook(uint deletedUID)
+//     {
+//         foreach (GameObject player in BookList)
+//         {
+//             if (player.name == deletedUID.ToString())
+//             {
+//                 BookList.Remove(player);
+//                 Destroy(player.gameObject);
+//                 break;
+//             }
+//         }
+
+//         // update positions of new players
+//         UpdatePostions();
+
+//         Vector2 oldContent = content.sizeDelta;
+//         content.sizeDelta = oldContent + Vector2.down * spaceBetween;
+//         content.anchoredPosition = Vector2.zero;
+//     }
+
    private void UpdatePostions()
     {
         for (int i = 0; i < BookList.Count; i++)
