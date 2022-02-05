@@ -8,6 +8,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 public class BookSelect : MonoBehaviour
 {
+    //^A^
     private PhotonView pv;
     //북ID
     private static int bookID;
