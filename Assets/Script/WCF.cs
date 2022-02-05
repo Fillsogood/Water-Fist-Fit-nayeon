@@ -10,6 +10,8 @@ using System.Text;
 //WCF 연결 및 UI
 public class WCF : MonoBehaviourPunCallbacks
 {
+
+    
     public GameObject Char1;
     public GameObject Char2;
     public GameObject Char3;
@@ -101,7 +103,7 @@ public class WCF : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        GetBookList();
+        //GetBookList();
     }
 
     private void GetBookList()
