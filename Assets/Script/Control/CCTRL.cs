@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using UnityEngine.UI;
 
 //캐릭터 컨트롤
 public class CCTRL : MonoBehaviour
@@ -125,8 +122,8 @@ public class CCTRL : MonoBehaviour
         else
         {
             anim.SetBool("isWalk", true);
-            
         }
+
         anim.SetFloat("xDir", h);
         anim.SetFloat("yDir", v);
 
