@@ -53,10 +53,60 @@ public class BookSelect : MonoBehaviour
         Unity_BookSelect();
         Bookinfo_P.SetActive(true);
     }
+    public void Btn_BB()
+    {
+        Bookinfo_P.SetActive(true);
+    }
+
 
    public void Unity_BookSelect()
    {
         title = bookNameIF.text;
+        string sendurl = url + "Unity_BookSelect"; 
+
+        HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
+        httpWebRequest.Method = "POST";
+        httpWebRequest.ContentType = "application/json; charset=utf-8";
+
+        string msg = "{\"title\":\"" + title + "\",\"type\":\"" + "e" + "\"}";
+        Debug.Log(msg);
+
+        byte[] bytes = Encoding.UTF8.GetBytes(msg);
+        httpWebRequest.ContentLength = (long)bytes.Length;
+        using (Stream requestStream = httpWebRequest.GetRequestStream())
+            requestStream.Write(bytes, 0, bytes.Length);
+
+        string result = null;
+        
+        try{
+            using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
+                result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
+            Debug.Log(result);
+
+            string[] result2 = result.Split('"');
+            string[] bookInfo = result2[1].Split('@');
+
+            //bookID = int.Parse(bookInfo[0]);
+            //type = bookInfo[1];
+            title1.text = bookInfo[2];
+            contents1.text = bookInfo[3];
+            //isbn = bookInfo[5];
+            author1.text = bookInfo[5];
+            publisher1.text = bookInfo[6];
+            translators1.text = bookInfo[7];
+            //thumnail = bookInfo[9];
+            //status = bookInfo[10];
+            //bestSeller = int.Parse(bookInfo[11]);
+
+        }
+        catch(WebException e)
+        {
+            Debug.Log(e.Message);
+        } 
+   } 
+   public void Unity_BookSelect1()
+   {
+       
         string sendurl = url + "Unity_BookSelect"; 
 
         HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
