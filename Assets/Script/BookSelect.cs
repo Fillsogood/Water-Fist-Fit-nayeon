@@ -35,24 +35,27 @@ public class BookSelect : MonoBehaviour
 
     //Bookinfo
     public GameObject Bookinfo_P;
-
-    public InputField bookNameIF;
     public Text title1;
     public Text contents1;
     public Text translators1;
     public Text author1;
     public Text publisher1;
 
-    //public GameObject BookPrefab;
+    public GameObject BookPrefab;
     //캠 스폰 포인트
-    //public Transform spawnPoint;
+    public Transform spawnPoint;
     //스크롤 뷰 content
-    //public RectTransform content;
+    public RectTransform content;
     //비디오 캠 포지션 간격
     private float spaceBetween = 300f;
     public static string url = "http://localhost:59755/WSUforestService.svc/";
     //유저 캠 리스트
     private List<GameObject> BookList;
+
+    void Start()
+    {
+         BookList = new List<GameObject>();   
+    }
     
     public void Btn_Book1()
     {
@@ -63,6 +66,10 @@ public class BookSelect : MonoBehaviour
     {
         Unity_BookSelect("혼자공부하는자바");
         Bookinfo_P.SetActive(true);
+    }
+    public void Btn_D()
+    {
+        boooo();
     }
 
 
@@ -111,38 +118,38 @@ public class BookSelect : MonoBehaviour
         } 
    } 
 
-//    private void boooo()
-//    {
+   private void boooo()
+   {
 
-//         float spawnY = BookList.Count * spaceBetween;
-//         Vector3 spawnPosition = new Vector3(0, -spawnY, 0);
-//         GameObject Book = Instantiate(BookPrefab, spawnPosition, spawnPoint.rotation);
+        float spawnY = BookList.Count * spaceBetween;
+        Vector3 spawnPosition = new Vector3(0, -spawnY, 0);
+        GameObject Book = Instantiate(BookPrefab, spawnPosition, spawnPoint.rotation);
 
-//         Book.transform.SetParent(spawnPoint, false);
-//         content.sizeDelta = new Vector2(0, BookList.Count * spaceBetween + 140);
+        Book.transform.SetParent(spawnPoint, false);
+        content.sizeDelta = new Vector2(0, BookList.Count * spaceBetween + 140);
 
-//         UpdatePostions();
-//    }
+        UpdatePostions();
+   }
 
-//    private void Removebook(uint deletedUID)
-//     {
-//         foreach (GameObject player in BookList)
-//         {
-//             if (player.name == deletedUID.ToString())
-//             {
-//                 BookList.Remove(player);
-//                 Destroy(player.gameObject);
-//                 break;
-//             }
-//         }
+   private void Removebook(uint deletedUID)
+    {
+        foreach (GameObject player in BookList)
+        {
+            if (player.name == deletedUID.ToString())
+            {
+                BookList.Remove(player);
+                Destroy(player.gameObject);
+                break;
+            }
+        }
 
-//         // update positions of new players
-//         UpdatePostions();
+        // update positions of new players
+        UpdatePostions();
 
-//         Vector2 oldContent = content.sizeDelta;
-//         content.sizeDelta = oldContent + Vector2.down * spaceBetween;
-//         content.anchoredPosition = Vector2.zero;
-//     }
+        Vector2 oldContent = content.sizeDelta;
+        content.sizeDelta = oldContent + Vector2.down * spaceBetween;
+        content.anchoredPosition = Vector2.zero;
+    }
 
    private void UpdatePostions()
     {
