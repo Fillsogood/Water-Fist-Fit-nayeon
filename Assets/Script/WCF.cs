@@ -64,7 +64,7 @@ public class WCF : MonoBehaviourPunCallbacks
     //북type
     private static string type;
     //북title 
-    private static string title = "J";
+    public static string title = "Java의정석";
     //북Contents
     private static string contents;
     //북isbn
