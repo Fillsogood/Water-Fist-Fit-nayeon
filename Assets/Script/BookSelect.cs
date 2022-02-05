@@ -44,38 +44,30 @@ public class BookSelect : MonoBehaviour
 
     public GameObject Java_p1;
     public GameObject Java_p2;
+    public GameObject BookPrefab;
+    //캠 스폰 포인트
+    public Transform spawnPoint;
+    //스크롤 뷰 content
+    public RectTransform content;
+    //비디오 캠 포지션 간격
+    private float spaceBetween = 300f;
     public static string url = "http://localhost:59755/WSUforestService.svc/";
+    //유저 캠 리스트
+    private List<GameObject> BookList;
 
+    void Start()
+    {
+        BookList = new List<GameObject>(); 
+    }
     void Update()
     {
-      if(bookNameIF.text=="")
-      {
-          Java_p1.SetActive(true);
-          Java_p2.SetActive(true);
-      }
-    
         
     }
 
     public void Btn_Book()
     {
         Unity_BookSelect();
-
-        switch(bookNameIF.text)
-        {
-            case "Java의정석":
-              Java_p2.SetActive(false);
-              Java_p1.SetActive(true);
-            break;
-            case "혼자공부하는자바":
-              Java_p1.SetActive(false);
-              Java_p2.SetActive(true);
-            break;
-            
-
-        }
-        
-        
+        boooo();
     }
     public void Btn_BB()
     {
@@ -173,5 +165,25 @@ public class BookSelect : MonoBehaviour
             Debug.Log(e.Message);
         } 
    } 
+
+   private void boooo()
+   {
+
+        float spawnY = BookList.Count * spaceBetween;
+        Vector3 spawnPosition = new Vector3(0, -spawnY, 0);
+        GameObject Book = Instantiate(BookPrefab, spawnPosition, spawnPoint.rotation);
+
+        Book.transform.SetParent(spawnPoint, false);
+        content.sizeDelta = new Vector2(0, BookList.Count * spaceBetween + 140);
+
+        UpdatePostions();
+   }
+   private void UpdatePostions()
+    {
+        for (int i = 0; i < BookList.Count; i++)
+        {
+            BookList[i].GetComponent<RectTransform>().anchoredPosition = Vector2.down * spaceBetween * i;
+        }
+    }
 
 }
