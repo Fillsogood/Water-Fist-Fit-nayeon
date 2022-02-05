@@ -34,9 +34,9 @@ public class RealbookUI : MonoBehaviour
     //WCF_Bestseller
     private static int bestSeller;
 
-    //½Ç¹°Ã¥ ÀÔ·Â 
+    //ï¿½Ç¹ï¿½Ã¥ ï¿½Ô·ï¿½ 
     public InputField inputField;
-    //½Ç¹°Ã¥ Å¸ÀÔ
+    //ï¿½Ç¹ï¿½Ã¥ Å¸ï¿½ï¿½
     string realType = "real";
 
     //Unity_title
@@ -50,35 +50,35 @@ public class RealbookUI : MonoBehaviour
     //Unity_Thumnail
     public RawImage ri_Thumnail;
 
-    //EBookÀüÃ¼ ÆÐ³Î
+    //EBookï¿½ï¿½Ã¼ ï¿½Ð³ï¿½
     public GameObject EbookPanel;
-    //°Ë»öµµ¼­Á¤º¸ ÆÐ³Î
+    //ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½
     public GameObject infoPanel;
     
 
-    #region °Ë»ö ÀÌº¥Æ®
+    #region ï¿½Ë»ï¿½ ï¿½Ìºï¿½Æ®
     
     public void e_realBookSearch()
     {
-        //µÎ°³ÀÇ ¿£ÅÍÅ° ÀÔ·Â
+        //ï¿½Î°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å° ï¿½Ô·ï¿½
         if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
         {
             b_realBookSearch();
         }
     }
 
-    //µðºñ Á¤º¸¸¦ °¡Á®¿À°í ¿ÀºêÁ§Æ®¿¡ ÃÊ±âÈ­
+    //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ê±ï¿½È­
     public void b_realBookSearch()
     {
-        //infoÆÐ³Î È°¼ºÈ­
+        //infoï¿½Ð³ï¿½ È°ï¿½ï¿½È­
         InfoBtn();
 
         if (StringAvailable(inputField.text))
         {
-            //µðºñ Á¤º¸ °¡Á®¿À±â 
+            //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
             GetBookList(inputField.text, realType);
 
-            //°¡Á®¿Â µðºñ Á¤º¸¸¦ ÅëÇØ¼­, ÅØ½ºÆ® Ã¤¿ì±â
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½, ï¿½Ø½ï¿½Æ® Ã¤ï¿½ï¿½ï¿½
             t_Title.text = title;
             t_Contents.text = contents;
             t_Author.text = author;
@@ -107,9 +107,9 @@ public class RealbookUI : MonoBehaviour
 
     #endregion
 
-    #region ±× ¿Ü ¸Þ¼­µå
+    #region ï¿½ï¿½ ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
 
-    //WCF·Î ½Ç¹°Ã¥ µ¥ÀÌÅÍ °¡Á®¿À±â
+    //WCFï¿½ï¿½ ï¿½Ç¹ï¿½Ã¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     private void GetBookList(string title, string type)
     {
         string sendurl = url + "Unity_BookSelect";
@@ -147,7 +147,7 @@ public class RealbookUI : MonoBehaviour
             status = bookInfo[9];
             bestSeller = int.Parse(bookInfo[10]);
 
-            //thumnail ÀçÁ¤¸®
+            //thumnail ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             string[] s_thumnail = thumnail.Split('\\');
             thumnail = s_thumnail[0] + s_thumnail[1] + s_thumnail[2] + s_thumnail[3]
                 + s_thumnail[4] + s_thumnail[5] + s_thumnail[6];
@@ -159,14 +159,14 @@ public class RealbookUI : MonoBehaviour
         }
     }
 
-    //inputField°¡ ºñ¾îÀÖ´Â Áö È®ÀÎ
-    bool StringAvailable(string inputField°¡)
+    //inputFieldï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ È®ï¿½ï¿½
+    bool StringAvailable(string inputField)
     {
-        if (string.IsNullOrWhiteSpace(inputField°¡)) return false;
+        if (string.IsNullOrWhiteSpace(inputField)) return false;
         return true;
     }
 
-    //ÆÐ³Î ºñ/È°¼ºÈ­ ¸Þ¼­µå
+    //ï¿½Ð³ï¿½ ï¿½ï¿½/È°ï¿½ï¿½È­ ï¿½Þ¼ï¿½ï¿½ï¿½
     public void ExitBtn()
     {
         EbookPanel.SetActive(false);
