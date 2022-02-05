@@ -31,7 +31,7 @@ public class CCTRL : MonoBehaviour
     public float turnSpeed = 1.5f;
     private Animator anim;
 
-    private Transform Panel_EBook;
+    private Transform Panel_RealBook;
     private Transform Panel_Lobby;
 
      public GameObject literature;
@@ -57,8 +57,8 @@ public class CCTRL : MonoBehaviour
         chairs = GameObject.FindGameObjectsWithTag("Chair1");
         if(PhotonNetwork.CurrentRoom.Name == "WooSoong Library")
         {
-            Panel_EBook = GameObject.Find("EBookLobby").transform.Find("EbookPanel");
-            Panel_Lobby =  GameObject.Find("EBookLobby").transform.Find("LobbyPanel");
+            Panel_RealBook = GameObject.Find("ComebackLobby").transform.Find("RealbookPanel");
+            Panel_Lobby =  GameObject.Find("ComebackLobby").transform.Find("LobbyPanel");
         }
         tr = GetComponent<Transform>();
         anim = GetComponent<Animator>();
@@ -95,7 +95,7 @@ public class CCTRL : MonoBehaviour
             //NPC콜라이더에 태그 달아주기
             if (Input.GetMouseButtonDown(0) &&  (GetClickedObject().tag == "NPC_EBook"))
             {
-                Panel_EBook.gameObject.SetActive(true);
+                Panel_RealBook.gameObject.SetActive(true);
             }
             else if (Input.GetMouseButtonDown(0) &&  (GetClickedObject().tag == "NPC_Lobby"))
             {
