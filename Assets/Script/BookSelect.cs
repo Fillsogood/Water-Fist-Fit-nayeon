@@ -47,7 +47,7 @@ public class BookSelect : MonoBehaviour
     //스크롤 뷰 content
     public RectTransform content;
     //비디오 캠 포지션 간격
-    private float spaceBetween = 300f;
+    private float spaceBetween = 80f;
     public static string url = "http://localhost:59755/WSUforestService.svc/";
     //유저 캠 리스트
     private List<GameObject> BookList;
