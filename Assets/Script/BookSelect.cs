@@ -53,27 +53,15 @@ public class BookSelect : MonoBehaviour
     public static string url = "http://localhost:59755/WSUforestService.svc/";
     //유저 캠 리스트
     private List<GameObject> BookList;
-
-    void Start()
-    {
-        BookList = new List<GameObject>(); 
-    }
-    void Update()
-    {
-        
-    }
-
+    
     public void Btn_Book1()
     {
         Unity_BookSelect("Java의정석");
+        Bookinfo_P.SetActive(true);
     }
     public void Btn_Book2()
     {
         Unity_BookSelect("혼자공부하는자바");
-    }
-    
-    public void Btn_BB()
-    {
         Bookinfo_P.SetActive(true);
     }
 
