@@ -41,17 +41,41 @@ public class BookSelect : MonoBehaviour
     public Text translators1;
     public Text author1;
     public Text publisher1;
+
+    public GameObject Java_p1;
+    public GameObject Java_p2;
     public static string url = "http://localhost:59755/WSUforestService.svc/";
 
-    void Start()
+    void Update()
     {
+      if(bookNameIF.text=="")
+      {
+          Java_p1.SetActive(true);
+          Java_p2.SetActive(true);
+      }
+    
         
     }
 
     public void Btn_Book()
     {
         Unity_BookSelect();
-        Bookinfo_P.SetActive(true);
+
+        switch(bookNameIF.text)
+        {
+            case "Java의정석":
+              Java_p2.SetActive(false);
+              Java_p1.SetActive(true);
+            break;
+            case "혼자공부하는자바":
+              Java_p1.SetActive(false);
+              Java_p2.SetActive(true);
+            break;
+            
+
+        }
+        
+        
     }
     public void Btn_BB()
     {
