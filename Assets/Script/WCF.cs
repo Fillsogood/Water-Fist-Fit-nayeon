@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Text;
+using UnityEngine.UI;
 
 //WCF 연결 및 UI
 public class WCF : MonoBehaviourPunCallbacks
@@ -62,9 +63,9 @@ public class WCF : MonoBehaviourPunCallbacks
     //북ID
     private static int bookID;
     //북type
-    private static string type = "e";
+    private static string type;
     //북title 
-    public static string title = "Java의정석";
+    public static string title;
     //북Contents
     private static string contents;
     //북isbn
@@ -84,6 +85,8 @@ public class WCF : MonoBehaviourPunCallbacks
     //북Bestseller
     private static int bestSeller;
 
+    //실물책 검색
+    public InputField inputField;
 
 
     void Awake()
@@ -97,57 +100,6 @@ public class WCF : MonoBehaviourPunCallbacks
         {
             return;
         }
-    }
-
-    void Start()
-    {
-        GetBookList();
-    }
-
-    private void GetBookList()
-    {
-        string sendurl = url + "Unity_BookSelect"; 
-
-        HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
-        httpWebRequest.Method = "POST";
-        httpWebRequest.ContentType = "application/json; charset=utf-8";
-
-        string msg = "{\"title\":\"" + title + "\",\"type\":\"" + type + "\"}";
-        Debug.Log(msg);
-
-        byte[] bytes = Encoding.UTF8.GetBytes(msg);
-        httpWebRequest.ContentLength = (long)bytes.Length;
-        using (Stream requestStream = httpWebRequest.GetRequestStream())
-            requestStream.Write(bytes, 0, bytes.Length);
-
-        string result = null;
-        
-        try{
-            using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
-                result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
-            Debug.Log(result);
-
-            string[] result2 = result.Split('"');
-            string[] bookInfo = result2[1].Split('@');
-
-            bookID = int.Parse(bookInfo[1]);
-            type = bookInfo[2];
-            title = bookInfo[3];
-            contents = bookInfo[4];
-            isbn = bookInfo[5];
-            author = bookInfo[6];
-            publisher = bookInfo[7];
-            translators = bookInfo[8];
-            thumnail = bookInfo[9];
-            status = bookInfo[10];
-            bestSeller = int.Parse(bookInfo[11]);
-
-        }
-        catch(WebException e)
-        {
-            Debug.Log(e.Message);
-        }
-            
     }
     
     //게임 종료 콜백 메서드
@@ -359,10 +311,57 @@ public class WCF : MonoBehaviourPunCallbacks
             Debug.Log(ex.Message);
         }
     }
+
+    //책 정보 가져오기(제목, 타입을 통해서)
+    private void GetBookList(string title, string type)
+    {
+        string sendurl = url + "Unity_BookSelect";
+
+        HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
+        httpWebRequest.Method = "POST";
+        httpWebRequest.ContentType = "application/json; charset=utf-8";
+
+        string msg = "{\"title\":\"" + title + "\",\"type\":\"" + type + "\"}";
+        Debug.Log(msg);
+
+        byte[] bytes = Encoding.UTF8.GetBytes(msg);
+        httpWebRequest.ContentLength = (long)bytes.Length;
+        using (Stream requestStream = httpWebRequest.GetRequestStream())
+            requestStream.Write(bytes, 0, bytes.Length);
+
+        string result = null;
+
+        try
+        {
+            using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
+                result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
+
+            string[] result2 = result.Split('"');
+            string[] bookInfo = result2[1].Split('@');
+
+            bookID = int.Parse(bookInfo[1]);
+            type = bookInfo[2];
+            title = bookInfo[3];
+            contents = bookInfo[4];
+            isbn = bookInfo[5];
+            author = bookInfo[6];
+            publisher = bookInfo[7];
+            translators = bookInfo[8];
+            thumnail = bookInfo[9];
+            status = bookInfo[10];
+            bestSeller = int.Parse(bookInfo[11]);
+
+        }
+        catch (WebException e)
+        {
+            Debug.Log(e.Message);
+        }
+
+    }
     #endregion
 
     #region UI 버튼
-  
+
     public void FinBtn()
     {   
         CustomUpdate(cusnum);
@@ -626,4 +625,30 @@ public class WCF : MonoBehaviourPunCallbacks
         S_F_P.SetActive(false);
     }
     #endregion
+
+    public void realBookSearch()
+    {
+        string realType = "real";
+        //2개의 다른 엔터키에 대한 입력
+        if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
+        {
+            if (StringAvailable(inputField.text))
+            {
+                //디비 정보 가져오기 
+                GetBookList(inputField.text, realType);
+
+                //가져온 디비 정보를 통해서, 텍스트 채우기
+                Debug.Log(title);
+            }
+
+            this.inputField.text = "";
+        }
+    }
+
+    //inputField가 비어있는 지 확인
+    bool StringAvailable(string inputField가)
+    {
+        if (string.IsNullOrWhiteSpace(inputField가)) return false;
+        return true;
+    }
 }
