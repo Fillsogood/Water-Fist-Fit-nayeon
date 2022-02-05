@@ -10117,14 +10117,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bookinfo_P: {fileID: 6764918026204616391}
+  bookNameIF: {fileID: 0}
   title1: {fileID: 7218605420151278384}
   contents1: {fileID: 2325971788937112242}
   translators1: {fileID: 4750295992334944002}
   author1: {fileID: 2440857028624305309}
   publisher1: {fileID: 5966177477954149712}
-  bookNameIF: {fileID: 0}
-  scrollContent: {fileID: 0}
-  bookUI: {fileID: 0}
 --- !u!1 &5675062975797310427
 GameObject:
   m_ObjectHideFlags: 0
@@ -17129,7 +17127,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2814694567740746492}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7784443646909847528}
+        m_TargetAssemblyTypeName: BookSelect, Assembly-CSharp
+        m_MethodName: Btn_Book
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8818564142937546746
 GameObject:
   m_ObjectHideFlags: 0
