@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Text;
+using UnityEngine.UI;
 
 //WCF 연결 및 UI
 public class WCF : MonoBehaviourPunCallbacks
@@ -53,40 +54,13 @@ public class WCF : MonoBehaviourPunCallbacks
     //유저 아이디
     public static int UserID = 11111111;    //변경 필요
     //유저 이름
-    public static string Name="전경호";
+    public static string Name= "전경호";
     //캐릭터
     public static int Character;
     //선택 여부
     private static bool Check = false;
     //WCF에 커스텀 정보 보내는 변수
     static int cusnum;
-
-    //북ID
-    private static int bookID;
-    //북type
-    private static string type = "e";
-    //북title 
-    private static string title = "Java의정석";
-    //북Contents
-    private static string contents;
-    //북isbn
-    private static string isbn;
-    //북publisingdate
-    private static string publisingdate;
-    //북author
-    private static string author;
-    //북Publisher
-    private static string publisher;
-    //북translators
-    private static string translators;
-    //북thumbnail
-    private static string thumnail;
-    //북status
-    private static string status;
-    //북Bestseller
-    private static int bestSeller;
-
-
 
     void Awake()
     {
@@ -99,57 +73,6 @@ public class WCF : MonoBehaviourPunCallbacks
         {
             return;
         }
-    }
-
-    void Start()
-    {
-        //GetBookList();
-    }
-
-    private void GetBookList()
-    {
-        string sendurl = url + "Unity_BookSelect"; 
-
-        HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
-        httpWebRequest.Method = "POST";
-        httpWebRequest.ContentType = "application/json; charset=utf-8";
-
-        string msg = "{\"title\":\"" + title + "\",\"type\":\"" + type + "\"}";
-        Debug.Log(msg);
-
-        byte[] bytes = Encoding.UTF8.GetBytes(msg);
-        httpWebRequest.ContentLength = (long)bytes.Length;
-        using (Stream requestStream = httpWebRequest.GetRequestStream())
-            requestStream.Write(bytes, 0, bytes.Length);
-
-        string result = null;
-        
-        try{
-            using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
-                result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
-            Debug.Log(result);
-
-            string[] result2 = result.Split('"');
-            string[] bookInfo = result2[1].Split('@');
-
-            bookID = int.Parse(bookInfo[1]);
-            type = bookInfo[2];
-            title = bookInfo[3];
-            contents = bookInfo[4];
-            isbn = bookInfo[5];
-            author = bookInfo[6];
-            publisher = bookInfo[7];
-            translators = bookInfo[8];
-            thumnail = bookInfo[9];
-            status = bookInfo[10];
-            bestSeller = int.Parse(bookInfo[11]);
-
-        }
-        catch(WebException e)
-        {
-            Debug.Log(e.Message);
-        }
-            
     }
     
     //게임 종료 콜백 메서드
