@@ -51,10 +51,9 @@ public class RealbookUI : MonoBehaviour
     public RawImage ri_Thumnail;
 
     //EBook전체 패널
-    public GameObject EbookPanel;
+    public GameObject RealbookPanel;
     //검색도서정보 패널
     public GameObject infoPanel;
-    
 
     #region 검색 이벤트
     
@@ -110,7 +109,7 @@ public class RealbookUI : MonoBehaviour
     #region 그 외 메서드
 
     //WCF로 실물책 데이터 가져오기
-    private void GetBookList(string title, string type)
+    private void GetBookList(string _title, string _type)
     {
         string sendurl = url + "Unity_BookSelect";
 
@@ -118,7 +117,7 @@ public class RealbookUI : MonoBehaviour
         httpWebRequest.Method = "POST";
         httpWebRequest.ContentType = "application/json; charset=utf-8";
 
-        string msg = "{\"title\":\"" + title + "\",\"type\":\"" + type + "\"}";
+        string msg = "{\"title\":\"" + _title + "\",\"type\":\"" + _type + "\"}";
 
         byte[] bytes = Encoding.UTF8.GetBytes(msg);
         httpWebRequest.ContentLength = (long)bytes.Length;
@@ -169,7 +168,7 @@ public class RealbookUI : MonoBehaviour
     //패널 비/활성화 메서드
     public void ExitBtn()
     {
-        EbookPanel.SetActive(false);
+        RealbookPanel.SetActive(false);
     }
     public void InfoBtn()
     {
