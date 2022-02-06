@@ -67,37 +67,29 @@ public class BookSelect : MonoBehaviour
         Unity_BookSelect("혼자공부하는자바");
         Bookinfo_P.SetActive(true);
     }
-    //찜 목록 추가/해제
-    protected bool bb { get; set; }
+    //찜 목록 추가
     public void Btn_AddWishList()
     {
-        Button button = GameObject.Find("Btn_wishRemove").GetComponent<Button>();
-         bb = !bb;
-        Text text = button.GetComponentInChildren<Text>();
-        text.text = bb ? "찜 추가" : "찜 해제";
-        if(text.text=="찜 추가")
+        if(title1.text == "Java의정석")
         {
-            if(title1.text == "Java의정석")
-            {
-                Unity_AddWish("10");
-            }
-            else if(title1.text == "혼자공부하는자바")
-            {
-                Unity_AddWish("4");
-            }
+            Unity_AddWish("10");
         }
-        if(text.text=="찜 해제")
+        else if(title1.text == "혼자공부하는자바")
         {
-            if(title1.text == "Java의정석")
-            {
-                Unity_RemoveWish("10");
-            }
-            else if(title1.text == "혼자공부하는자바")
-            {
-                Unity_RemoveWish("4");
-            }
+            Unity_AddWish("4");
         }
-
+    }
+    //찜 목록 해제
+    public void Btn_RemoveWish()
+    {
+        if(title1.text == "Java의정석")
+        {
+            Unity_RemoveWish("10");
+        }
+        else if(title1.text == "혼자공부하는자바")
+        {
+            Unity_RemoveWish("4");
+        }
     }
     //찜 추가
     public void Unity_AddWish(string b_id)
