@@ -67,17 +67,95 @@ public class BookSelect : MonoBehaviour
         Unity_BookSelect("혼자공부하는자바");
         Bookinfo_P.SetActive(true);
     }
-    public void Btn_D()
+
+    public void Btn_AddWishList()
     {
-        boooo();
+        if(title1.text == "Java의정석")
+        {
+            Unity_AddWish("10");
+        }
+        else if(title1.text == "혼자공부하는자바")
+        {
+            Unity_AddWish("4");
+        }
     }
 
-    public void Btn_S()
+    public void Btn_RemoveWish()
     {
+        if(title1.text == "Java의정석")
+        {
+            Unity_RemoveWish("10");
+        }
+        else if(title1.text == "혼자공부하는자바")
+        {
+            Unity_RemoveWish("4");
+        }
+    }
+
+    //찜 추가
+    public void Unity_AddWish(string b_id)
+   {
+        string sendurl = url + "Unity_AddWish"; 
+
+        HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
+        httpWebRequest.Method = "POST";
+        httpWebRequest.ContentType = "application/json; charset=utf-8";
+
+        string msg = "{\"W_id\":" + WCF.UserID.ToString() + ",\"b_id\":" + b_id + "}";
+        Debug.Log(msg);
+
+        byte[] bytes = Encoding.UTF8.GetBytes(msg);
+        httpWebRequest.ContentLength = (long)bytes.Length;
+        using (Stream requestStream = httpWebRequest.GetRequestStream())
+            requestStream.Write(bytes, 0, bytes.Length);
+
+        string result = null;
         
-    }
+        try{
+            using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
+                result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
+            Debug.Log(result);
+
+        }
+        catch(WebException e)
+        {
+            Debug.Log(e.Message);
+        } 
+   } 
 
 
+    //찜 해제
+    public void Unity_RemoveWish(string b_id)
+   {
+        string sendurl = url + "Unity_RemoveWish"; 
+
+        HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
+        httpWebRequest.Method = "POST";
+        httpWebRequest.ContentType = "application/json; charset=utf-8";
+
+        string msg = "{\"W_id\":" + WCF.UserID.ToString() + ",\"b_id\":" + b_id + "}";
+        Debug.Log(msg);
+
+        byte[] bytes = Encoding.UTF8.GetBytes(msg);
+        httpWebRequest.ContentLength = (long)bytes.Length;
+        using (Stream requestStream = httpWebRequest.GetRequestStream())
+            requestStream.Write(bytes, 0, bytes.Length);
+
+        string result = null;
+        
+        try{
+            using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
+                result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
+            Debug.Log(result);
+
+        }
+        catch(WebException e)
+        {
+            Debug.Log(e.Message);
+        } 
+   } 
+
+    #region 찜 목록
    public void Unity_BookSelect(string title)
    {
         string sendurl = url + "Unity_BookSelect"; 
@@ -166,5 +244,6 @@ public class BookSelect : MonoBehaviour
             BookList[i].GetComponent<RectTransform>().anchoredPosition = Vector2.down * spaceBetween * i;
         }
     }
+    #endregion
 
 }

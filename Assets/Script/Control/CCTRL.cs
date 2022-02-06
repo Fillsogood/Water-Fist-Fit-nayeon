@@ -59,7 +59,7 @@ public class CCTRL : MonoBehaviour
         if(PhotonNetwork.CurrentRoom.Name == "WooSoong Library")
         {
             Panel_RealBook = GameObject.Find("Canvas"). transform.Find("RealbookPanel");
-            Panel_Lobby =  GameObject.Find("Canvas").transform.Find("LobbyPanel");
+            Panel_Lobby =  GameObject.Find("Canvas").transform.Find("MeetingroomPanel");
             Panel_BestSeller = GameObject.Find("Canvas").transform.Find("BestSeller");
         }
         tr = GetComponent<Transform>();
