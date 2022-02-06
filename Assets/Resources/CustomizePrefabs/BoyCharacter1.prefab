@@ -9150,9 +9150,7 @@ MonoBehaviour:
   translators1: {fileID: 4750295992334944002}
   author1: {fileID: 2440857028624305309}
   publisher1: {fileID: 5966177477954149712}
-  BookPrefab: {fileID: 4995836344860236030, guid: e1833d725252fdb47a7052926e2e68ff, type: 3}
-  spawnPoint: {fileID: 0}
-  content: {fileID: 0}
+  PP: {fileID: 7524020363937657530}
 --- !u!1 &5686093870012039962
 GameObject:
   m_ObjectHideFlags: 0
