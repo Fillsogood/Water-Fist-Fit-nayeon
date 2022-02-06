@@ -55,7 +55,8 @@ public class BookSelect : MonoBehaviour
 
     void Start()
     {
-         BookList = new List<GameObject>();   
+         BookList = new List<GameObject>();
+         PP=GetComponent<Text>();   
     }
     // 책 정보 띄우는 패널
     public void Btn_Book1()
