@@ -54,16 +54,15 @@ public class BookData : MonoBehaviour
             Debug.Log(Count);
             for(int i = 0;i<Count;i++)
             {
-                if(i%2==1)
+                for(int j =0;j<Count;j++)
                 {
-                    bookInfoText.text = bookInfo[i]+",";
-                    Debug.Log(bookInfoText.text);
+                    if(i%2==1&&j%2==0)
+                    {
+                        bookInfoText.text = bookInfo[i]+","+bookInfo[j]+"\n";    
+                    }
+                
                 }
-                if(i%2==0)
-                {
-                     bookInfoText.text = bookInfo[i]+"\n";
-                     Debug.Log(bookInfoText.text);
-                }
+                
             }
             Debug.Log(bookInfoText.text);
             
