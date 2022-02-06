@@ -13,15 +13,15 @@ public class BookData : MonoBehaviour
      private static string _author;
 
      private Text bookInfoText;
-     static int Count;
+    static int Count;
      
     public static string url = "http://localhost:59755/WSUforestService.svc/";
 
     void Awake()
     {
         bookInfoText = GetComponentInChildren<Text>();
-        Unity_BookCheckwishlist();
         Unity_BookwishlistCount();
+        Unity_BookCheckwishlist();
     }
      public void Unity_BookCheckwishlist()
    {
@@ -51,17 +51,18 @@ public class BookData : MonoBehaviour
             
             string[] result2 = result.Split('"');
             string[] bookInfo = result2[1].Split('@');
-
-            
+            Debug.Log(Count);
             for(int i = 0;i<Count;i++)
             {
-                if(i%2==1&&i==0)
+                if(i%2==1)
                 {
                     bookInfoText.text = bookInfo[i]+",";
+                    Debug.Log(bookInfoText.text);
                 }
-                else
+                if(i%2==0)
                 {
                      bookInfoText.text = bookInfo[i]+"\n";
+                     Debug.Log(bookInfoText.text);
                 }
             }
             Debug.Log(bookInfoText.text);
@@ -96,10 +97,9 @@ public class BookData : MonoBehaviour
         {
             using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
                 result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
-            Debug.Log(result);
-            Count = int.Parse(result);
-
-            
+            string[] result2 = result.Split('"');
+            Count = int.Parse(result2[1]);
+            Debug.Log(Count);
         }
         catch(WebException e)
         {
