@@ -56,7 +56,7 @@ public class BookSelect : MonoBehaviour
     {
          BookList = new List<GameObject>();   
     }
-    
+    // 책 정보 띄우는 패널
     public void Btn_Book1()
     {
         Unity_BookSelect("Java의정석");
@@ -67,31 +67,38 @@ public class BookSelect : MonoBehaviour
         Unity_BookSelect("혼자공부하는자바");
         Bookinfo_P.SetActive(true);
     }
-
+    //찜 목록 추가/해제
+    protected bool bb { get; set; }
     public void Btn_AddWishList()
     {
-        if(title1.text == "Java의정석")
+        Button button = GameObject.Find("Btn_wishRemove").GetComponent<Button>();
+         bb = !bb;
+        Text text = button.GetComponentInChildren<Text>();
+        text.text = bb ? "찜 추가" : "찜 해제";
+        if(text.text=="찜 추가")
         {
-            Unity_AddWish("10");
+            if(title1.text == "Java의정석")
+            {
+                Unity_AddWish("10");
+            }
+            else if(title1.text == "혼자공부하는자바")
+            {
+                Unity_AddWish("4");
+            }
         }
-        else if(title1.text == "혼자공부하는자바")
+        if(text.text=="찜 해제")
         {
-            Unity_AddWish("4");
+            if(title1.text == "Java의정석")
+            {
+                Unity_RemoveWish("10");
+            }
+            else if(title1.text == "혼자공부하는자바")
+            {
+                Unity_RemoveWish("4");
+            }
         }
-    }
 
-    public void Btn_RemoveWish()
-    {
-        if(title1.text == "Java의정석")
-        {
-            Unity_RemoveWish("10");
-        }
-        else if(title1.text == "혼자공부하는자바")
-        {
-            Unity_RemoveWish("4");
-        }
     }
-
     //찜 추가
     public void Unity_AddWish(string b_id)
    {
@@ -202,48 +209,7 @@ public class BookSelect : MonoBehaviour
         } 
    } 
 
-   private void boooo()
-   {
-
-        float spawnY = BookList.Count * spaceBetween;
-        Vector3 spawnPosition = new Vector3(0, -spawnY, 0);
-        GameObject Book = Instantiate(BookPrefab, spawnPosition, spawnPoint.rotation);
-
-        Book.transform.SetParent(spawnPoint, false);
-        content.sizeDelta = new Vector2(0, BookList.Count * spaceBetween + 140);
-
-        BookList.Add(Book);
-
-        UpdatePostions();
-   }
-
-   private void Removebook(uint deletedUID)
-    {
-        foreach (GameObject player in BookList)
-        {
-            if (player.name == deletedUID.ToString())
-            {
-                BookList.Remove(player);
-                Destroy(player.gameObject);
-                break;
-            }
-        }
-
-        // update positions of new players
-        UpdatePostions();
-
-        Vector2 oldContent = content.sizeDelta;
-        content.sizeDelta = oldContent + Vector2.down * spaceBetween;
-        content.anchoredPosition = Vector2.zero;
-    }
-
-   private void UpdatePostions()
-    {
-        for (int i = 0; i < BookList.Count; i++)
-        {
-            BookList[i].GetComponent<RectTransform>().anchoredPosition = Vector2.down * spaceBetween * i;
-        }
-    }
+  
     #endregion
 
 }
