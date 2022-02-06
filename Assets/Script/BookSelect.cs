@@ -51,6 +51,7 @@ public class BookSelect : MonoBehaviour
     public static string url = "http://localhost:59755/WSUforestService.svc/";
     //유저 캠 리스트
     private List<GameObject> BookList;
+    public Text PP;
 
     void Start()
     {
@@ -114,6 +115,7 @@ public class BookSelect : MonoBehaviour
             using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
                 result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
             Debug.Log(result);
+            PP.text=result;
 
         }
         catch(WebException e)
@@ -146,6 +148,7 @@ public class BookSelect : MonoBehaviour
             using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
                 result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
             Debug.Log(result);
+            PP.text=result;
 
         }
         catch(WebException e)
