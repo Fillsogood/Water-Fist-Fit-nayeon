@@ -33,6 +33,7 @@ public class CCTRL : MonoBehaviour
 
     private Transform Panel_RealBook;
     private Transform Panel_Lobby;
+    private Transform Panel_BestSeller;
 
      public GameObject literature;
     public GameObject SF;
@@ -57,8 +58,9 @@ public class CCTRL : MonoBehaviour
         chairs = GameObject.FindGameObjectsWithTag("Chair1");
         if(PhotonNetwork.CurrentRoom.Name == "WooSoong Library")
         {
-            Panel_RealBook = GameObject.Find("ComebackLobby").transform.Find("RealbookPanel");
-            Panel_Lobby =  GameObject.Find("ComebackLobby").transform.Find("MeetingroomPanel");
+            Panel_RealBook = GameObject.Find("Canvas"). transform.Find("RealbookPanel");
+            Panel_Lobby =  GameObject.Find("Canvas").transform.Find("LobbyPanel");
+            Panel_BestSeller = GameObject.Find("Canvas").transform.Find("BestSeller");
         }
         tr = GetComponent<Transform>();
         anim = GetComponent<Animator>();
@@ -101,6 +103,11 @@ public class CCTRL : MonoBehaviour
             {
 
                 Panel_Lobby.gameObject.SetActive(true);
+            }
+            else if (Input.GetMouseButtonDown(0) && (GetClickedObject().tag == "Bestseller"))
+            {
+
+                Panel_BestSeller.gameObject.SetActive(true);
             }
         }
 

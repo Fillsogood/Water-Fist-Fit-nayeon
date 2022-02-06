@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class RealbookUI : MonoBehaviour
 {
-    public static string url = "http://localhost:59755/WSUforestService.svc/";
+    private static string url = "http://localhost:59755/WSUforestService.svc/";
          
     //WCF_ID
     private static int bookID;
@@ -34,51 +34,48 @@ public class RealbookUI : MonoBehaviour
     //WCF_Bestseller
     private static int bestSeller;
 
-    //ï¿½Ç¹ï¿½Ã¥ ï¿½Ô·ï¿½ 
+    //½Ç¹°Ã¥ ÀÔ·Â 
     public InputField inputField;
-    //ï¿½Ç¹ï¿½Ã¥ Å¸ï¿½ï¿½
-    string realType = "real";
 
-    //Unity_title
+    //Realbook_title
     public Text t_Title;
-    //Unity_Contents
+    //Realbook_Contents
     public Text t_Contents;
-    //Unity_Author
+    //Realbook_Author
     public Text t_Author;
-    //Unity_Publisher
+    //Realbook_Publisher
     public Text t_Publisher;
-    //Unity_Thumnail
+    //Realbook_Thumnail
     public RawImage ri_Thumnail;
 
-    //EBookï¿½ï¿½Ã¼ ï¿½Ð³ï¿½
-    public GameObject EbookPanel;
-    //ï¿½Ë»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½
+    //EBookÀüÃ¼ ÆÐ³Î
+    public GameObject RealbookPanel;
+    //°Ë»öµµ¼­Á¤º¸ ÆÐ³Î
     public GameObject infoPanel;
-    
 
-    #region ï¿½Ë»ï¿½ ï¿½Ìºï¿½Æ®
+    #region °Ë»ö ÀÌº¥Æ®
     
     public void e_realBookSearch()
     {
-        //ï¿½Î°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å° ï¿½Ô·ï¿½
+        //µÎ°³ÀÇ ¿£ÅÍÅ° ÀÔ·Â
         if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
         {
             b_realBookSearch();
         }
     }
 
-    //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ê±ï¿½È­
+    //µðºñ Á¤º¸¸¦ °¡Á®¿À°í ¿ÀºêÁ§Æ®¿¡ ÃÊ±âÈ­
     public void b_realBookSearch()
     {
-        //infoï¿½Ð³ï¿½ È°ï¿½ï¿½È­
+        //infoÆÐ³Î È°¼ºÈ­
         InfoBtn();
 
         if (StringAvailable(inputField.text))
         {
-            //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
-            GetBookList(inputField.text, realType);
+            //µðºñ Á¤º¸ °¡Á®¿À±â 
+            GetBookList(inputField.text);
 
-            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½, ï¿½Ø½ï¿½Æ® Ã¤ï¿½ï¿½ï¿½
+            //°¡Á®¿Â µðºñ Á¤º¸¸¦ ÅëÇØ¼­, ÅØ½ºÆ® Ã¤¿ì±â
             t_Title.text = title;
             t_Contents.text = contents;
             t_Author.text = author;
@@ -107,10 +104,10 @@ public class RealbookUI : MonoBehaviour
 
     #endregion
 
-    #region ï¿½ï¿½ ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
+    #region ±× ¿Ü ¸Þ¼­µå
 
-    //WCFï¿½ï¿½ ï¿½Ç¹ï¿½Ã¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-    private void GetBookList(string title, string type)
+    //WCF·Î ½Ç¹°Ã¥ µ¥ÀÌÅÍ °¡Á®¿À±â
+    private void GetBookList(string _title)
     {
         string sendurl = url + "Unity_BookSelect";
 
@@ -118,7 +115,7 @@ public class RealbookUI : MonoBehaviour
         httpWebRequest.Method = "POST";
         httpWebRequest.ContentType = "application/json; charset=utf-8";
 
-        string msg = "{\"title\":\"" + title + "\",\"type\":\"" + type + "\"}";
+        string msg = "{\"title\":\"" + _title + "\",\"type\":\"" + "real" + "\"}";
 
         byte[] bytes = Encoding.UTF8.GetBytes(msg);
         httpWebRequest.ContentLength = (long)bytes.Length;
@@ -131,6 +128,8 @@ public class RealbookUI : MonoBehaviour
         {
             using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
                 result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
+
+            Debug.Log(result);
 
             string[] result2 = result.Split('"');
             string[] bookInfo = result2[1].Split('@');
@@ -147,7 +146,9 @@ public class RealbookUI : MonoBehaviour
             status = bookInfo[9];
             bestSeller = int.Parse(bookInfo[10]);
 
-            //thumnail ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            Debug.Log(bestSeller);
+
+            //thumnail ÀçÁ¤¸®
             string[] s_thumnail = thumnail.Split('\\');
             thumnail = s_thumnail[0] + s_thumnail[1] + s_thumnail[2] + s_thumnail[3]
                 + s_thumnail[4] + s_thumnail[5] + s_thumnail[6];
@@ -159,17 +160,17 @@ public class RealbookUI : MonoBehaviour
         }
     }
 
-    //inputFieldï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ È®ï¿½ï¿½
-    bool StringAvailable(string inputField)
+    //inputField°¡ ºñ¾îÀÖ´Â Áö È®ÀÎ
+    bool StringAvailable(string inputField°¡)
     {
-        if (string.IsNullOrWhiteSpace(inputField)) return false;
+        if (string.IsNullOrWhiteSpace(inputField°¡)) return false;
         return true;
     }
 
-    //ï¿½Ð³ï¿½ ï¿½ï¿½/È°ï¿½ï¿½È­ ï¿½Þ¼ï¿½ï¿½ï¿½
+    //ÆÐ³Î ºñ/È°¼ºÈ­ ¸Þ¼­µå
     public void ExitBtn()
     {
-        EbookPanel.SetActive(false);
+        RealbookPanel.SetActive(false);
     }
     public void InfoBtn()
     {

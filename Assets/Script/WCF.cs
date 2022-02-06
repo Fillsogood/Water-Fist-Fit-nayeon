@@ -52,7 +52,7 @@ public class WCF : MonoBehaviourPunCallbacks
     //DB 서비스 url
     public static string url = "http://localhost:59755/WSUforestService.svc/";
     //유저 아이디
-    public static int UserID = 11111111;    //변경 필요
+    public static int UserID = 11112222;    //변경 필요
     //유저 이름
     public static string Name= "전경호";
     //캐릭터
