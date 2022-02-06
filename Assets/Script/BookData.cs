@@ -13,6 +13,7 @@ public class BookData : MonoBehaviour
      private static string _author;
 
      private Text bookInfoText;
+     static int Count;
      
     public static string url = "http://localhost:59755/WSUforestService.svc/";
 
@@ -52,9 +53,17 @@ public class BookData : MonoBehaviour
             string[] bookInfo = result2[1].Split('@');
 
             
-            _title = bookInfo[0] + ", " + bookInfo[1] + "\n";
-            Debug.Log(_title);
-            bookInfoText.text = bookInfo[0] + "\n" + bookInfo[1];
+            for(int i = 0;i<Count;i++)
+            {
+                if(i%2==1&&i==0)
+                {
+                    bookInfoText.text = bookInfo[i]+",";
+                }
+                else
+                {
+                     bookInfoText.text = bookInfo[i]+"\n";
+                }
+            }
             Debug.Log(bookInfoText.text);
             
         }
@@ -88,6 +97,8 @@ public class BookData : MonoBehaviour
             using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
                 result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
             Debug.Log(result);
+            Count = int.Parse(result);
+
             
         }
         catch(WebException e)
