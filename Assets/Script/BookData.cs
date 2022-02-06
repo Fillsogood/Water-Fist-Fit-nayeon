@@ -20,6 +20,7 @@ public class BookData : MonoBehaviour
     {
         bookInfoText = GetComponentInChildren<Text>();
         Unity_BookCheckwishlist();
+        Unity_BookwishlistCount();
     }
      public void Unity_BookCheckwishlist()
    {
@@ -49,11 +50,44 @@ public class BookData : MonoBehaviour
             
             string[] result2 = result.Split('"');
             string[] bookInfo = result2[1].Split('@');
+
             
-            _title = bookInfo[0] + "\n" + bookInfo[1];
+            _title = bookInfo[0] + ", " + bookInfo[1] + "\n";
             Debug.Log(_title);
             bookInfoText.text = bookInfo[0] + "\n" + bookInfo[1];
             Debug.Log(bookInfoText.text);
+            
+        }
+        catch(WebException e)
+        {
+            Debug.Log(e.Message);
+        } 
+   } 
+
+
+    public void Unity_BookwishlistCount()
+   {
+        string sendurl = url + "Unity_BookwishlistCount"; 
+
+        HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
+        httpWebRequest.Method = "POST";
+        httpWebRequest.ContentType = "application/json; charset=utf-8";
+
+        string msg = "{\"W_id\":\"" + WCF.UserID.ToString() + "\"}";
+        Debug.Log(msg);
+
+        byte[] bytes = Encoding.UTF8.GetBytes(msg);
+        httpWebRequest.ContentLength = (long)bytes.Length;
+        using (Stream requestStream = httpWebRequest.GetRequestStream())
+            requestStream.Write(bytes, 0, bytes.Length);
+
+        string result = null;
+        
+        try
+        {
+            using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
+                result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
+            Debug.Log(result);
             
         }
         catch(WebException e)
