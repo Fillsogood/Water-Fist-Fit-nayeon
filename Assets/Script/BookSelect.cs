@@ -8,7 +8,6 @@ using UnityEngine.UI;
 using Photon.Pun;
 public class BookSelect : MonoBehaviour
 {
-    //^A^
     private PhotonView pv;
     //북ID
     private static int bookID;
@@ -40,24 +39,9 @@ public class BookSelect : MonoBehaviour
     public Text translators1;
     public Text author1;
     public Text publisher1;
-
-    public GameObject BookPrefab;
-    //캠 스폰 포인트
-    public Transform spawnPoint;
-    //스크롤 뷰 content
-    public RectTransform content;
-    //비디오 캠 포지션 간격
-    private float spaceBetween = 80f;
     public static string url = "http://localhost:59755/WSUforestService.svc/";
-    //유저 캠 리스트
-    private List<GameObject> BookList;
     public Text PP;
 
-    void Start()
-    {
-         BookList = new List<GameObject>();
-         PP=GetComponent<Text>();   
-    }
     // 책 정보 띄우는 패널
     public void Btn_Book1()
     {
