@@ -16,6 +16,7 @@ TagManager:
   - SF
   - 1F
   - 2F
+  - Bestseller
   layers:
   - Default
   - TransparentFX

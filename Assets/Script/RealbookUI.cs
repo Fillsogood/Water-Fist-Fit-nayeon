@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class RealbookUI : MonoBehaviour
 {
-    public static string url = "http://localhost:59755/WSUforestService.svc/";
+    private static string url = "http://localhost:59755/WSUforestService.svc/";
          
     //WCF_ID
     private static int bookID;
@@ -36,18 +36,16 @@ public class RealbookUI : MonoBehaviour
 
     //실물책 입력 
     public InputField inputField;
-    //실물책 타입
-    string realType = "real";
 
-    //Unity_title
+    //Realbook_title
     public Text t_Title;
-    //Unity_Contents
+    //Realbook_Contents
     public Text t_Contents;
-    //Unity_Author
+    //Realbook_Author
     public Text t_Author;
-    //Unity_Publisher
+    //Realbook_Publisher
     public Text t_Publisher;
-    //Unity_Thumnail
+    //Realbook_Thumnail
     public RawImage ri_Thumnail;
 
     //EBook전체 패널
@@ -75,7 +73,7 @@ public class RealbookUI : MonoBehaviour
         if (StringAvailable(inputField.text))
         {
             //디비 정보 가져오기 
-            GetBookList(inputField.text, realType);
+            GetBookList(inputField.text);
 
             //가져온 디비 정보를 통해서, 텍스트 채우기
             t_Title.text = title;
@@ -109,7 +107,7 @@ public class RealbookUI : MonoBehaviour
     #region 그 외 메서드
 
     //WCF로 실물책 데이터 가져오기
-    private void GetBookList(string _title, string _type)
+    private void GetBookList(string _title)
     {
         string sendurl = url + "Unity_BookSelect";
 
@@ -117,7 +115,7 @@ public class RealbookUI : MonoBehaviour
         httpWebRequest.Method = "POST";
         httpWebRequest.ContentType = "application/json; charset=utf-8";
 
-        string msg = "{\"title\":\"" + _title + "\",\"type\":\"" + _type + "\"}";
+        string msg = "{\"title\":\"" + _title + "\",\"type\":\"" + "real" + "\"}";
 
         byte[] bytes = Encoding.UTF8.GetBytes(msg);
         httpWebRequest.ContentLength = (long)bytes.Length;
@@ -130,6 +128,8 @@ public class RealbookUI : MonoBehaviour
         {
             using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
                 result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
+
+            Debug.Log(result);
 
             string[] result2 = result.Split('"');
             string[] bookInfo = result2[1].Split('@');
@@ -145,6 +145,8 @@ public class RealbookUI : MonoBehaviour
             thumnail = bookInfo[8];
             status = bookInfo[9];
             bestSeller = int.Parse(bookInfo[10]);
+
+            Debug.Log(bestSeller);
 
             //thumnail 재정리
             string[] s_thumnail = thumnail.Split('\\');
