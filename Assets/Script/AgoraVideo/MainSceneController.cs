@@ -154,6 +154,34 @@ public class MainSceneController : MonoBehaviour
     #endregion 
   
     #region 화면공유&중단
+    public void Btn_Share3DVideo()
+    {
+        // Attach the SDK Script VideoSurface for video rendering
+        GameObject quad = GameObject.Find("Quad");
+        if (ReferenceEquals(quad, null))
+        {
+            Debug.Log("failed to find Quad");
+            return;
+        }
+        else
+        {
+            quad.AddComponent<VideoSurface>();
+        }
+    }
+    public void Btn_StopShare3DVideo()
+    {
+        // Attach the SDK Script VideoSurface for video rendering
+        GameObject quad = GameObject.Find("Quad");
+        if (ReferenceEquals(quad, null))
+        {
+            Debug.Log("failed to find Quad");
+            return;
+        }
+        else
+        {
+            Destroy(quad.GetComponent<VideoSurface>());
+        }
+    }
     //화면공유
     public void ShareDisplayScreen()
     {
