@@ -59,7 +59,6 @@ public class VideoTo3DController : MonoBehaviour
 
         // set callbacks (optional)
         mRtcEngine.OnJoinChannelSuccess = OnJoinChannelSuccess;
-        mRtcEngine.OnUserJoined = OnUserJoined;
         mRtcEngine.OnUserOffline = OnUserOffline;
         
 
@@ -122,13 +121,6 @@ public class VideoTo3DController : MonoBehaviour
         CreateUserVideoSurface(uid, true);
     }
 
-    // 나를 기준으로 유저가 들어온 후에 호출되는 콜백
-    protected virtual void OnUserJoined(uint uid, int elapsed)  //elapsed : 지연시간 
-    {
-        Debug.Log("onUserJoined: uid = " + uid + " elapsed = " + elapsed);  
-        CreateUserVideoSurface(uid, false);    
-    }
-
     // 사용자가 나갈때 콜백되는 함수
     protected virtual void OnUserOffline(uint uid, USER_OFFLINE_REASON reason)
     {    
@@ -161,11 +153,6 @@ public class VideoTo3DController : MonoBehaviour
         {
             Debug.LogError("CreateUserVideoSurface() - VideoSurface component is null on newly joined user");
             return;
-        }
-
-        if (isLocalUser == false)
-        {
-            newVideoSurface.SetForUser(uid);
         }
         newVideoSurface.SetGameFps(30);
     }
@@ -206,9 +193,12 @@ public class VideoTo3DController : MonoBehaviour
         mRtcEngine = IRtcEngine.GetEngine(AppID);   //아고라 엔진 불러오기
         AgoraAtivation();                           //아고라 엔진 활성화
     }
+
     public void Btn_StopShare3DVideo()
     {
         Leave();
-        UnloadEngine();  
+        UnloadEngine();
+
+
     }
 }
