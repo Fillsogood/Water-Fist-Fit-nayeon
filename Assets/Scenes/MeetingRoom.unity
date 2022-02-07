@@ -2950,8 +2950,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 701397845}
-        m_TargetAssemblyTypeName: MainSceneController, Assembly-CSharp
+      - m_Target: {fileID: 701397847}
+        m_TargetAssemblyTypeName: VideoTo3DController, Assembly-CSharp
         m_MethodName: Btn_StopShare3DVideo
         m_Mode: 1
         m_Arguments:
@@ -4959,6 +4959,7 @@ GameObject:
   m_Component:
   - component: {fileID: 701397846}
   - component: {fileID: 701397845}
+  - component: {fileID: 701397847}
   m_Layer: 0
   m_Name: WebCamController
   m_TagString: Untagged
@@ -4996,6 +4997,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &701397847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701397844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f48e249745216047a787d2e615b1e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AppID: 5dfc9ca7a09c4dd79f8c8e12db6ac183
 --- !u!1001 &701913319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9165,8 +9179,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 701397845}
-        m_TargetAssemblyTypeName: MainSceneController, Assembly-CSharp
+      - m_Target: {fileID: 701397847}
+        m_TargetAssemblyTypeName: VideoTo3DController, Assembly-CSharp
         m_MethodName: Btn_Share3DVideo
         m_Mode: 1
         m_Arguments:
