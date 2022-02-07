@@ -33,6 +33,7 @@ public class MainSceneController : MonoBehaviour
     private float spaceBetweenUserVideos = 300f;
     //유저 캠 리스트
     private List<GameObject> playerVideoList;
+    public GameObject P_Menu;
 
     void Start()
     {
@@ -47,7 +48,23 @@ public class MainSceneController : MonoBehaviour
         mRtcEngine = IRtcEngine.GetEngine(AppID);   //아고라 엔진 불러오기
         AgoraAtivation();                           //아고라 엔진 활성화
     }
-    
+    protected bool Menu { get; set; }
+    public void Btn_MenuOn()
+    {
+        Button button = GameObject.Find("Btn_Menu").GetComponent<Button>();
+        Menu = !Menu;
+        Text text = button.GetComponentInChildren<Text>();
+        text.text = Menu ? "메뉴" : "메뉴 닫기";
+        if(text.text=="메뉴")
+        {
+            P_Menu.SetActive(false);
+        }
+         if(text.text=="메뉴 닫기")
+        {
+            P_Menu.SetActive(true);
+        }      
+    }
+
     #region 아고라 엔진 및 채널 입장
     //아고라 엔진 활성화
     private void AgoraAtivation()
