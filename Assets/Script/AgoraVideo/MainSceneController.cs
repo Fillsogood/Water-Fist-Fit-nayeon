@@ -241,7 +241,7 @@ public class MainSceneController : MonoBehaviour
     #endregion
     
     #region 콜백
-    // implement engine callbacks
+    // 채널 입장 성공시 호출되는 콜백
     protected virtual void OnJoinChannelSuccess(string channelName, uint uid, int elapsed)
     {
         Debug.Log("JoinChannelSuccessHandler: uid = " + uid);
@@ -256,7 +256,7 @@ public class MainSceneController : MonoBehaviour
         CreateUserVideoSurface(uid, false);    
     }
 
-    // 사용자가 나갈때 콜백되는 함수
+    // 사용자가 나갈때 콜백
     protected virtual void OnUserOffline(uint uid, USER_OFFLINE_REASON reason)
     {    
        foreach (GameObject player in playerVideoList)
