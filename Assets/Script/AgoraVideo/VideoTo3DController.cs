@@ -20,6 +20,14 @@ public class VideoTo3DController : MonoBehaviour
     //나의 아이디
     private uint myuid=0;
 
+    //화면공유 오브젝트
+    private GameObject quad;
+
+    private void Start()
+    {
+        quad = GameObject.Find("Quad");
+    }
+
     #region 아고라 엔진 및 채널 입장
     //아고라 엔진 활성화
     private void AgoraAtivation()
@@ -138,9 +146,8 @@ public class VideoTo3DController : MonoBehaviour
     //캠 만들기
     private void CreateUserVideoSurface(uint uid,bool isLocalUser)
     {
-
         // Attach the SDK Script VideoSurface for video rendering
-        GameObject quad = GameObject.Find("Quad");
+        
         if (ReferenceEquals(quad, null))
         {
             Debug.Log("failed to find Quad");
@@ -176,7 +183,7 @@ public class VideoTo3DController : MonoBehaviour
         }
         else
         {  
-                Destroy(quad.GetComponent<VideoSurface>());  
+            Destroy(quad.GetComponent<VideoSurface>());  
         }
 
     }
@@ -184,6 +191,9 @@ public class VideoTo3DController : MonoBehaviour
 
     public void Btn_Share3DVideo()
     {
+
+        quad.SetActive(true);
+
         CheckAppId();                               //AppID 확인
 
         if (mRtcEngine != null)                     //엔진이 있으면 삭제
@@ -199,6 +209,8 @@ public class VideoTo3DController : MonoBehaviour
 
     public void Btn_StopShare3DVideo()
     {
+        quad.SetActive(false);
+
         Leave();
         UnloadEngine();
         RemoveUserVideoSurface(myuid);
