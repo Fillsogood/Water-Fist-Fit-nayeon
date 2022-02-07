@@ -43,11 +43,11 @@ public class VideoTo3DController : MonoBehaviour
         // 채널 가입
         Join(channelName);
         
-         mRtcEngine.EnableVideo();
-         mRtcEngine.EnableVideoObserver();
+        mRtcEngine.EnableVideo();
+        mRtcEngine.EnableVideoObserver();
     }
 
-        //채널 조인
+    //채널 조인
     public void Join(string channel)
     {
         Debug.Log("calling join (channel = " + channel + ")");
@@ -60,14 +60,15 @@ public class VideoTo3DController : MonoBehaviour
         // set callbacks (optional)
         mRtcEngine.OnJoinChannelSuccess = OnJoinChannelSuccess;
         mRtcEngine.OnUserOffline = OnUserOffline;
-        
 
-            // join channel
-            mRtcEngine.JoinChannel(channel, null, 0);
+        // join channel
+        mRtcEngine.JoinChannel(channel, null, 0);
 
-            Debug.Log("initializeEngine done");
-        }
-        //AppId체크 함수
+        Debug.Log("initializeEngine done");
+
+    }
+    
+    //AppId체크 함수
     private void CheckAppId()
     {
         //조건이 false면 메시지를 호출한다.
@@ -80,10 +81,9 @@ public class VideoTo3DController : MonoBehaviour
     }
     #endregion
 
+    #region 아고라 엔진 및 채널 떠나기
 
-     #region 아고라 엔진 및 채널 떠나기
-
-    //RTC 채널 떠나기
+    //채널 떠나기
     private void Leave()
     {
         Debug.Log("calling leave");
@@ -128,8 +128,7 @@ public class VideoTo3DController : MonoBehaviour
     }
     #endregion
 
-
-     #region 콜백에서 사용하는 메서드
+    #region 콜백에서 사용하는 메서드
     //캠 만들기
     private void CreateUserVideoSurface(uint uid, bool isLocalUser)
     {
@@ -159,7 +158,6 @@ public class VideoTo3DController : MonoBehaviour
 
     private void RemoveUserVideoSurface(uint deletedUID)
     {
-
         // Attach the SDK Script VideoSurface for video rendering
         GameObject quad = GameObject.Find("Quad");
         if (ReferenceEquals(quad, null))
@@ -178,20 +176,22 @@ public class VideoTo3DController : MonoBehaviour
     }
     #endregion
 
-     public void Btn_Share3DVideo()
+    public void Btn_Share3DVideo()
     {
         Leave();
-        UnloadEngine();  
+        //UnloadEngine();  
 
         CheckAppId();                               //AppID 확인
 
         if (mRtcEngine != null)                     //엔진이 있으면 삭제
         {
             IRtcEngine.Destroy();
-        } 
+        }
 
-        mRtcEngine = IRtcEngine.GetEngine(AppID);   //아고라 엔진 불러오기
-        AgoraAtivation();                           //아고라 엔진 활성화
+        //mRtcEngine = IRtcEngine.GetEngine(AppID);   //아고라 엔진 불러오기
+        //AgoraAtivation();                           //아고라 엔진 활성화
+
+        Join("please");
     }
 
     public void Btn_StopShare3DVideo()
