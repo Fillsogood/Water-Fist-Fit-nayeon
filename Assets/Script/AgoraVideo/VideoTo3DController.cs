@@ -118,7 +118,13 @@ public class VideoTo3DController : MonoBehaviour
     {
         Debug.Log("JoinChannelSuccessHandler: uid = " + uid);
         myuid = uid;  
-        CreateUserVideoSurface(uid, true);
+        CreateUserVideoSurface(uid,true);
+    }
+    // 나를 기준으로 유저가 들어온 후에 호출되는 콜백
+    protected virtual void OnUserJoined(uint uid, int elapsed)  //elapsed : 지연시간 
+    {
+        Debug.Log("onUserJoined: uid = " + uid + " elapsed = " + elapsed);  
+        CreateUserVideoSurface(uid, false);    
     }
 
     // 사용자가 나갈때 콜백되는 함수
@@ -130,7 +136,7 @@ public class VideoTo3DController : MonoBehaviour
 
     #region 콜백에서 사용하는 메서드
     //캠 만들기
-    private void CreateUserVideoSurface(uint uid, bool isLocalUser)
+    private void CreateUserVideoSurface(uint uid,bool isLocalUser)
     {
 
         // Attach the SDK Script VideoSurface for video rendering
@@ -145,13 +151,16 @@ public class VideoTo3DController : MonoBehaviour
             quad.AddComponent<VideoSurface>();
         }
 
-        quad.name = uid.ToString();
         // Update our VideoSurface to reflect new users
         VideoSurface newVideoSurface = quad.GetComponent<VideoSurface>();
         if(newVideoSurface == null)
         {
             Debug.LogError("CreateUserVideoSurface() - VideoSurface component is null on newly joined user");
             return;
+        }
+         if (isLocalUser == false)
+        {
+            newVideoSurface.SetForUser(uid);
         }
         newVideoSurface.SetGameFps(30);
     }
@@ -166,11 +175,8 @@ public class VideoTo3DController : MonoBehaviour
             return;
         }
         else
-        {
-            if (quad.name == deletedUID.ToString())
-            {
-                Destroy(quad.GetComponent<VideoSurface>());
-            }
+        {  
+                Destroy(quad.GetComponent<VideoSurface>());  
         }
 
     }
@@ -178,9 +184,6 @@ public class VideoTo3DController : MonoBehaviour
 
     public void Btn_Share3DVideo()
     {
-        Leave();
-        //UnloadEngine();  
-
         CheckAppId();                               //AppID 확인
 
         if (mRtcEngine != null)                     //엔진이 있으면 삭제
@@ -188,8 +191,8 @@ public class VideoTo3DController : MonoBehaviour
             IRtcEngine.Destroy();
         }
 
-        //mRtcEngine = IRtcEngine.GetEngine(AppID);   //아고라 엔진 불러오기
-        //AgoraAtivation();                           //아고라 엔진 활성화
+        mRtcEngine = IRtcEngine.GetEngine(AppID);   //아고라 엔진 불러오기
+        AgoraAtivation();                           //아고라 엔진 활성화
 
         Join("please");
     }
@@ -198,7 +201,6 @@ public class VideoTo3DController : MonoBehaviour
     {
         Leave();
         UnloadEngine();
-
-
+        RemoveUserVideoSurface(myuid);
     }
 }

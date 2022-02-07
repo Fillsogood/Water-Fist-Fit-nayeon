@@ -121,7 +121,8 @@ public class MainSceneController : MonoBehaviour
     public void OnLeaveButtonClicked()  
     {
         Leave();
-        UnloadEngine();  
+        UnloadEngine();
+        RemoveUserVideoSurface(myuid);  
     }
 
     //RTC 채널 떠나기
@@ -348,6 +349,22 @@ public class MainSceneController : MonoBehaviour
         {
             playerVideoList[i].GetComponent<RectTransform>().anchoredPosition = Vector2.down * spaceBetweenUserVideos * i;
         }
+    }
+
+    public void Btn_StopShare3DVideo()
+    {
+        
+
+        CheckAppId();                               //AppID 확인
+        playerVideoList = new List<GameObject>();   //유저 캠 리스트 초기화
+
+        if (mRtcEngine != null)                     //엔진이 있으면 삭제
+        {
+            IRtcEngine.Destroy();
+        } 
+
+        mRtcEngine = IRtcEngine.GetEngine(AppID);   //아고라 엔진 불러오기
+        AgoraAtivation();  
     }
     #endregion
 
