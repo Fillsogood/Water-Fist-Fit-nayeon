@@ -7116,7 +7116,6 @@ MonoBehaviour:
   canvas_off: {fileID: 2779928610146790618}
   Notice_Meet: {fileID: 6352032395205947753}
   Notice_Lib: {fileID: 5093429713284702232}
-  wish_list: {fileID: 0}
   inputField: {fileID: 8591470787779085324}
   outputText: {fileID: 8698517744069012994}
   btnOn: {fileID: 3998222917807301377}
