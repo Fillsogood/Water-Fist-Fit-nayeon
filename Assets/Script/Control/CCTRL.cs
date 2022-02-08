@@ -82,18 +82,6 @@ public class CCTRL : MonoBehaviour
 
     void Update()
     {
-        
-        //  if (anim.GetCurrentAnimatorStateInfo(0).IsName("TTB_Cry"))
-        //     {
-        //         Debug.Log("애니메이션");
-        //         //rg_Player.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
-        //     }
-
-        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
-        {
-            cctrl.enabled = true;
-        }
-
         if (pv.IsMine)
         {
             if (check_Sit == false)
