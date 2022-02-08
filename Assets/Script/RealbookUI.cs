@@ -183,6 +183,12 @@ public class RealbookUI : MonoBehaviour
         return true;
     }
 
+
+
+    #endregion
+
+
+    #region another method
     //panel Setactive
     public void ExitBtn()
     {
@@ -197,5 +203,10 @@ public class RealbookUI : MonoBehaviour
         infoPanel.SetActive(false);
     }
 
+    //OpenURL
+    public void OpenURL()
+    {
+        Application.OpenURL("https://wsuforestupdate.netlify.app/");
+    }
     #endregion
 }

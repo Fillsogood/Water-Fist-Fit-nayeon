@@ -4372,7 +4372,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5654230960828575607}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7784443646909847528}
+        m_TargetAssemblyTypeName: BookSelect, Assembly-CSharp
+        m_MethodName: OpenURL
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2751749855869225530
 GameObject:
   m_ObjectHideFlags: 0

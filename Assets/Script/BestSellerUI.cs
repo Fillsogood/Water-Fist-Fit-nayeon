@@ -148,9 +148,15 @@ public class BestSellerUI : MonoBehaviour
         }
     }
 
-    //패널 비/활성화 메서드
+    //패널 비/활성화
     public void ExitBtn()
     {
         BestsellerPanel.SetActive(false);
+    }
+
+    //OpenURL
+    public void OpenURL()
+    {
+        Application.OpenURL("https://wsuforestupdate.netlify.app/");
     }
 }

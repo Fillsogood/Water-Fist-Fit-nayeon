@@ -79,7 +79,7 @@ public class BookSelect : MonoBehaviour
     }
     //찜 추가
     public void Unity_AddWish(string b_id)
-   {
+    {
         string sendurl = url + "Unity_AddWish"; 
 
         HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
@@ -107,12 +107,12 @@ public class BookSelect : MonoBehaviour
         {
             Debug.Log(e.Message);
         } 
-   } 
+    } 
 
 
     //찜 해제
     public void Unity_RemoveWish(string b_id)
-   {
+    {
         string sendurl = url + "Unity_RemoveWish"; 
 
         HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
@@ -140,7 +140,7 @@ public class BookSelect : MonoBehaviour
         {
             Debug.Log(e.Message);
         } 
-   } 
+    } 
 
     #region 찜 목록
    public void Unity_BookSelect(string title)
@@ -187,9 +187,15 @@ public class BookSelect : MonoBehaviour
         {
             Debug.Log(e.Message);
         } 
-   } 
+   }
 
-  
+
     #endregion
+
+    //OpenURL
+    public void OpenURL()
+    {
+        Application.OpenURL("https://wsuforestupdate.netlify.app/");
+    }
 
 }
