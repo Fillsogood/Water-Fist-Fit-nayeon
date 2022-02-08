@@ -5081,10 +5081,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f48e249745216047a787d2e615b1e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mChannel: 
-  AppID: 5dfc9ca7a09c4dd79f8c8e12db6ac183
-  _initialized: 0
-  myuid: 0
 --- !u!1001 &701913319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9982,7 +9978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1628404975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13091,7 +13087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2079078646
 RectTransform:
   m_ObjectHideFlags: 0
