@@ -4,7 +4,11 @@ using UnityEngine;
 public class EmotionCtrl : MonoBehaviour
 {
     private GameObject Player;
-    private Animator anim;
+    public static Rigidbody rg_Player;
+    private static Animator anim;
+    private new Animation animation;
+
+    private CCTRL cctrl;
 
     public GameObject EmojiPanel;
     public GameObject EmojiBtn;
@@ -17,7 +21,10 @@ public class EmotionCtrl : MonoBehaviour
     void Start()
     {
         anim = Player.GetComponent<Animator>();
+        rg_Player = Player.GetComponent<Rigidbody>();
+        cctrl = Player.GetComponent<CCTRL>();
     }
+
     //이모션 버튼 활성화 메서드
     public void Emoji()
     {
@@ -29,11 +36,22 @@ public class EmotionCtrl : MonoBehaviour
     {
         anim.SetBool("Idle", false);
         anim.SetBool("isCry", true);
+        StartCoroutine(CheckAnimationState());
         EmojiPanel.SetActive(false);
         EmojiBtn.SetActive(true);
         Invoke("Idle", 6.4f);
-        
     }
+
+    IEnumerator CheckAnimationState()
+{
+
+	while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.9967642) 
+	{ 
+		cctrl.enabled = false;
+		yield return null;
+	}
+
+}
 
     public void Clap()
     {

@@ -10,12 +10,14 @@ public class CCTRL : MonoBehaviour
     public GameObject MainCamera;
     public GameObject player;
 
+    new Animation animation;
+
     //player sit
     private bool check_Sit = false;
     //마우스 체크
     private bool check_Mouse = true;
     //player rigidbody
-    Rigidbody rg_Player;
+    public static Rigidbody rg_Player;
     //앉기 이전 값
     Vector3 priviousPosition;
 
@@ -46,15 +48,20 @@ public class CCTRL : MonoBehaviour
     public GameObject Floor1Panel;
     public GameObject Floor2Panel;
 
+    private CCTRL cctrl;
+
 
     void Awake()
     {
         pv = GetComponent<PhotonView>();
         rg_Player = player.GetComponent<Rigidbody>();
+        animation = player.GetComponent<Animation>();
     }
 
     void Start()
     {
+        cctrl = player.GetComponent<CCTRL>();
+
         chairs = GameObject.FindGameObjectsWithTag("Chair1");
         if(PhotonNetwork.CurrentRoom.Name == "WooSoong Library")
         {
@@ -72,8 +79,21 @@ public class CCTRL : MonoBehaviour
         }
     }
 
+
     void Update()
     {
+        
+        //  if (anim.GetCurrentAnimatorStateInfo(0).IsName("TTB_Cry"))
+        //     {
+        //         Debug.Log("애니메이션");
+        //         //rg_Player.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY;
+        //     }
+
+        if(anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            cctrl.enabled = true;
+        }
+
         if (pv.IsMine)
         {
             if (check_Sit == false)

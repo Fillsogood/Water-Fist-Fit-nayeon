@@ -48,6 +48,7 @@ public class MainSceneController : MonoBehaviour
         mRtcEngine = IRtcEngine.GetEngine(AppID);   //아고라 엔진 불러오기
         AgoraAtivation();                           //아고라 엔진 활성화
     }
+    
     protected bool Menu { get; set; }
     public void Btn_MenuOn()
     {
