@@ -83,7 +83,7 @@ public class CCTRL : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) && (GetClickedObject().tag == "Chair1") && check_Mouse == true)
             {
-                priviousPosition = player.transform.position ;
+                priviousPosition = player.transform.position;
                 SitDown();
                 anim.SetBool("isSit", true);
                 rg_Player.constraints = RigidbodyConstraints.FreezeAll;
@@ -179,9 +179,9 @@ public class CCTRL : MonoBehaviour
         check_Mouse = true;
         if (pv.IsMine && check_Sit == false)
         {
-            player.transform.position = new Vector3(1.0f,
-                                                    -1.4f,
-                                                    -1.0f);
+            player.transform.position = new Vector3(priviousPosition.x,
+                                                    priviousPosition.y,
+                                                    priviousPosition.z);
 
             chair.SetActive(true);
         }
