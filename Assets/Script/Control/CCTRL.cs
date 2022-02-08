@@ -1,5 +1,6 @@
 using UnityEngine;
 using Photon.Pun;
+using System.Collections;
 
 //캐릭터 컨트롤
 public class CCTRL : MonoBehaviour
@@ -9,8 +10,6 @@ public class CCTRL : MonoBehaviour
     public static CCTRL instance;
     public GameObject MainCamera;
     public GameObject player;
-
-    new Animation animation;
 
     //player sit
     private bool check_Sit = false;
@@ -48,19 +47,19 @@ public class CCTRL : MonoBehaviour
     public GameObject Floor1Panel;
     public GameObject Floor2Panel;
 
-    private CCTRL cctrl;
+
+    private EmotionCtrl emocctrl;
 
 
     void Awake()
     {
         pv = GetComponent<PhotonView>();
         rg_Player = player.GetComponent<Rigidbody>();
-        animation = player.GetComponent<Animation>();
     }
 
     void Start()
     {
-        cctrl = player.GetComponent<CCTRL>();
+        emocctrl = player.GetComponent<EmotionCtrl>();
 
         chairs = GameObject.FindGameObjectsWithTag("Chair1");
         if(PhotonNetwork.CurrentRoom.Name == "WooSoong Library")
@@ -86,14 +85,19 @@ public class CCTRL : MonoBehaviour
         {
             if (check_Sit == false)
             {
+                anim.SetBool("Idle", true);
+                //StartCoroutine(CheckIdleState());
                 CharacterMove();
+                
             }
 
             if (Input.GetMouseButtonDown(0) && (GetClickedObject().tag == "Chair1") && check_Mouse == true)
             {
                 priviousPosition = player.transform.position ;
                 SitDown();
+                anim.SetBool("Idle", false);
                 anim.SetBool("isSit", true);
+                StartCoroutine(CheckAnimationState());
                 rg_Player.constraints = RigidbodyConstraints.FreezeAll;
 
             }
@@ -121,6 +125,33 @@ public class CCTRL : MonoBehaviour
 
         else if(!pv.IsMine)
             return;
+    }
+
+    //의자에 앉아있을때 감정표현(이모티콘) 막기
+    IEnumerator CheckAnimationState()
+    {
+
+	    while (anim.GetCurrentAnimatorStateInfo(0).IsName("isSit")) 
+	    { 
+            anim.SetBool("isCry", false);
+            anim.SetBool("isClap", false);
+            anim.SetBool("isLaugh", false);
+            anim.SetBool("isDizzy", false);
+		    yield return null;
+	    }
+
+    }
+
+    IEnumerator CheckIdleState()
+    {
+
+	    while (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle")) 
+	    { 
+            if(emocctrl.enabled == false)
+                
+		    yield return null;
+	    }
+        emocctrl.enabled = true;
     }
 
     //캐릭터 이동

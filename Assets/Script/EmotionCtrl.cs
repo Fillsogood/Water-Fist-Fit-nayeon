@@ -72,7 +72,7 @@ public class EmotionCtrl : MonoBehaviour
         Invoke("Idle", 2.4f);
     }
 
-    
+    //감정표현중일때 움직이지 못하게
     IEnumerator CheckAnimationState()
     {
 
