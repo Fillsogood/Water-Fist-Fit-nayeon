@@ -139,7 +139,6 @@ public class MainSceneController : MonoBehaviour
     {
         Leave();
         UnloadEngine();
-        RemoveUserVideoSurface(myuid);  
     }
 
     //RTC 채널 떠나기
@@ -175,6 +174,8 @@ public class MainSceneController : MonoBehaviour
     //화면공유
     public void ShareDisplayScreen()
     {
+        GameObject quad = GameObject.Find("Quad");
+        quad.AddComponent<VideoSurface>();
         ScreenCaptureParameters sparams = new ScreenCaptureParameters
         {
             captureMouseCursor = true, //마우스커서까지 화면공유에 포함시키기
@@ -182,13 +183,30 @@ public class MainSceneController : MonoBehaviour
         };
 
         ShareWinDisplayScreen(CurrentDisplay); //송출
-        CurrentDisplay = (CurrentDisplay + 1) % WinDisplays.Count;
+        CurrentDisplay = (CurrentDisplay + 1) % WinDisplays.Count; 
     }
 
     //화면공유 중단
     public void UnShareDisplayScreen()
     {
-        mRtcEngine.StopScreenCapture(); //스크린캡처 중단
+            mRtcEngine.StopScreenCapture(); //스크린캡처 중단
+            GameObject quad = GameObject.Find("Quad");
+            Destroy(quad.GetComponent<VideoSurface>());
+            RemoveUserVideoSurface(myuid);
+            CheckAppId();                               //AppID 확인
+            playerVideoList = new List<GameObject>();   //유저 캠 리스트 초기화
+
+            if (mRtcEngine != null)                     //엔진이 있으면 삭제
+            {
+                IRtcEngine.Destroy();
+            } 
+
+            mRtcEngine = IRtcEngine.GetEngine(AppID);   //아고라 엔진 불러오기
+            
+            AgoraAtivation();  
+
+            
+        
     }
 
     //해상도 맞추어주면서 송출
@@ -366,22 +384,6 @@ public class MainSceneController : MonoBehaviour
         {
             playerVideoList[i].GetComponent<RectTransform>().anchoredPosition = Vector2.down * spaceBetweenUserVideos * i;
         }
-    }
-
-    public void Btn_StopShare3DVideo()
-    {
-        
-
-        CheckAppId();                               //AppID 확인
-        playerVideoList = new List<GameObject>();   //유저 캠 리스트 초기화
-
-        if (mRtcEngine != null)                     //엔진이 있으면 삭제
-        {
-            IRtcEngine.Destroy();
-        } 
-
-        mRtcEngine = IRtcEngine.GetEngine(AppID);   //아고라 엔진 불러오기
-        AgoraAtivation();  
     }
     #endregion
 

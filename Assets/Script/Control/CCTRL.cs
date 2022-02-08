@@ -179,9 +179,9 @@ public class CCTRL : MonoBehaviour
         check_Mouse = true;
         if (pv.IsMine && check_Sit == false)
         {
-            player.transform.position = new Vector3(priviousPosition.x,
-                                                    priviousPosition.y,
-                                                    priviousPosition.z);
+            player.transform.position = new Vector3(1.0f,
+                                                    -1.4f,
+                                                    -1.0f);
 
             chair.SetActive(true);
         }
