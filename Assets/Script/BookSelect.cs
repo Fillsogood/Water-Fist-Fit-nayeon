@@ -53,6 +53,21 @@ public class BookSelect : MonoBehaviour
         Unity_BookSelect("혼자공부하는자바");
         Bookinfo_P.SetActive(true);
     }
+    public void Btn_Book3()
+    {
+        Unity_BookSelect("윤성우열혈C++ 프로그래밍");
+        Bookinfo_P.SetActive(true);
+    }
+    public void Btn_Book4()
+    {
+        Unity_BookSelect("조엘온소프트웨어");
+        Bookinfo_P.SetActive(true);
+    }
+    public void Btn_Book5()
+    {
+        Unity_BookSelect("Do it! 점프투파이썬");
+        Bookinfo_P.SetActive(true);
+    }
     //찜 목록 추가
     public void Btn_AddWishList()
     {
@@ -63,6 +78,18 @@ public class BookSelect : MonoBehaviour
         else if(title1.text == "혼자공부하는자바")
         {
             Unity_AddWish("4");
+        }
+        else if(title1.text == "윤성우열혈C++ 프로그래밍")
+        {
+            Unity_AddWish("2");
+        }
+        else if(title1.text == "조엘온소프트웨어")
+        {
+            Unity_AddWish("5");
+        }
+        else if(title1.text == "Do it! 점프투파이썬")
+        {
+            Unity_AddWish("7");
         }
     }
     //찜 목록 해제
@@ -75,6 +102,18 @@ public class BookSelect : MonoBehaviour
         else if(title1.text == "혼자공부하는자바")
         {
             Unity_RemoveWish("4");
+        }
+        else if(title1.text == "윤성우열혈C++ 프로그래밍")
+        {
+            Unity_RemoveWish("2");
+        }
+        else if(title1.text == "조엘온소프트웨어")
+        {
+            Unity_RemoveWish("5");
+        }
+        else if(title1.text == "Do it! 점프투파이썬")
+        {
+            Unity_RemoveWish("7");
         }
     }
     //찜 추가
