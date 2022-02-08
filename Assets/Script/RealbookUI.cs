@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -34,7 +35,7 @@ public class RealbookUI : MonoBehaviour
     //WCF_Bestseller
     private static int bestSeller;
 
-    //�ǹ�å �Է� 
+    //input Title
     public InputField inputField;
 
     //Realbook_title
@@ -48,40 +49,52 @@ public class RealbookUI : MonoBehaviour
     //Realbook_Thumnail
     public RawImage ri_Thumnail;
 
-    //EBook��ü �г�
+    //RealbookPanel
     public GameObject RealbookPanel;
-    //�˻��������� �г�
+    //infoPanel
     public GameObject infoPanel;
 
-    #region �˻� �̺�Ʈ
+    //p_exception
+    public GameObject p_exception;
+
+    #region Search Event
     
     public void e_realBookSearch()
     {
-        //�ΰ��� ����Ű �Է�
+        //enter key
         if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
         {
             b_realBookSearch();
         }
     }
 
-    //��� ������ �������� ������Ʈ�� �ʱ�ȭ
+    private static bool differentWord = true;
     public void b_realBookSearch()
     {
-        //info�г� Ȱ��ȭ
-        InfoBtn();
+        if (differentWord)
+        {
+            InfoExit();
+            p_exception.SetActive(true);
+        }
 
         if (StringAvailable(inputField.text))
         {
-            //��� ���� �������� 
+            //bring DB 
             GetBookList(inputField.text);
 
-            //������ ��� ������ ���ؼ�, �ؽ�Ʈ ä���
+            //initialization DB
             t_Title.text = title;
             t_Contents.text = contents;
             t_Author.text = author;
             t_Publisher.text = publisher;
-
             StartCoroutine(GetTexture(ri_Thumnail));
+            
+            if (!differentWord)
+            {
+                p_exception.SetActive(false);
+                InfoBtn();
+                differentWord = true;
+            }
         }
 
         this.inputField.text = "";
@@ -104,9 +117,9 @@ public class RealbookUI : MonoBehaviour
 
     #endregion
 
-    #region �� �� �޼���
+    #region bring DB 
 
-    //WCF�� �ǹ�å ������ ��������
+    //WCF Bring DB 
     private void GetBookList(string _title)
     {
         string sendurl = url + "Unity_BookSelect";
@@ -146,9 +159,12 @@ public class RealbookUI : MonoBehaviour
             status = bookInfo[9];
             bestSeller = int.Parse(bookInfo[10]);
 
-            Debug.Log(bestSeller);
+            if (title == "")
+                differentWord = true;
+            else if (title != "")
+                differentWord = false;
 
-            //thumnail ������
+            //thumnail Rearrange
             string[] s_thumnail = thumnail.Split('\\');
             thumnail = s_thumnail[0] + s_thumnail[1] + s_thumnail[2] + s_thumnail[3]
                 + s_thumnail[4] + s_thumnail[5] + s_thumnail[6];
@@ -160,14 +176,14 @@ public class RealbookUI : MonoBehaviour
         }
     }
 
-    //inputField�� ����ִ� �� Ȯ��
+    //check InputField
     bool StringAvailable(string inputField)
     {
         if (string.IsNullOrWhiteSpace(inputField)) return false;
         return true;
     }
 
-    //�г� ��/Ȱ��ȭ �޼���
+    //panel Setactive
     public void ExitBtn()
     {
         RealbookPanel.SetActive(false);
