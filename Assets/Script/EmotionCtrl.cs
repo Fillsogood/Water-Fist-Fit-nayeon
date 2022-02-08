@@ -42,21 +42,11 @@ public class EmotionCtrl : MonoBehaviour
         Invoke("Idle", 6.4f);
     }
 
-    IEnumerator CheckAnimationState()
-{
-
-	while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.9967642) 
-	{ 
-		cctrl.enabled = false;
-		yield return null;
-	}
-
-}
-
     public void Clap()
     {
         anim.SetBool("Idle", false);
         anim.SetBool("isClap", true);
+        StartCoroutine(CheckAnimationState());
         EmojiPanel.SetActive(false);
         EmojiBtn.SetActive(true);
         Invoke("Idle", 6.4f);
@@ -66,6 +56,7 @@ public class EmotionCtrl : MonoBehaviour
     {
         anim.SetBool("Idle", false);
         anim.SetBool("isLaugh", true);
+        StartCoroutine(CheckAnimationState());
         EmojiPanel.SetActive(false);
         EmojiBtn.SetActive(true);
         Invoke("Idle", 3.6f);
@@ -75,9 +66,22 @@ public class EmotionCtrl : MonoBehaviour
     {
         anim.SetBool("Idle", false);
         anim.SetBool("isDizzy", true);
+        StartCoroutine(CheckAnimationState());
         EmojiPanel.SetActive(false);
         EmojiBtn.SetActive(true);
         Invoke("Idle", 2.4f);
+    }
+
+    
+    IEnumerator CheckAnimationState()
+    {
+
+	    while (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.9967642) 
+	    { 
+		    cctrl.enabled = false;
+		    yield return null;
+	    }
+
     }
 
     private void Idle()
@@ -87,6 +91,7 @@ public class EmotionCtrl : MonoBehaviour
         anim.SetBool("isClap", false);
         anim.SetBool("isLaugh", false);
         anim.SetBool("isDizzy", false);
+        cctrl.enabled = true;
     }
     #endregion
 }
