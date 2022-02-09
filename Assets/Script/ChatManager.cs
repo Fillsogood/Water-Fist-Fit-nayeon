@@ -165,7 +165,7 @@ public class ChatManager : MonoBehaviour, IChatClientListener
 			string[] ss = s.Split(new string[] { ">>" }, StringSplitOptions.None);
 			chatClient.SendPrivateMessage(ss[0], ss[1]);
 		}
-        else if(s.Contains("/문학") && PhotonNetwork.CurrentRoom.Name == "WooSoong Library")
+        else if(s.Contains("/IT") && PhotonNetwork.CurrentRoom.Name == "WooSoong Library")
         {
             player.transform.position = new Vector3(-8.0f, -0.04112241f, 4.0f);
         }
