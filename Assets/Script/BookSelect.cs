@@ -119,7 +119,7 @@ public class BookSelect : MonoBehaviour
     //찜 추가
     public void Unity_AddWish(string b_id)
     {
-        string sendurl = url + "Unity_AddWish"; 
+        string sendurl = url + "Unity_BookHeart"; 
 
         HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
         httpWebRequest.Method = "POST";
@@ -139,7 +139,11 @@ public class BookSelect : MonoBehaviour
             using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
                 result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
             Debug.Log(result);
-            PP.text=result;
+
+            string[] result2 = result.Split('"');
+            string[] bookInfo = result2[1].Split(',');
+
+            PP.text=bookInfo[1];
 
         }
         catch(WebException e)
@@ -152,7 +156,7 @@ public class BookSelect : MonoBehaviour
     //찜 해제
     public void Unity_RemoveWish(string b_id)
     {
-        string sendurl = url + "Unity_RemoveWish"; 
+        string sendurl = url + "Unity_BookUnHeart"; 
 
         HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
         httpWebRequest.Method = "POST";
@@ -172,7 +176,10 @@ public class BookSelect : MonoBehaviour
             using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
                 result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
             Debug.Log(result);
-            PP.text=result;
+            string[] result2 = result.Split('"');
+            string[] bookInfo = result2[1].Split(',');
+
+            PP.text=bookInfo[1];
 
         }
         catch(WebException e)
@@ -181,7 +188,7 @@ public class BookSelect : MonoBehaviour
         } 
     } 
 
-    #region 찜 목록
+    #region 책 정보
    public void Unity_BookSelect(string title)
    {
         string sendurl = url + "Unity_BookSelect"; 
