@@ -11,7 +11,6 @@ public class ChatManager : MonoBehaviour, IChatClientListener
     //유저 이름
     private string userName = PhotonNetwork.NickName;
     //채널 이름
-    string channelName = PhotonNetwork.CurrentRoom.Name;
     public Canvas canvas_on;
     public Canvas canvas_off;
 
@@ -41,6 +40,7 @@ public class ChatManager : MonoBehaviour, IChatClientListener
         AddLine(string.Format("연결시도", userName));
 	    canvas_on.GetComponent<Canvas>().enabled = false;
         canvas_off.GetComponent<Canvas>().enabled = true;
+        
     }
     void Update ()
     {
@@ -195,7 +195,7 @@ public class ChatManager : MonoBehaviour, IChatClientListener
         }
         //일반채팅
         else 
-            chatClient.PublishMessage(channelName, s); 
+            chatClient.PublishMessage(PhotonNetwork.CurrentRoom.Name, s); 
 	}
     //채팅 클라이언트 해제
     public void DIsConnect()
