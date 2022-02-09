@@ -176,8 +176,6 @@ public class MainSceneController : MonoBehaviour
     //화면공유
     public void ShareDisplayScreen()
     {
-        GameObject quad = GameObject.Find("Quad");
-        quad.AddComponent<VideoSurface>();
         ScreenCaptureParameters sparams = new ScreenCaptureParameters
         {
             captureMouseCursor = true, //마우스커서까지 화면공유에 포함시키기
@@ -192,8 +190,6 @@ public class MainSceneController : MonoBehaviour
     public void UnShareDisplayScreen()
     {
             mRtcEngine.StopScreenCapture(); //스크린캡처 중단
-            GameObject quad = GameObject.Find("Quad");
-            Destroy(quad.GetComponent<VideoSurface>());
             RemoveUserVideoSurface(myuid);
             CheckAppId();                               //AppID 확인
             playerVideoList = new List<GameObject>();   //유저 캠 리스트 초기화
