@@ -2,6 +2,7 @@
 using UnityEngine;
 using agora_gaming_rtc;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 using System;
 using agora_utilities;
 using Photon.Pun;
@@ -34,7 +35,7 @@ public class MainSceneController : MonoBehaviour
     //유저 캠 리스트
     private List<GameObject> playerVideoList;
     public GameObject P_Menu;
-
+    
     void Start()
     {
         CheckAppId();                               //AppID 확인
@@ -386,29 +387,36 @@ public class MainSceneController : MonoBehaviour
             playerVideoList[i].GetComponent<RectTransform>().anchoredPosition = Vector2.down * spaceBetweenUserVideos * i;
         }
     }
+    
+    bool IDCardChk = false;
+    public void clickIDCard()
+    {
+        RectTransform rectTran = gameObject.GetComponent<RectTransform>();
+        GameObject obj = GameObject.Find("신분증");
+        Vector3 position = obj.transform.localPosition;
+        if (IDCardChk == false)
+        {
+            rectTran.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 1200);
+            rectTran.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 700);
+            position.x = 0;
+            position.y = 0;
+            obj.transform.localPosition = position;
+            IDCardChk = true;
+        }
+        else
+        {
+            rectTran.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 470);
+            rectTran.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 300);
+            position.x = -580;
+            position.y = 10;
+            obj.transform.localPosition = position;
+            IDCardChk = false;
+        }
+        
+    }  
+   
+    
+
     #endregion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
