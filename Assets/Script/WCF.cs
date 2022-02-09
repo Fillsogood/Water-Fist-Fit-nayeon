@@ -256,7 +256,8 @@ public class WCF : MonoBehaviourPunCallbacks
     {
         try
         {
-            string sendurl = url + "Ply_InputCustom";
+            Debug.Log("selcus" + SelCustom);
+            string sendurl = url + "Ply_UpdateCustom";
 
             // 송신
             HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
@@ -435,6 +436,7 @@ public class WCF : MonoBehaviourPunCallbacks
     public void FemaleBtnClick1()
     {
         cusnum=7;
+        Debug.Log(cusnum);
         Char1.SetActive(false);
         Char2.SetActive(false);
         Char3.SetActive(false);
