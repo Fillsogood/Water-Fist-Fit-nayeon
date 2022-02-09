@@ -85,7 +85,7 @@ public class WCF : MonoBehaviourPunCallbacks
     //커스텀 정보 얻어 오는 기능
     private void GetPlayerData()
     {
-        string sendurl = url + "Ply_GameJoin";
+        string sendurl = url + "Unity_GameJoin";
 
         HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
         httpWebRequest.Method = "POST";
@@ -219,7 +219,7 @@ public class WCF : MonoBehaviourPunCallbacks
     //게임 나가기 기능
     private void Gameunjoin()
     {
-        string sendurl = url + "Ply_GameUnjoin";
+        string sendurl = url + "Unity_GameUnjoin";
 
         //송신
         HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
@@ -257,7 +257,7 @@ public class WCF : MonoBehaviourPunCallbacks
         try
         {
             Debug.Log("selcus" + SelCustom);
-            string sendurl = url + "Ply_UpdateCustom";
+            string sendurl = url + "Unity_UpdateCustom";
 
             // 송신
             HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
