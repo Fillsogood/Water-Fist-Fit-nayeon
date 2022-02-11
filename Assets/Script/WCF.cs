@@ -47,6 +47,7 @@ public class WCF : MonoBehaviourPunCallbacks
         female6,
     };
 
+    //백준 한단계 다풀기
     //커스텀 정보 저장
     public static Custom  custom;
     //DB 서비스 url
