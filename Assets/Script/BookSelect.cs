@@ -6,6 +6,9 @@ using System.Net;
 using System.Text;
 using UnityEngine.UI;
 using Photon.Pun;
+using System.Collections;
+using UnityEngine.Networking;
+
 public class BookSelect : MonoBehaviour
 {
     private PhotonView pv;
@@ -39,6 +42,8 @@ public class BookSelect : MonoBehaviour
     public Text translators1;
     public Text author1;
     public Text publisher1;
+    public RawImage thumbnail1;
+
     public static string url = "http://localhost:59755/WSUforestService.svc/";
     public Text PP;
 
@@ -46,26 +51,31 @@ public class BookSelect : MonoBehaviour
     public void Btn_Book1()
     {
         Unity_BookSelect("Java의정석");
+        StartCoroutine(GetTexture(thumbnail1, thumnail));
         Bookinfo_P.SetActive(true);
     }
     public void Btn_Book2()
     {
         Unity_BookSelect("혼자공부하는자바");
+        StartCoroutine(GetTexture(thumbnail1, thumnail));
         Bookinfo_P.SetActive(true);
     }
     public void Btn_Book3()
     {
         Unity_BookSelect("윤성우열혈C++ 프로그래밍");
+        StartCoroutine(GetTexture(thumbnail1, thumnail));
         Bookinfo_P.SetActive(true);
     }
     public void Btn_Book4()
     {
         Unity_BookSelect("조엘온소프트웨어");
+        StartCoroutine(GetTexture(thumbnail1, thumnail));
         Bookinfo_P.SetActive(true);
     }
     public void Btn_Book5()
     {
         Unity_BookSelect("Do it! 점프투파이썬");
+        StartCoroutine(GetTexture(thumbnail1, thumnail));
         Bookinfo_P.SetActive(true);
     }
     //찜 목록 추가
@@ -185,13 +195,13 @@ public class BookSelect : MonoBehaviour
         catch(WebException e)
         {
             Debug.Log(e.Message);
-        } 
-    } 
+        }
+    }
 
     #region 책 정보
-   public void Unity_BookSelect(string title)
-   {
-        string sendurl = url + "Unity_BookSelect"; 
+    public void Unity_BookSelect(string title)
+    {
+        string sendurl = url + "Unity_BookSelect";
 
         HttpWebRequest httpWebRequest = WebRequest.Create(new Uri(sendurl)) as HttpWebRequest;
         httpWebRequest.Method = "POST";
@@ -206,8 +216,9 @@ public class BookSelect : MonoBehaviour
             requestStream.Write(bytes, 0, bytes.Length);
 
         string result = null;
-        
-        try{
+
+        try
+        {
             using (HttpWebResponse response = httpWebRequest.GetResponse() as HttpWebResponse)
                 result = new StreamReader(response.GetResponseStream()).ReadToEnd().ToString();
             Debug.Log(result);
@@ -224,17 +235,42 @@ public class BookSelect : MonoBehaviour
             author1.text = bookInfo[5];
             publisher1.text = bookInfo[6];
             translators1.text = bookInfo[7];
-            //thumnail = bookInfo[9];
+            thumnail = bookInfo[8];
             //status = bookInfo[10];
             //bestSeller = int.Parse(bookInfo[11]);
 
+            thumnail = URLImage(thumnail);
+
         }
-        catch(WebException e)
+        catch (WebException e)
         {
             Debug.Log(e.Message);
-        } 
-   }
+        }
+    }
 
+    //thumbnail string 재정렬
+    private string URLImage(string _thumnail)
+    {
+        string[] s_thumnail = _thumnail.Split('\\');
+        return _thumnail = s_thumnail[0] + s_thumnail[1] + s_thumnail[2] + s_thumnail[3]
+                        + s_thumnail[4] + s_thumnail[5] + s_thumnail[6];
+    }
+
+    //URL 이미지 텍스쳐로 변경
+    IEnumerator GetTexture(RawImage img, string thumnail)
+    {
+        var url = thumnail;
+        UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
+        yield return www.SendWebRequest();
+        if (www.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            img.texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+        }
+    }
 
     #endregion
 
