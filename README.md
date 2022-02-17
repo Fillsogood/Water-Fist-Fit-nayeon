@@ -15,11 +15,11 @@
 > * 귓속말
 ![image](https://user-images.githubusercontent.com/94848819/154414800-b3e68f78-98fd-405f-a199-69001e2b33e4.png)
 > * 캠
->![image](https://user-images.githubusercontent.com/94848819/154415221-9e7bc6ac-0050-4aba-ab19-6c986a721b84.png)
+> ![image](https://user-images.githubusercontent.com/94848819/154415221-9e7bc6ac-0050-4aba-ab19-6c986a721b84.png)
 > * 화면공유
->![image](https://user-images.githubusercontent.com/94848819/154415277-994fd8a5-3a0f-4a78-8daa-95c7941a9cee.png)
+> ![image](https://user-images.githubusercontent.com/94848819/154415277-994fd8a5-3a0f-4a78-8daa-95c7941a9cee.png)
 > * 마이크 켜기
->![image](https://user-images.githubusercontent.com/94848819/154415337-14ca53ca-7cdd-404b-9fea-1a3d87c7659d.png)
+> ![image](https://user-images.githubusercontent.com/94848819/154415337-14ca53ca-7cdd-404b-9fea-1a3d87c7659d.png)
 > * 마이크 끄기
->![image](https://user-images.githubusercontent.com/94848819/154415389-68392c90-7cd6-46be-afc7-441b11f92004.png)
+> ![image](https://user-images.githubusercontent.com/94848819/154415389-68392c90-7cd6-46be-afc7-441b11f92004.png)
 
