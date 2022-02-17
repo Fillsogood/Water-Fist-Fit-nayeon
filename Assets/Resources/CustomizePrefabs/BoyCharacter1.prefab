@@ -7779,8 +7779,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas_on: {fileID: 220137813090168187}
   canvas_off: {fileID: 2779928610146790618}
-  Notice_Meet: {fileID: 0}
-  Notice_Lib: {fileID: 0}
+  Notice_Meet: {fileID: 1897088667227406226}
+  Notice_Lib: {fileID: 7953677482232347377}
   inputField: {fileID: 8591470787779085324}
   outputText: {fileID: 8698517744069012994}
   btnOn: {fileID: 3998222917807301377}
