@@ -6431,7 +6431,6 @@ MonoBehaviour:
   canvas_off: {fileID: 6033832385709826005}
   Notice_Meet: {fileID: 1607652017303948067}
   Notice_Lib: {fileID: 1181288516077624581}
-  wish_list: {fileID: 0}
   inputField: {fileID: 5407594988890639830}
   outputText: {fileID: 1445059782042410745}
   btnOn: {fileID: 1596281938901518625}
