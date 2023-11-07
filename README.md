@@ -23,3 +23,5 @@
 > * 마이크 끄기
 >> ![image](https://user-images.githubusercontent.com/94848819/154415389-68392c90-7cd6-46be-afc7-441b11f92004.png)
 
+> * 시연영상
+> * https://youtu.be/VTBN6pymo14
